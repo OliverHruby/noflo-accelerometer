@@ -1,0 +1,25 @@
+{
+  "name": "noflo-accelerometer",
+  "description": "Device motion and orientation detection.",
+  "author": "Oliver Hruby <oliverhruby@gmail.com>",
+  "repo": "OliverHruby/noflo-accelerometer",
+  "version": "0.1.0",
+  "keywords": [],
+  "dependencies": {
+    "noflo/noflo": "*"
+  },
+  "scripts": [
+    "index.js",
+    "components/DeviceOrientation.coffee",
+    "components/DeviceMotion.coffee"
+  ],
+  "json": [
+    "component.json"
+  ],
+  "noflo": {
+    "components": {
+      "DeviceMotion": "components/DeviceMotion.coffee",
+      "DeviceOrientation": "components/DeviceOrientation.coffee"
+    }
+  }
+}
