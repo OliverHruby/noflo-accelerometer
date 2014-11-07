@@ -11,7 +11,8 @@
   "scripts": [
     "index.js",
     "components/DeviceOrientation.coffee",
-    "components/DeviceMotion.coffee"
+    "components/DeviceMotion.coffee",
+    "components/Geolocation.coffee"
   ],
   "json": [
     "component.json"
@@ -19,7 +20,8 @@
   "noflo": {
     "components": {
       "DeviceMotion": "components/DeviceMotion.coffee",
-      "DeviceOrientation": "components/DeviceOrientation.coffee"
+      "DeviceOrientation": "components/DeviceOrientation.coffee",
+      "Geolocation": "components/Geolocation.coffee"
     }
   }
 }

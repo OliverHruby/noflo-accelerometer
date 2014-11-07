@@ -40,7 +40,8 @@
   "noflo": {
     "components": {
       "DeviceMotion": "components/DeviceMotion.coffee",
-      "DeviceOrientation": "components/DeviceOrientation.coffee"
+      "DeviceOrientation": "components/DeviceOrientation.coffee",
+      "Geolocation": "components/Geolocation.coffee"
     }
   }
 }
