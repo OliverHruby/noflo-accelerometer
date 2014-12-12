@@ -1,52 +1,856 @@
 {
     "properties": {
-        "name": "Robot",
+        "name": "RobotArm",
+        "id": "robot/RobotArm",
+        "project": "robot",
         "environment": {
             "type": "noflo-browser",
-            "content": "<div id=\"scene\"></div>"
+            "content": "<style>\n.wrapper {\n    position: relative;\n    width: 640px;\n    height: 480px;\n}\n\n.wrapper canvas {\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n\n.header {\n    font-style: uppercase;\n    color: #4488aa;\n}\n.sensor .label {} .sensor .value {\n    font-weight: bold;\n    color: green;\n}\n.panel {\n    padding: 10px;\n    margin: 10px;\n    background-color: #112233;\n    width: 240px;\n}\n</style>\n<script src=\"http://threejs.org/build/three.min.js\"></script>\n\n<div id=\"scene\"></div>\n\n<div class=\"wrapper\">\n    <video id=\"camera\" autoplay loop width=\"640\" height=\"480\" style=\"display:none\"></video>\n    <canvas id=\"out\" width=\"640\" height=\"480\" style=\"max-width:100%;\"></canvas>\n    <canvas id=\"drawing\" width=\"640\" height=\"480\" style=\"border: 1px solid #5577aa\"></canvas>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Accelerometer</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Alpha:</span>\n        <span class=\"value\" id=\"accelerometer_alpha\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Beta:</span>\n        <span class=\"value\" id=\"accelerometer_beta\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Gamma:</span>\n        <span class=\"value\" id=\"accelerometer_gamma\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Geolocation</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Latitude: </span>\n        <span class=\"value\" id=\"geolocation_latitude\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Longitude: </span>\n        <span class=\"value\" id=\"geolocation_longitude\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Sun Position</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Sun altitude: </span>\n        <span class=\"value\" id=\"sun_position_altitude\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Sun azimuth: </span>\n        <span class=\"value\" id=\"sun_position_azimuth\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Speech</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Command: </span>\n        <span class=\"value\">\n      <input type=\"text\" id=\"command\"></input>\n      <button id=\"btnCommand\">Go</button>\n    </span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Log: </span>\n        <span class=\"value\" id=\"speech\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Keyboard input</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Key: </span>\n        <span class=\"value\" id=\"keyboard\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Gamepad</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Model: </span>\n        <span class=\"value\" id=\"gamepad_name\">Xbox One</span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">State: </span>\n        <span class=\"value\" id=\"gamepad_state\">???</span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Network information</div>\n    <div class=\"sensor\">\n        <span class=\"label\">IP address: </span>\n        <span class=\"value\" id=\"network_ip\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Provider: </span>\n        <span class=\"value\" id=\"network_provider\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Weather</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Weather: </span>\n        <span class=\"value\" id=\"weather_main\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Temperature: </span>\n        <span class=\"value\" id=\"weather_temp\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Wind speed: </span>\n        <span class=\"value\" id=\"weather_wind_speed\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Pressure: </span>\n        <span class=\"value\" id=\"weather_pressure\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Humidity: </span>\n        <span class=\"value\" id=\"weather_humidity\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Clouds: </span>\n        <span class=\"value\" id=\"weather_clouds\"></span>\n    </div>\n</div>\n\n\n<input id=\"button_voice\" type=\"button\" value=\"Voice Input\" onlick=\"initialize()\"></input>\n"
         },
-        "icon": ""
+        "changed": true,
+        "description": "Simulation of a robotic arm",
+        "icon": "cube"
     },
     "inports": {},
     "outports": {},
-    "groups": [],
+    "groups": [
+        {
+            "name": "Sound module",
+            "nodes": [
+                "Gain",
+                "Oscillator",
+                "Play"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        },
+        {
+            "name": "Gamepad module",
+            "nodes": [
+                "Drop",
+                "Read Gamepad"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        },
+        {
+            "name": "Speech Recognition",
+            "nodes": [
+                "Speech div",
+                "Voice Button",
+                "On Click",
+                "Write Text",
+                "Listen"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        },
+        {
+            "name": "Geolocation",
+            "nodes": [
+                "Get location",
+                "Outputb",
+                "dom/WriteHtml_i24nt",
+                "dom/WriteHtml_vniuo",
+                "latitude div",
+                "longitude div"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        },
+        {
+            "name": "Video",
+            "nodes": [
+                "Get camera div",
+                "Read camera",
+                "Set src"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        },
+        {
+            "name": "Text to speech",
+            "nodes": [
+                "Speak"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        },
+        {
+            "name": "Canvas drawing",
+            "nodes": [
+                "Draw",
+                "Drawing div",
+                "Fill",
+                "Make Circle",
+                "Make Point"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        },
+        {
+            "name": "Character AI",
+            "nodes": [
+                "Character",
+                "Output"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        },
+        {
+            "name": "Accelerometer",
+            "nodes": [
+                "2 places",
+                "2 places_2zjwm",
+                "2 places_aoykp",
+                "Alpha div",
+                "Beta div",
+                "Gamma div",
+                "Orientation",
+                "Show Alpha",
+                "Show Beta",
+                "Show Gamma",
+                "drop_j56f1"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        },
+        {
+            "name": "Sun information",
+            "nodes": [
+                "get div",
+                "get div_ot7vf",
+                "SunCalc",
+                "core/MakeFunction_7l0n9",
+                "core/MakeFunction_kjmsa",
+                "show",
+                "show_7lwuw"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        },
+        {
+            "name": "Touch input",
+            "nodes": [
+                "area",
+                "drop",
+                "listen"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        },
+        {
+            "name": "Keyboard input",
+            "nodes": [
+                "ASCII to Char",
+                "Get body",
+                "Get div",
+                "Listen key",
+                "Write key"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        },
+        {
+            "name": "Compass",
+            "nodes": [
+                "Compass",
+                "Output_dzmzd"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        },
+        {
+            "name": "Video filters",
+            "nodes": [
+                "Get canvas",
+                "Night Vision",
+                "Source",
+                "Target"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        },
+        {
+            "name": "Network info",
+            "nodes": [
+                "Get div_aqnfu",
+                "Get div_jw4ja",
+                "ISP",
+                "Parse Json",
+                "Query",
+                "Retrieve info",
+                "Write",
+                "dom/WriteHtml_bfi4a"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        },
+        {
+            "name": "Weather info",
+            "nodes": [
+                "Get",
+                "Get \"main\"",
+                "Get \"weather\"",
+                "Get \"wind\"",
+                "Parse Json_yre6l",
+                "Write \"humidity\"",
+                "Write \"main\"",
+                "Write \"pressure\"",
+                "Write \"speed\"",
+                "Write \"temp\"",
+                "dom/GetElement_40o6a",
+                "dom/GetElement_4enew",
+                "dom/GetElement_tzt8x",
+                "dom/WriteHtml_n560o",
+                "get \"humidity\"",
+                "get \"main\"",
+                "get \"pressure\"",
+                "get \"speed\"",
+                "get \"temp\"",
+                "get div_5a52d",
+                "get div_d0a1l",
+                "get div_ebbet",
+                "get \"all\"",
+                "Get \"clouds\""
+            ],
+            "metadata": {
+                "description": ""
+            }
+        }
+    ],
     "processes": {
-        "core/Output_sl6xr": {
+        "Show Alpha": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "Show Alpha",
+                "x": 216,
+                "y": 936,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Alpha div": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "Alpha div",
+                "x": 108,
+                "y": 972,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Orientation": {
+            "component": "voice-timer/DeviceOrientation",
+            "metadata": {
+                "label": "Orientation",
+                "x": -144,
+                "y": 1116,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Oscillator": {
+            "component": "webaudio/Oscillator",
+            "metadata": {
+                "label": "Oscillator",
+                "x": 684,
+                "y": 1008,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Gain": {
+            "component": "webaudio/Gain",
+            "metadata": {
+                "label": "Gain",
+                "x": 792,
+                "y": 1008,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Play": {
+            "component": "webaudio/Play",
+            "metadata": {
+                "label": "Play",
+                "x": 900,
+                "y": 1008,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Motion to frequency": {
+            "component": "math/Multiply",
+            "metadata": {
+                "label": "Motion to frequency",
+                "x": 432,
+                "y": 1008,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Beta div": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "Beta div",
+                "x": 108,
+                "y": 1152,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Show Beta": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "Show Beta",
+                "x": 216,
+                "y": 1116,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Gamma div": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "Gamma div",
+                "x": 108,
+                "y": 1296,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Show Gamma": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "Show Gamma",
+                "x": 216,
+                "y": 1260,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Read camera": {
+            "component": "gum/GetUserMedia",
+            "metadata": {
+                "label": "Read camera",
+                "x": 432,
+                "y": 756,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Get camera div": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "Get camera div",
+                "x": 432,
+                "y": 648,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Read Gamepad": {
+            "component": "interaction/ReadGamepad",
+            "metadata": {
+                "label": "Read Gamepad",
+                "x": -612,
+                "y": -108,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "drop_j56f1": {
+            "component": "core/Drop",
+            "metadata": {
+                "label": "drop",
+                "x": -108,
+                "y": 1008,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Listen": {
+            "component": "interaction/ListenSpeech",
+            "metadata": {
+                "label": "Listen",
+                "x": -576,
+                "y": 432,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "On Click": {
+            "component": "dom/Listen",
+            "metadata": {
+                "label": "On Click",
+                "x": -684,
+                "y": 432,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Voice Button": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "Voice Button",
+                "x": -792,
+                "y": 432,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Drop": {
+            "component": "core/Drop",
+            "metadata": {
+                "label": "Drop",
+                "x": -468,
+                "y": -108,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Get location": {
+            "component": "voice-timer/Geolocation",
+            "metadata": {
+                "label": "Get location",
+                "x": 432,
+                "y": 432,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Outputb": {
             "component": "core/Output",
             "metadata": {
-                "label": "core/Output",
+                "label": "Outputb",
+                "x": 648,
+                "y": 432,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Listen key": {
+            "component": "interaction/ListenKeyboard",
+            "metadata": {
+                "label": "Listen key",
+                "x": -144,
+                "y": 252,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Get body": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "Get body",
+                "x": -252,
+                "y": 252,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "area": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "area",
+                "x": 216,
+                "y": 0,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "listen": {
+            "component": "interaction/ListenTouch",
+            "metadata": {
+                "label": "listen",
+                "x": 324,
+                "y": 0,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Speech div": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "Speech div",
+                "x": -576,
+                "y": 540,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Write Text": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "Write Text",
+                "x": -468,
+                "y": 504,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Set src": {
+            "component": "dom/SetAttribute",
+            "metadata": {
+                "label": "Set src",
                 "x": 576,
-                "y": 324,
+                "y": 720,
                 "width": 72,
                 "height": 72
             }
         },
-        "SphereGeometry": {
-            "component": "three/SphereGeometry",
+        "Run": {
+            "component": "core/RunInterval",
             "metadata": {
-                "label": "SphereGeometry",
-                "x": 144,
-                "y": 180,
+                "label": "Run",
+                "x": -756,
+                "y": 828,
                 "width": 72,
                 "height": 72
             }
         },
-        "Scene": {
-            "component": "three/Scene",
+        "latitude div": {
+            "component": "dom/GetElement",
             "metadata": {
-                "label": "Scene",
+                "label": "latitude div",
+                "x": 432,
+                "y": 216,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "longitude div": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "longitude div",
                 "x": 432,
                 "y": 324,
                 "width": 72,
                 "height": 72
             }
         },
+        "dom/WriteHtml_vniuo": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "dom/WriteHtml",
+                "x": 648,
+                "y": 216,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "dom/WriteHtml_i24nt": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "dom/WriteHtml",
+                "x": 648,
+                "y": 324,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Retrieve info": {
+            "component": "ajax/Get",
+            "metadata": {
+                "label": "Retrieve info",
+                "x": -936,
+                "y": 108,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Source": {
+            "component": "seriously/SetSource",
+            "metadata": {
+                "label": "Source",
+                "x": 864,
+                "y": 720,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Target": {
+            "component": "seriously/SetTarget",
+            "metadata": {
+                "label": "Target",
+                "x": 1152,
+                "y": 756,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Get canvas": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "Get canvas",
+                "x": 1008,
+                "y": 828,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Night Vision": {
+            "component": "seriously/NightVision",
+            "metadata": {
+                "label": "Night Vision",
+                "x": 1008,
+                "y": 612,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Draw": {
+            "component": "canvas/Draw",
+            "metadata": {
+                "label": "Draw",
+                "x": 972,
+                "y": -72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Make Circle": {
+            "component": "canvas/MakeCircle",
+            "metadata": {
+                "label": "Make Circle",
+                "x": 756,
+                "y": -72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Make Point": {
+            "component": "canvas/MakePoint",
+            "metadata": {
+                "label": "Make Point",
+                "x": 648,
+                "y": -72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Fill": {
+            "component": "canvas/Fill",
+            "metadata": {
+                "label": "Fill",
+                "x": 864,
+                "y": 0,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Drawing div": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "Drawing div",
+                "x": 864,
+                "y": -108,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Get div": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "Get div",
+                "x": -144,
+                "y": 144,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Write key": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "Write key",
+                "x": 0,
+                "y": 180,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Speak": {
+            "component": "voice-timer/SpeechSynthesis",
+            "metadata": {
+                "label": "Speak",
+                "x": 180,
+                "y": 324,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "SunCalc": {
+            "component": "voice-timer/SunCalc",
+            "metadata": {
+                "label": "SunCalc",
+                "x": 864,
+                "y": 288,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "get div_ot7vf": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "get div",
+                "x": 1080,
+                "y": 396,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "get div": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "get div",
+                "x": 1080,
+                "y": 252,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "show_7lwuw": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "show",
+                "x": 1188,
+                "y": 360,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "show": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "show",
+                "x": 1188,
+                "y": 216,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Character": {
+            "component": "voice-timer/Character",
+            "metadata": {
+                "label": "Character",
+                "x": -252,
+                "y": 468,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Output": {
+            "component": "core/Output",
+            "metadata": {
+                "label": "Output",
+                "x": -144,
+                "y": 468,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Get div_jw4ja": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "Get div",
+                "x": -720,
+                "y": 144,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Write": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "Write",
+                "x": -612,
+                "y": 108,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "core/RunInterval_yp9km": {
+            "component": "core/RunInterval",
+            "metadata": {
+                "label": "core/RunInterval",
+                "x": 756,
+                "y": 1152,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "webaudio/AudioFile_tudfa": {
+            "component": "webaudio/AudioFile",
+            "metadata": {
+                "label": "webaudio/AudioFile",
+                "x": 864,
+                "y": 1152,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Parse Json": {
+            "component": "strings/ParseJson",
+            "metadata": {
+                "label": "Parse Json",
+                "x": -936,
+                "y": 216,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Query": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "Query",
+                "x": -828,
+                "y": 108,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "webaudio/Chorus_fqtnz": {
+            "component": "webaudio/Chorus",
+            "metadata": {
+                "label": "webaudio/Chorus",
+                "x": 648,
+                "y": 1152,
+                "width": 72,
+                "height": 72
+            }
+        },
         "WebGLRenderer": {
-            "component": "three/WebGLRenderer",
+            "component": "voice-timer/WebGLRenderer",
             "metadata": {
                 "label": "WebGLRenderer",
-                "x": 576,
-                "y": 180,
+                "x": -432,
+                "y": 1008,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Scene": {
+            "component": "voice-timer/Scene",
+            "metadata": {
+                "label": "Scene",
+                "x": -540,
+                "y": 1044,
                 "width": 72,
                 "height": 72
             }
@@ -55,68 +859,448 @@
             "component": "dom/GetElement",
             "metadata": {
                 "label": "Scene div",
-                "x": 432,
-                "y": 180,
+                "x": -648,
+                "y": 1008,
                 "width": 72,
                 "height": 72
             }
         },
         "Camera": {
-            "component": "three/Camera",
+            "component": "voice-timer/Camera",
             "metadata": {
                 "label": "Camera",
-                "x": 432,
-                "y": 468,
+                "x": -540,
+                "y": 1152,
                 "width": 72,
                 "height": 72
             }
         },
-        "core/RunInterval_y5sms": {
-            "component": "core/RunInterval",
+        "ASCII to Char": {
+            "component": "core/MakeFunction",
             "metadata": {
-                "label": "core/RunInterval",
-                "x": 432,
-                "y": 36,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "three/Vector3_zfgzc": {
-            "component": "three/Vector3",
-            "metadata": {
-                "label": "three/Vector3",
-                "x": 288,
-                "y": 468,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Mesh": {
-            "component": "three/Mesh",
-            "metadata": {
-                "label": "Mesh",
-                "x": 288,
-                "y": 324,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "MeshBasicMaterial": {
-            "component": "three/MeshBasicMaterial",
-            "metadata": {
-                "label": "MeshBasicMaterial",
-                "x": 144,
-                "y": 324,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "MakeRGBColor": {
-            "component": "canvas/MakeRGBColor",
-            "metadata": {
-                "label": "MakeRGBColor",
+                "label": "ASCII to Char",
                 "x": -36,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "2 places_2zjwm": {
+            "component": "core/MakeFunction",
+            "metadata": {
+                "label": "2 places",
+                "x": 0,
+                "y": 936,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "2 places": {
+            "component": "core/MakeFunction",
+            "metadata": {
+                "label": "2 places",
+                "x": 0,
+                "y": 1116,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "2 places_aoykp": {
+            "component": "core/MakeFunction",
+            "metadata": {
+                "label": "2 places",
+                "x": 0,
+                "y": 1260,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "core/MakeFunction_kjmsa": {
+            "component": "core/MakeFunction",
+            "metadata": {
+                "label": "2 places",
+                "x": 972,
+                "y": 216,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "core/MakeFunction_7l0n9": {
+            "component": "core/MakeFunction",
+            "metadata": {
+                "label": "2 places",
+                "x": 972,
+                "y": 360,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "drop": {
+            "component": "core/Drop",
+            "metadata": {
+                "label": "drop",
+                "x": 432,
+                "y": 0,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Compass": {
+            "component": "voice-timer/Compass",
+            "metadata": {
+                "label": "Compass",
+                "x": -180,
+                "y": 684,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Output_dzmzd": {
+            "component": "core/Output",
+            "metadata": {
+                "label": "Output",
+                "x": -72,
+                "y": 684,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "7 places": {
+            "component": "core/MakeFunction",
+            "metadata": {
+                "label": "7 places",
+                "x": 540,
+                "y": 252,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "core/MakeFunction_eoual": {
+            "component": "core/MakeFunction",
+            "metadata": {
+                "label": "7 places",
+                "x": 540,
+                "y": 360,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Bleach Bypass": {
+            "component": "seriously/BleachBypass",
+            "metadata": {
+                "label": "Bleach Bypass",
+                "x": 1008,
+                "y": 720,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Track Face": {
+            "component": "clmtrackr/TrackFace",
+            "metadata": {
+                "label": "Track Face",
+                "x": 1368,
+                "y": 648,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Wireframe Face": {
+            "component": "clmtrackr/WireframeFace",
+            "metadata": {
+                "label": "Wireframe Face",
+                "x": 1476,
+                "y": 648,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Draw_hnw62": {
+            "component": "canvas/Draw",
+            "metadata": {
+                "label": "Draw",
+                "x": 1692,
+                "y": 648,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Stroke": {
+            "component": "canvas/Stroke",
+            "metadata": {
+                "label": "Stroke",
+                "x": 1584,
+                "y": 648,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Get div_aqnfu": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "Get div",
+                "x": -720,
+                "y": 252,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "ISP": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "ISP",
+                "x": -828,
+                "y": 216,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "dom/WriteHtml_bfi4a": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "Write",
+                "x": -612,
+                "y": 216,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Get": {
+            "component": "ajax/Get",
+            "metadata": {
+                "label": "Get",
+                "x": 1404,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Parse Json_yre6l": {
+            "component": "strings/ParseJson",
+            "metadata": {
+                "label": "Parse Json",
+                "x": 1512,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Get \"weather\"": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "Get \"weather\"",
+                "x": 1620,
+                "y": -180,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Get \"main\"": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "Get \"main\"",
+                "x": 1620,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "get \"temp\"": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "get \"temp\"",
+                "x": 1728,
+                "y": -36,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "get div_ebbet": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "get div",
+                "x": 1836,
+                "y": 0,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Write \"temp\"": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "Write \"temp\"",
+                "x": 1944,
+                "y": -36,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "get \"humidity\"": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "get \"humidity\"",
+                "x": 1728,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "get div_d0a1l": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "get div",
+                "x": 1836,
+                "y": 108,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Write \"humidity\"": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "Write \"humidity\"",
+                "x": 1944,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "get \"pressure\"": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "get \"pressure\"",
+                "x": 1728,
+                "y": 180,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "dom/GetElement_40o6a": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "get div",
+                "x": 1836,
+                "y": 216,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Write \"pressure\"": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "Write \"pressure\"",
+                "x": 1944,
+                "y": 180,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "get \"main\"": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "get \"main\"",
+                "x": 1728,
+                "y": -180,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "dom/GetElement_tzt8x": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "get div",
+                "x": 1836,
+                "y": -144,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Write \"speed\"": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "Write \"speed\"",
+                "x": 1944,
                 "y": 324,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Write \"main\"": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "Write \"main\"",
+                "x": 1944,
+                "y": -180,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Get \"wind\"": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "Get \"wind\"",
+                "x": 1620,
+                "y": 324,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "get \"speed\"": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "get \"speed\"",
+                "x": 1728,
+                "y": 324,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "get div_5a52d": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "get div",
+                "x": 1836,
+                "y": 360,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Get \"clouds\"": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "Get \"clouds\"",
+                "x": 1620,
+                "y": 432,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "get \"all\"": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "get \"all\"",
+                "x": 1728,
+                "y": 432,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "dom/GetElement_4enew": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "get div",
+                "x": 1836,
+                "y": 468,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "dom/WriteHtml_n560o": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "Write \"speed\"",
+                "x": 1944,
+                "y": 432,
                 "width": 72,
                 "height": 72
             }
@@ -125,14 +1309,548 @@
     "connections": [
         {
             "src": {
-                "process": "Scene",
+                "process": "Alpha div",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "Show Alpha",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "Oscillator",
+                "port": "oscillator"
+            },
+            "tgt": {
+                "process": "Gain",
+                "port": "audionodes"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "Motion to frequency",
+                "port": "product"
+            },
+            "tgt": {
+                "process": "Oscillator",
+                "port": "frequency"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "Gamma div",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "Show Gamma",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "Orientation",
+                "port": "absolute"
+            },
+            "tgt": {
+                "process": "drop_j56f1",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "On Click",
+                "port": "event"
+            },
+            "tgt": {
+                "process": "Listen",
+                "port": "start"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "Voice Button",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "On Click",
+                "port": "element"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "Read Gamepad",
+                "port": "error"
+            },
+            "tgt": {
+                "process": "Drop",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 1
+            }
+        },
+        {
+            "src": {
+                "process": "Read Gamepad",
                 "port": "out"
             },
             "tgt": {
-                "process": "core/Output_sl6xr",
+                "process": "Drop",
                 "port": "in"
             },
             "metadata": {}
+        },
+        {
+            "src": {
+                "process": "Get location",
+                "port": "accuracy"
+            },
+            "tgt": {
+                "process": "Outputb",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "Get body",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "Listen key",
+                "port": "element"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "area",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "listen",
+                "port": "element"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "Speech div",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "Write Text",
+                "port": "container"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "Listen",
+                "port": "result"
+            },
+            "tgt": {
+                "process": "Write Text",
+                "port": "html"
+            },
+            "metadata": {
+                "route": null
+            }
+        },
+        {
+            "src": {
+                "process": "Beta div",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "Show Beta",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "Get camera div",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "Set src",
+                "port": "element"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "Read camera",
+                "port": "url"
+            },
+            "tgt": {
+                "process": "Set src",
+                "port": "value"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "Run",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Orientation",
+                "port": "start"
+            },
+            "metadata": {
+                "route": 9
+            }
+        },
+        {
+            "src": {
+                "process": "Run",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Read camera",
+                "port": "start"
+            },
+            "metadata": {
+                "route": 9
+            }
+        },
+        {
+            "src": {
+                "process": "Run",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Get location",
+                "port": "start"
+            },
+            "metadata": {
+                "route": 9
+            }
+        },
+        {
+            "src": {
+                "process": "latitude div",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_vniuo",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "longitude div",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_i24nt",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "Set src",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "Source",
+                "port": "source"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "Make Point",
+                "port": "point"
+            },
+            "tgt": {
+                "process": "Make Circle",
+                "port": "center"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "Make Circle",
+                "port": "circle"
+            },
+            "tgt": {
+                "process": "Fill",
+                "port": "items"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "Fill",
+                "port": "fill"
+            },
+            "tgt": {
+                "process": "Draw",
+                "port": "commands"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "Drawing div",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "Draw",
+                "port": "canvas"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "Get div",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "Write key",
+                "port": "container"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "Listen key",
+                "port": "keypress"
+            },
+            "tgt": {
+                "process": "Write key",
+                "port": "html"
+            },
+            "metadata": {
+                "route": null
+            }
+        },
+        {
+            "src": {
+                "process": "Listen key",
+                "port": "keypress"
+            },
+            "tgt": {
+                "process": "Speak",
+                "port": "text"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "Get location",
+                "port": "latitude"
+            },
+            "tgt": {
+                "process": "SunCalc",
+                "port": "latitude"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "Get location",
+                "port": "longitude"
+            },
+            "tgt": {
+                "process": "SunCalc",
+                "port": "longitude"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "get div_ot7vf",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "show_7lwuw",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "get div",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "show",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "Character",
+                "port": "output"
+            },
+            "tgt": {
+                "process": "Output",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "Listen",
+                "port": "result"
+            },
+            "tgt": {
+                "process": "Character",
+                "port": "input"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "Output",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Speak",
+                "port": "text"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "Get div_jw4ja",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "Write",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "Orientation",
+                "port": "absolute"
+            },
+            "tgt": {
+                "process": "Get location",
+                "port": "start"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "Gain",
+                "port": "gain"
+            },
+            "tgt": {
+                "process": "Play",
+                "port": "audionodes"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "Retrieve info",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Parse Json",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "Parse Json",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Query",
+                "port": "in"
+            },
+            "metadata": {
+                "route": null
+            }
+        },
+        {
+            "src": {
+                "process": "core/RunInterval_yp9km",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "webaudio/AudioFile_tudfa",
+                "port": "start"
+            },
+            "metadata": {
+                "route": null
+            }
         },
         {
             "src": {
@@ -143,9 +1861,7 @@
                 "process": "WebGLRenderer",
                 "port": "scene"
             },
-            "metadata": {
-                "route": 0
-            }
+            "metadata": {}
         },
         {
             "src": {
@@ -156,7 +1872,9 @@
                 "process": "WebGLRenderer",
                 "port": "element"
             },
-            "metadata": {}
+            "metadata": {
+                "route": 7
+            }
         },
         {
             "src": {
@@ -171,69 +1889,1017 @@
         },
         {
             "src": {
-                "process": "core/RunInterval_y5sms",
+                "process": "Run",
                 "port": "out"
             },
             "tgt": {
                 "process": "WebGLRenderer",
                 "port": "tick"
             },
-            "metadata": {}
+            "metadata": {
+                "route": 9
+            }
         },
         {
             "src": {
-                "process": "three/Vector3_zfgzc",
+                "process": "Listen key",
+                "port": "keypress"
+            },
+            "tgt": {
+                "process": "ASCII to Char",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "ASCII to Char",
                 "port": "out"
             },
             "tgt": {
-                "process": "Camera",
-                "port": "position"
+                "process": "Speak",
+                "port": "text"
             },
-            "metadata": {}
+            "metadata": {
+                "route": 3
+            }
         },
         {
             "src": {
-                "process": "Mesh",
+                "process": "Orientation",
+                "port": "alpha"
+            },
+            "tgt": {
+                "process": "2 places_2zjwm",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "2 places_2zjwm",
                 "port": "out"
             },
             "tgt": {
-                "process": "Scene",
-                "port": "children"
+                "process": "Show Alpha",
+                "port": "html"
             },
-            "metadata": {}
+            "metadata": {
+                "route": 4
+            }
         },
         {
             "src": {
-                "process": "SphereGeometry",
+                "process": "Orientation",
+                "port": "beta"
+            },
+            "tgt": {
+                "process": "2 places",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "2 places",
                 "port": "out"
             },
             "tgt": {
-                "process": "Mesh",
-                "port": "geometry"
+                "process": "Show Beta",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "Orientation",
+                "port": "gamma"
+            },
+            "tgt": {
+                "process": "2 places_aoykp",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "2 places_aoykp",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Show Gamma",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "Orientation",
+                "port": "alpha"
+            },
+            "tgt": {
+                "process": "Motion to frequency",
+                "port": "multiplicand"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "SunCalc",
+                "port": "altitude"
+            },
+            "tgt": {
+                "process": "core/MakeFunction_kjmsa",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "core/MakeFunction_kjmsa",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "show",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "core/MakeFunction_7l0n9",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "show_7lwuw",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "SunCalc",
+                "port": "azimuth"
+            },
+            "tgt": {
+                "process": "core/MakeFunction_7l0n9",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "listen",
+                "port": "movex"
+            },
+            "tgt": {
+                "process": "Make Point",
+                "port": "x"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "listen",
+                "port": "movey"
+            },
+            "tgt": {
+                "process": "Make Point",
+                "port": "y"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "listen",
+                "port": "start"
+            },
+            "tgt": {
+                "process": "drop",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "listen",
+                "port": "end"
+            },
+            "tgt": {
+                "process": "drop",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "Compass",
+                "port": "heading"
+            },
+            "tgt": {
+                "process": "Output_dzmzd",
+                "port": "in"
             },
             "metadata": {}
         },
         {
             "src": {
-                "process": "MakeRGBColor",
+                "process": "Run",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Compass",
+                "port": "start"
+            },
+            "metadata": {
+                "route": 9
+            }
+        },
+        {
+            "src": {
+                "process": "Get location",
+                "port": "latitude"
+            },
+            "tgt": {
+                "process": "7 places",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "7 places",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_vniuo",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "Get location",
+                "port": "longitude"
+            },
+            "tgt": {
+                "process": "core/MakeFunction_eoual",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "core/MakeFunction_eoual",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_i24nt",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "Get canvas",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "Track Face",
+                "port": "image"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "Track Face",
+                "port": "points"
+            },
+            "tgt": {
+                "process": "Wireframe Face",
+                "port": "points"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "Wireframe Face",
+                "port": "paths"
+            },
+            "tgt": {
+                "process": "Stroke",
+                "port": "items"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "Stroke",
+                "port": "stroke"
+            },
+            "tgt": {
+                "process": "Draw_hnw62",
+                "port": "commands"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "Source",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Bleach Bypass",
+                "port": "source"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "Night Vision",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Target",
+                "port": "source"
+            }
+        },
+        {
+            "src": {
+                "process": "Track Face",
+                "port": "points"
+            },
+            "tgt": {
+                "process": "Draw_hnw62",
+                "port": "tick"
+            }
+        },
+        {
+            "src": {
+                "process": "Source",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Night Vision",
+                "port": "source"
+            },
+            "metadata": {
+                "route": 6
+            }
+        },
+        {
+            "src": {
+                "process": "Get canvas",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "Target",
+                "port": "target"
+            }
+        },
+        {
+            "src": {
+                "process": "Drawing div",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "Draw_hnw62",
+                "port": "canvas"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "Parse Json",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "ISP",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "Get div_aqnfu",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_bfi4a",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "Get \"main\"",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "get \"temp\"",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "get div_ebbet",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "Write \"temp\"",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "Get \"main\"",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "get \"humidity\"",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "Get",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Parse Json_yre6l",
+                "port": "in"
+            },
+            "metadata": {
+                "route": null
+            }
+        },
+        {
+            "src": {
+                "process": "Parse Json_yre6l",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Get \"main\"",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "get div_d0a1l",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "Write \"humidity\"",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "get \"humidity\"",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Write \"humidity\"",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "get \"temp\"",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Write \"temp\"",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "Query",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Write",
+                "port": "html"
+            },
+            "metadata": {
+                "route": null
+            }
+        },
+        {
+            "src": {
+                "process": "ISP",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_bfi4a",
+                "port": "html"
+            },
+            "metadata": {
+                "route": null
+            }
+        },
+        {
+            "src": {
+                "process": "Get \"main\"",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "get \"pressure\"",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "dom/GetElement_40o6a",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "Write \"pressure\"",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "get \"pressure\"",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Write \"pressure\"",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "Get \"weather\"",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "get \"main\"",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "Parse Json_yre6l",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Get \"weather\"",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "dom/GetElement_tzt8x",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "Write \"main\"",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "Parse Json_yre6l",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Get \"wind\"",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "Get \"wind\"",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "get \"speed\"",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "get div_5a52d",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "Write \"speed\"",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "get \"speed\"",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Write \"speed\"",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "get \"main\"",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Write \"main\"",
+                "port": "html"
+            },
+            "metadata": {
+                "route": null
+            }
+        },
+        {
+            "src": {
+                "process": "Parse Json_yre6l",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Get \"clouds\"",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "Get \"clouds\"",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "get \"all\"",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "get \"all\"",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_n560o",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "dom/GetElement_4enew",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_n560o",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "data": "1",
+            "tgt": {
+                "process": "Gain",
+                "port": "gain"
+            }
+        },
+        {
+            "data": "#accelerometer_alpha",
+            "tgt": {
+                "process": "Alpha div",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#accelerometer_beta",
+            "tgt": {
+                "process": "Beta div",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#accelerometer_gamma",
+            "tgt": {
+                "process": "Gamma div",
+                "port": "selector"
+            }
+        },
+        {
+            "data": true,
+            "tgt": {
+                "process": "Read camera",
+                "port": "video"
+            }
+        },
+        {
+            "data": "#camera",
+            "tgt": {
+                "process": "Get camera div",
+                "port": "selector"
+            }
+        },
+        {
+            "data": 0,
+            "tgt": {
+                "process": "Read Gamepad",
+                "port": "gamepad"
+            }
+        },
+        {
+            "data": "click",
+            "tgt": {
+                "process": "On Click",
+                "port": "type"
+            }
+        },
+        {
+            "data": "#button_voice",
+            "tgt": {
+                "process": "Voice Button",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "body",
+            "tgt": {
+                "process": "Get body",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "body",
+            "tgt": {
+                "process": "area",
+                "port": "selector"
+            }
+        },
+        {
+            "data": false,
+            "tgt": {
+                "process": "Read camera",
+                "port": "audio"
+            }
+        },
+        {
+            "data": "#speech",
+            "tgt": {
+                "process": "Speech div",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "src",
+            "tgt": {
+                "process": "Set src",
+                "port": "attribute"
+            }
+        },
+        {
+            "data": 100000000,
+            "tgt": {
+                "process": "Run",
+                "port": "interval"
+            }
+        },
+        {
+            "data": 0,
+            "tgt": {
+                "process": "Oscillator",
+                "port": "start"
+            }
+        },
+        {
+            "data": "sine",
+            "tgt": {
+                "process": "Oscillator",
+                "port": "waveform"
+            }
+        },
+        {
+            "data": "#geolocation_latitude",
+            "tgt": {
+                "process": "latitude div",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#geolocation_longitude",
+            "tgt": {
+                "process": "longitude div",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "http://ip-api.com/json",
+            "tgt": {
+                "process": "Retrieve info",
+                "port": "url"
+            }
+        },
+        {
+            "data": 10,
+            "tgt": {
+                "process": "Motion to frequency",
+                "port": "multiplier"
+            }
+        },
+        {
+            "data": "#out",
+            "tgt": {
+                "process": "Get canvas",
+                "port": "selector"
+            }
+        },
+        {
+            "data": true,
+            "tgt": {
+                "process": "Draw",
+                "port": "drawevery"
+            }
+        },
+        {
+            "data": true,
+            "tgt": {
+                "process": "Draw",
+                "port": "clearevery"
+            }
+        },
+        {
+            "data": "#drawing",
+            "tgt": {
+                "process": "Drawing div",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#ff0000",
+            "tgt": {
+                "process": "Fill",
+                "port": "fillstyle"
+            }
+        },
+        {
+            "data": 0,
+            "tgt": {
+                "process": "Night Vision",
+                "port": "luminancethreshold"
+            }
+        },
+        {
+            "data": "#80ffff",
+            "tgt": {
+                "process": "Night Vision",
                 "port": "color"
-            },
-            "tgt": {
-                "process": "MeshBasicMaterial",
-                "port": "color"
-            },
-            "metadata": {}
+            }
         },
         {
-            "src": {
-                "process": "MeshBasicMaterial",
-                "port": "out"
-            },
+            "data": "#keyboard",
             "tgt": {
-                "process": "Mesh",
-                "port": "material"
-            },
-            "metadata": {}
+                "process": "Get div",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#sun_position_altitude",
+            "tgt": {
+                "process": "get div",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#sun_position_azimuth",
+            "tgt": {
+                "process": "get div_ot7vf",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "http://soundbible.com/grab.php?id=1682&type=mp3",
+            "tgt": {
+                "process": "webaudio/AudioFile_tudfa",
+                "port": "file"
+            }
+        },
+        {
+            "data": "query",
+            "tgt": {
+                "process": "Query",
+                "port": "key"
+            }
+        },
+        {
+            "data": 100,
+            "tgt": {
+                "process": "core/RunInterval_yp9km",
+                "port": "interval"
+            }
+        },
+        {
+            "data": 100,
+            "tgt": {
+                "process": "WebGLRenderer",
+                "port": "width"
+            }
+        },
+        {
+            "data": 100,
+            "tgt": {
+                "process": "WebGLRenderer",
+                "port": "height"
+            }
         },
         {
             "data": "#scene",
@@ -243,94 +2909,255 @@
             }
         },
         {
-            "data": 320,
+            "data": "return String.fromCharCode(x);",
             "tgt": {
-                "process": "WebGLRenderer",
-                "port": "width"
+                "process": "ASCII to Char",
+                "port": "function"
             }
         },
         {
-            "data": 240,
+            "data": "return x.toFixed(2);",
             "tgt": {
-                "process": "WebGLRenderer",
-                "port": "height"
+                "process": "2 places_2zjwm",
+                "port": "function"
             }
         },
         {
-            "data": 0,
+            "data": "return x.toFixed(2);",
             "tgt": {
-                "process": "three/Vector3_zfgzc",
-                "port": "x"
+                "process": "2 places_aoykp",
+                "port": "function"
             }
         },
         {
-            "data": 0,
+            "data": "return x.toFixed(2);",
             "tgt": {
-                "process": "three/Vector3_zfgzc",
-                "port": "y"
+                "process": "2 places",
+                "port": "function"
             }
         },
         {
-            "data": 0,
+            "data": "return x.toFixed(2);",
             "tgt": {
-                "process": "three/Vector3_zfgzc",
-                "port": "z"
+                "process": "core/MakeFunction_kjmsa",
+                "port": "function"
             }
         },
         {
-            "data": 1000,
+            "data": "return x.toFixed(2);",
             "tgt": {
-                "process": "core/RunInterval_y5sms",
-                "port": "interval"
+                "process": "core/MakeFunction_7l0n9",
+                "port": "function"
             }
         },
         {
-            "data": 1,
+            "data": 20,
             "tgt": {
-                "process": "SphereGeometry",
+                "process": "Make Circle",
                 "port": "radius"
             }
         },
         {
-            "data": 1,
+            "data": "return x.toFixed(7);",
             "tgt": {
-                "process": "SphereGeometry",
-                "port": "heightsegments"
+                "process": "7 places",
+                "port": "function"
             }
         },
         {
-            "data": 1,
+            "data": "return x.toFixed(7);",
             "tgt": {
-                "process": "SphereGeometry",
-                "port": "widthsegments"
+                "process": "core/MakeFunction_eoual",
+                "port": "function"
             }
         },
         {
-            "data": 0,
+            "data": 100,
             "tgt": {
-                "process": "MakeRGBColor",
-                "port": "red"
+                "process": "Bleach Bypass",
+                "port": "amount"
             }
         },
         {
-            "data": 0,
+            "data": "#network_ip",
             "tgt": {
-                "process": "MakeRGBColor",
-                "port": "green"
+                "process": "Get div_jw4ja",
+                "port": "selector"
             }
         },
         {
-            "data": 255,
+            "data": "#network_provider",
             "tgt": {
-                "process": "MakeRGBColor",
-                "port": "blue"
+                "process": "Get div_aqnfu",
+                "port": "selector"
             }
         },
         {
-            "data": 1,
+            "data": "isp",
             "tgt": {
-                "process": "MakeRGBColor",
-                "port": "alpha"
+                "process": "ISP",
+                "port": "key"
+            }
+        },
+        {
+            "data": false,
+            "tgt": {
+                "process": "Draw_hnw62",
+                "port": "drawevery"
+            }
+        },
+        {
+            "data": true,
+            "tgt": {
+                "process": "Draw_hnw62",
+                "port": "clearevery"
+            }
+        },
+        {
+            "data": "weather",
+            "tgt": {
+                "process": "Get \"weather\"",
+                "port": "key"
+            }
+        },
+        {
+            "data": "main",
+            "tgt": {
+                "process": "Get \"main\"",
+                "port": "key"
+            }
+        },
+        {
+            "data": "temp",
+            "tgt": {
+                "process": "get \"temp\"",
+                "port": "key"
+            }
+        },
+        {
+            "data": "humidity",
+            "tgt": {
+                "process": "get \"humidity\"",
+                "port": "key"
+            }
+        },
+        {
+            "data": "#weather_temp",
+            "tgt": {
+                "process": "get div_ebbet",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#weather_humidity",
+            "tgt": {
+                "process": "get div_d0a1l",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "pressure",
+            "tgt": {
+                "process": "get \"pressure\"",
+                "port": "key"
+            }
+        },
+        {
+            "data": "#weather_pressure",
+            "tgt": {
+                "process": "dom/GetElement_40o6a",
+                "port": "selector"
+            }
+        },
+        {
+            "data": 2,
+            "tgt": {
+                "process": "Night Vision",
+                "port": "amplification"
+            }
+        },
+        {
+            "data": "main",
+            "tgt": {
+                "process": "get \"main\"",
+                "port": "key"
+            }
+        },
+        {
+            "data": "#weather_main",
+            "tgt": {
+                "process": "dom/GetElement_tzt8x",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "speed",
+            "tgt": {
+                "process": "get \"speed\"",
+                "port": "key"
+            }
+        },
+        {
+            "data": "#weather_wind_speed",
+            "tgt": {
+                "process": "get div_5a52d",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "wind",
+            "tgt": {
+                "process": "Get \"wind\"",
+                "port": "key"
+            }
+        },
+        {
+            "data": "clouds",
+            "tgt": {
+                "process": "Get \"clouds\"",
+                "port": "key"
+            }
+        },
+        {
+            "data": "all",
+            "tgt": {
+                "process": "get \"all\"",
+                "port": "key"
+            }
+        },
+        {
+            "data": "#weather_clouds",
+            "tgt": {
+                "process": "dom/GetElement_4enew",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "http://api.openweathermap.org/data/2.5/weather?q=Malacky,sk&units=metric",
+            "tgt": {
+                "process": "Get",
+                "port": "url"
+            }
+        },
+        {
+            "data": true,
+            "tgt": {
+                "process": "Stroke",
+                "port": "closepath"
+            }
+        },
+        {
+            "data": 0.6,
+            "tgt": {
+                "process": "Stroke",
+                "port": "linewidth"
+            }
+        },
+        {
+            "data": "green",
+            "tgt": {
+                "process": "Stroke",
+                "port": "strokestyle"
             }
         }
     ]
