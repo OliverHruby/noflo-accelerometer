@@ -2,39 +2,121 @@
     "properties": {
         "name": "Robot",
         "environment": {
-            "type": "noflo-browser"
-        }
+            "type": "noflo-browser",
+            "content": "<div id=\"scene\"></div>"
+        },
+        "icon": ""
     },
     "inports": {},
     "outports": {},
     "groups": [],
     "processes": {
-        "Device Orientation": {
-            "component": "oliverhruby_sensors/DeviceOrientation",
-            "metadata": {
-                "label": "Device Orientation",
-                "x": 468,
-                "y": 252,
-                "width": 72,
-                "height": 72
-            }
-        },
         "core/Output_sl6xr": {
             "component": "core/Output",
             "metadata": {
                 "label": "core/Output",
-                "x": 684,
-                "y": 288,
+                "x": 576,
+                "y": 324,
                 "width": 72,
                 "height": 72
             }
         },
-        "Run Interval": {
-            "component": "core/RunTimeout",
+        "SphereGeometry": {
+            "component": "three/SphereGeometry",
             "metadata": {
-                "label": "Run Interval",
+                "label": "SphereGeometry",
+                "x": 144,
+                "y": 180,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Scene": {
+            "component": "three/Scene",
+            "metadata": {
+                "label": "Scene",
+                "x": 432,
+                "y": 324,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "WebGLRenderer": {
+            "component": "three/WebGLRenderer",
+            "metadata": {
+                "label": "WebGLRenderer",
+                "x": 576,
+                "y": 180,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Scene div": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "Scene div",
+                "x": 432,
+                "y": 180,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Camera": {
+            "component": "three/Camera",
+            "metadata": {
+                "label": "Camera",
+                "x": 432,
+                "y": 468,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "core/RunInterval_y5sms": {
+            "component": "core/RunInterval",
+            "metadata": {
+                "label": "core/RunInterval",
+                "x": 432,
+                "y": 36,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "three/Vector3_zfgzc": {
+            "component": "three/Vector3",
+            "metadata": {
+                "label": "three/Vector3",
                 "x": 288,
-                "y": 288,
+                "y": 468,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Mesh": {
+            "component": "three/Mesh",
+            "metadata": {
+                "label": "Mesh",
+                "x": 288,
+                "y": 324,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "MeshBasicMaterial": {
+            "component": "three/MeshBasicMaterial",
+            "metadata": {
+                "label": "MeshBasicMaterial",
+                "x": 144,
+                "y": 324,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "MakeRGBColor": {
+            "component": "canvas/MakeRGBColor",
+            "metadata": {
+                "label": "MakeRGBColor",
+                "x": -36,
+                "y": 324,
                 "width": 72,
                 "height": 72
             }
@@ -43,32 +125,10 @@
     "connections": [
         {
             "src": {
-                "process": "Device Orientation",
-                "port": "absolute"
-            },
-            "tgt": {
-                "process": "core/Output_sl6xr",
-                "port": "in"
-            },
-            "metadata": {}
-        },
-        {
-            "src": {
-                "process": "Run Interval",
+                "process": "Scene",
                 "port": "out"
             },
             "tgt": {
-                "process": "Device Orientation",
-                "port": "start"
-            },
-            "metadata": {}
-        },
-        {
-            "src": {
-                "process": "Device Orientation",
-                "port": "alpha"
-            },
-            "tgt": {
                 "process": "core/Output_sl6xr",
                 "port": "in"
             },
@@ -76,42 +136,201 @@
         },
         {
             "src": {
-                "process": "Device Orientation",
-                "port": "beta"
+                "process": "Scene",
+                "port": "out"
             },
             "tgt": {
-                "process": "core/Output_sl6xr",
-                "port": "in"
+                "process": "WebGLRenderer",
+                "port": "scene"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "Scene div",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "WebGLRenderer",
+                "port": "element"
             },
             "metadata": {}
         },
         {
             "src": {
-                "process": "Device Orientation",
-                "port": "gamma"
+                "process": "Camera",
+                "port": "out"
             },
             "tgt": {
-                "process": "core/Output_sl6xr",
-                "port": "in"
+                "process": "WebGLRenderer",
+                "port": "camera"
             },
             "metadata": {}
         },
         {
             "src": {
-                "process": "Device Orientation",
-                "port": "removed"
+                "process": "core/RunInterval_y5sms",
+                "port": "out"
             },
             "tgt": {
-                "process": "core/Output_sl6xr",
-                "port": "in"
+                "process": "WebGLRenderer",
+                "port": "tick"
             },
             "metadata": {}
+        },
+        {
+            "src": {
+                "process": "three/Vector3_zfgzc",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Camera",
+                "port": "position"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "Mesh",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Scene",
+                "port": "children"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "SphereGeometry",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Mesh",
+                "port": "geometry"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "MakeRGBColor",
+                "port": "color"
+            },
+            "tgt": {
+                "process": "MeshBasicMaterial",
+                "port": "color"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "MeshBasicMaterial",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Mesh",
+                "port": "material"
+            },
+            "metadata": {}
+        },
+        {
+            "data": "#scene",
+            "tgt": {
+                "process": "Scene div",
+                "port": "selector"
+            }
+        },
+        {
+            "data": 320,
+            "tgt": {
+                "process": "WebGLRenderer",
+                "port": "width"
+            }
+        },
+        {
+            "data": 240,
+            "tgt": {
+                "process": "WebGLRenderer",
+                "port": "height"
+            }
+        },
+        {
+            "data": 0,
+            "tgt": {
+                "process": "three/Vector3_zfgzc",
+                "port": "x"
+            }
+        },
+        {
+            "data": 0,
+            "tgt": {
+                "process": "three/Vector3_zfgzc",
+                "port": "y"
+            }
+        },
+        {
+            "data": 0,
+            "tgt": {
+                "process": "three/Vector3_zfgzc",
+                "port": "z"
+            }
         },
         {
             "data": 1000,
             "tgt": {
-                "process": "Run Interval",
-                "port": "time"
+                "process": "core/RunInterval_y5sms",
+                "port": "interval"
+            }
+        },
+        {
+            "data": 1,
+            "tgt": {
+                "process": "SphereGeometry",
+                "port": "radius"
+            }
+        },
+        {
+            "data": 1,
+            "tgt": {
+                "process": "SphereGeometry",
+                "port": "heightsegments"
+            }
+        },
+        {
+            "data": 1,
+            "tgt": {
+                "process": "SphereGeometry",
+                "port": "widthsegments"
+            }
+        },
+        {
+            "data": 0,
+            "tgt": {
+                "process": "MakeRGBColor",
+                "port": "red"
+            }
+        },
+        {
+            "data": 0,
+            "tgt": {
+                "process": "MakeRGBColor",
+                "port": "green"
+            }
+        },
+        {
+            "data": 255,
+            "tgt": {
+                "process": "MakeRGBColor",
+                "port": "blue"
+            }
+        },
+        {
+            "data": 1,
+            "tgt": {
+                "process": "MakeRGBColor",
+                "port": "alpha"
             }
         }
     ]
