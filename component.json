@@ -1,8 +1,8 @@
 {
-  "name": "noflo-accelerometer",
-  "description": "Device motion and orientation detection.",
+  "name": "noflo-sensors",
+  "description": "Mobile device sensor components.",
   "author": "Oliver Hruby <oliverhruby@gmail.com>",
-  "repo": "OliverHruby/noflo-accelerometer",
+  "repo": "oliverhruby/noflo-sensors",
   "version": "0.1.0",
   "keywords": [],
   "dependencies": {
@@ -12,7 +12,8 @@
     "index.js",
     "components/DeviceOrientation.coffee",
     "components/DeviceMotion.coffee",
-    "components/Geolocation.coffee"
+    "components/Geolocation.coffee",
+    "components/SpeechSynthesis.coffee"
   ],
   "json": [
     "component.json"
@@ -21,7 +22,8 @@
     "components": {
       "DeviceMotion": "components/DeviceMotion.coffee",
       "DeviceOrientation": "components/DeviceOrientation.coffee",
-      "Geolocation": "components/Geolocation.coffee"
+      "Geolocation": "components/Geolocation.coffee",
+      "SpeechSynthesis": "components/SpeechSynthesis.coffee"
     }
   }
 }

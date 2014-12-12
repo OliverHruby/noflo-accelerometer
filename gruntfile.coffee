@@ -33,7 +33,7 @@ module.exports = ->
         report: 'min'
       noflo:
         files:
-          './browser/noflo-accelerometer.min.js': ['./browser/noflo-accelerometer.js']
+          './browser/noflo-sensors.min.js': ['./browser/noflo-sensors.js']
 
     # Automated recompilation and testing when developing
     watch:
