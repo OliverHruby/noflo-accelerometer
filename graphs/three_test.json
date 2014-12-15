@@ -1,0 +1,458 @@
+{
+    "properties": {
+        "name": "three test",
+        "environment": {
+            "type": "noflo-browser",
+            "content": "<div id=\"scene\"></div>"
+        },
+        "icon": ""
+    },
+    "inports": {},
+    "outports": {},
+    "groups": [],
+    "processes": {
+        "Scene": {
+            "component": "three/Scene",
+            "metadata": {
+                "label": "Scene",
+                "x": 612,
+                "y": 324,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "WebGLRenderer": {
+            "component": "three/WebGLRenderer",
+            "metadata": {
+                "label": "WebGLRenderer",
+                "x": 756,
+                "y": 144,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "GetElement": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "GetElement",
+                "x": 612,
+                "y": 144,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Camera": {
+            "component": "three/Camera",
+            "metadata": {
+                "label": "Camera",
+                "x": 612,
+                "y": 468,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "RunInterval": {
+            "component": "core/RunInterval",
+            "metadata": {
+                "label": "RunInterval",
+                "x": 36,
+                "y": 36,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "BoxGeometry": {
+            "component": "three/BoxGeometry",
+            "metadata": {
+                "label": "BoxGeometry",
+                "x": 324,
+                "y": 432,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Mesh": {
+            "component": "three/Mesh",
+            "metadata": {
+                "label": "Mesh",
+                "x": 468,
+                "y": 324,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "MeshBasicMaterial": {
+            "component": "three/MeshBasicMaterial",
+            "metadata": {
+                "label": "MeshBasicMaterial",
+                "x": 324,
+                "y": 576,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Vector3": {
+            "component": "three/Vector3",
+            "metadata": {
+                "label": "Vector3",
+                "x": 468,
+                "y": 468,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "MakeColor": {
+            "component": "canvas/MakeColor",
+            "metadata": {
+                "label": "MakeColor",
+                "x": 180,
+                "y": 576,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Random": {
+            "component": "math/Random",
+            "metadata": {
+                "label": "Random",
+                "x": 180,
+                "y": 288,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "SphereGeometry": {
+            "component": "three/SphereGeometry",
+            "metadata": {
+                "label": "SphereGeometry",
+                "x": 324,
+                "y": 288,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "JSONLoader": {
+            "component": "three/JSONLoader",
+            "metadata": {
+                "label": "JSONLoader",
+                "x": 36,
+                "y": 432,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Output": {
+            "component": "core/Output",
+            "metadata": {
+                "label": "Output",
+                "x": 180,
+                "y": 432,
+                "width": 72,
+                "height": 72
+            }
+        }
+    },
+    "connections": [
+        {
+            "src": {
+                "process": "GetElement",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "WebGLRenderer",
+                "port": "element"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "Scene",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "WebGLRenderer",
+                "port": "scene"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "Camera",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "WebGLRenderer",
+                "port": "camera"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "RunInterval",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "WebGLRenderer",
+                "port": "tick"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "MeshBasicMaterial",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Mesh",
+                "port": "material"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "Mesh",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Scene",
+                "port": "children"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "MakeColor",
+                "port": "color"
+            },
+            "tgt": {
+                "process": "MeshBasicMaterial",
+                "port": "color"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "Random",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "BoxGeometry",
+                "port": "width"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "RunInterval",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Random",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "Random",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "BoxGeometry",
+                "port": "height"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "Random",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "BoxGeometry",
+                "port": "depth"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "Vector3",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Camera",
+                "port": "position"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "SphereGeometry",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Mesh",
+                "port": "geometry"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "Random",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "SphereGeometry",
+                "port": "radius"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "JSONLoader",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Output",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "data": "#scene",
+            "tgt": {
+                "process": "GetElement",
+                "port": "selector"
+            }
+        },
+        {
+            "data": 100,
+            "tgt": {
+                "process": "Vector3",
+                "port": "y"
+            }
+        },
+        {
+            "data": 100,
+            "tgt": {
+                "process": "Vector3",
+                "port": "z"
+            }
+        },
+        {
+            "data": 40,
+            "tgt": {
+                "process": "MakeColor",
+                "port": "hue"
+            }
+        },
+        {
+            "data": 30,
+            "tgt": {
+                "process": "MakeColor",
+                "port": "lightness"
+            }
+        },
+        {
+            "data": 1,
+            "tgt": {
+                "process": "MakeColor",
+                "port": "alpha"
+            }
+        },
+        {
+            "data": 10,
+            "tgt": {
+                "process": "MakeColor",
+                "port": "saturation"
+            }
+        },
+        {
+            "data": 1,
+            "tgt": {
+                "process": "BoxGeometry",
+                "port": "width"
+            }
+        },
+        {
+            "data": 1,
+            "tgt": {
+                "process": "BoxGeometry",
+                "port": "height"
+            }
+        },
+        {
+            "data": 1,
+            "tgt": {
+                "process": "BoxGeometry",
+                "port": "depth"
+            }
+        },
+        {
+            "data": 100,
+            "tgt": {
+                "process": "WebGLRenderer",
+                "port": "height"
+            }
+        },
+        {
+            "data": 32,
+            "tgt": {
+                "process": "SphereGeometry",
+                "port": "widthsegments"
+            }
+        },
+        {
+            "data": 32,
+            "tgt": {
+                "process": "SphereGeometry",
+                "port": "heightsegments"
+            }
+        },
+        {
+            "data": 1,
+            "tgt": {
+                "process": "SphereGeometry",
+                "port": "radius"
+            }
+        },
+        {
+            "data": 100,
+            "tgt": {
+                "process": "Vector3",
+                "port": "x"
+            }
+        },
+        {
+            "data": "100",
+            "tgt": {
+                "process": "RunInterval",
+                "port": "interval"
+            }
+        },
+        {
+            "data": "200",
+            "tgt": {
+                "process": "WebGLRenderer",
+                "port": "width"
+            }
+        },
+        {
+            "data": "http://threejs.org/examples/obj/male02/Male02_dds.js",
+            "tgt": {
+                "process": "JSONLoader",
+                "port": "url"
+            }
+        }
+    ]
+}
