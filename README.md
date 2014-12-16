@@ -1,4 +1,4 @@
-noflo-accelerometer
-===================
+noflo-sensors
+=============
 
-Device orientation and motion detection for noflo
+Device orientation and motion detection components for noflo

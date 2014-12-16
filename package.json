@@ -1,11 +1,10 @@
 {
-  "name": "noflo-accelerometer",
-  "description": "Components for threejs.",
+  "name": "noflo-sensors",
+  "description": "Mobile device sensor components for noflo",
   "version": "0.1.0",
   "author": {
     "name": "Oliver Hruby",
-    "email": "oliverhruby@gmail.com",
-    "url": "http://www.commit.sk"
+    "email": "oliverhruby@gmail.com"
   },
   "repository": {
     "type": "git",
