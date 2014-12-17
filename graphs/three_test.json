@@ -3,20 +3,119 @@
         "name": "three test",
         "environment": {
             "type": "noflo-browser",
-            "content": "<div id=\"scene\"></div>"
+            "content": "<style>\n.wrapper {\n    position: relative;\n    width: 640px;\n    height: 480px;\n}\n\n.wrapper canvas {\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n\n.header {\n    font-style: uppercase;\n    color: #4488aa;\n}\n.sensor .label {} .sensor .value {\n    font-weight: bold;\n    color: green;\n}\n.panel {\n    padding: 10px;\n    margin: 10px;\n    background-color: #112233;\n    width: 240px;\n}\n</style>\n<script src=\"http://threejs.org/build/three.min.js\"></script>\n\n<div id=\"scene\"></div>\n\n<div class=\"wrapper\">\n    <video id=\"camera\" autoplay loop width=\"640\" height=\"480\" style=\"display:none\"></video>\n    <canvas id=\"out\" width=\"640\" height=\"480\" style=\"max-width:100%;\"></canvas>\n    <canvas id=\"drawing\" width=\"640\" height=\"480\" style=\"border: 1px solid #5577aa\"></canvas>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Accelerometer</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Alpha:</span>\n        <span class=\"value\" id=\"accelerometer_alpha\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Beta:</span>\n        <span class=\"value\" id=\"accelerometer_beta\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Gamma:</span>\n        <span class=\"value\" id=\"accelerometer_gamma\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Geolocation</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Latitude: </span>\n        <span class=\"value\" id=\"geolocation_latitude\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Longitude: </span>\n        <span class=\"value\" id=\"geolocation_longitude\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Sun Position</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Sun altitude: </span>\n        <span class=\"value\" id=\"sun_position_altitude\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Sun azimuth: </span>\n        <span class=\"value\" id=\"sun_position_azimuth\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Speech</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Command: </span>\n        <span class=\"value\">\n      <input type=\"text\" id=\"command\"></input>\n      <button id=\"btnCommand\">Go</button>\n    </span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Log: </span>\n        <span class=\"value\" id=\"speech\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Keyboard input</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Key: </span>\n        <span class=\"value\" id=\"keyboard\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Gamepad</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Model: </span>\n        <span class=\"value\" id=\"gamepad_name\">Xbox One</span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">State: </span>\n        <span class=\"value\" id=\"gamepad_state\">???</span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Network information</div>\n    <div class=\"sensor\">\n        <span class=\"label\">IP address: </span>\n        <span class=\"value\" id=\"network_ip\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Provider: </span>\n        <span class=\"value\" id=\"network_provider\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Weather</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Weather: </span>\n        <span class=\"value\" id=\"weather_main\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Temperature: </span>\n        <span class=\"value\" id=\"weather_temp\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Wind speed: </span>\n        <span class=\"value\" id=\"weather_wind_speed\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Pressure: </span>\n        <span class=\"value\" id=\"weather_pressure\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Humidity: </span>\n        <span class=\"value\" id=\"weather_humidity\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Clouds: </span>\n        <span class=\"value\" id=\"weather_clouds\"></span>\n    </div>\n</div>\n\n\n<input id=\"button_voice\" type=\"button\" value=\"Voice Input\" onlick=\"initialize()\"></input>\n\n<div id=\"scene\" style=\"position:absolute;top:0px;left:660px;width:640px;height:480px;\"></div>"
         },
         "icon": ""
     },
     "inports": {},
     "outports": {},
-    "groups": [],
+    "groups": [
+        {
+            "name": "Accelerometer",
+            "nodes": [
+                "2 places",
+                "2 places_4n0xn",
+                "2 places_uo8lz",
+                "Orientation",
+                "alpha",
+                "beta",
+                "Drop",
+                "element_zc6el",
+                "element_xdr25",
+                "element_m270p",
+                "gamma_6z2yx"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        },
+        {
+            "name": "Weather",
+            "nodes": [
+                "'all'",
+                "'clouds'",
+                "'humidity'",
+                "'main'",
+                "'main'_8x287",
+                "'pressure'",
+                "'speed'",
+                "'temp'",
+                "'weather'",
+                "'wind'",
+                "Parse",
+                "ajax/Get_pin7l",
+                "element_gouhn",
+                "element_b50yn",
+                "element_hfh83",
+                "element_4g3yo",
+                "element_j0gpa",
+                "element_b3jtr",
+                "dom/WriteHtml_jmsrd",
+                "dom/WriteHtml_kbn7g",
+                "dom/WriteHtml_mbrwr",
+                "show_zzzaz",
+                "show",
+                "show_ii6x"
+            ],
+            "metadata": {
+                "description": "Shows the weather for the current location"
+            }
+        },
+        {
+            "name": "Network",
+            "nodes": [
+                "'isp'",
+                "'query'",
+                "Get",
+                "Parse_5aui5",
+                "div_dvbv3",
+                "dom/GetElement_zgtgh",
+                "dom/WriteHtml_4tdk5",
+                "show_6anll"
+            ],
+            "metadata": {
+                "description": "Network IP, provider, etc."
+            }
+        },
+        {
+            "name": "Camera",
+            "nodes": [
+                "Camera_8lip5",
+                "element",
+                "src"
+            ],
+            "metadata": {
+                "description": "Built in device camera input"
+            }
+        },
+        {
+            "name": "3D Scene",
+            "nodes": [
+                "Box",
+                "Camera",
+                "Color",
+                "GetElement",
+                "Material",
+                "Mesh",
+                "Random",
+                "Scene",
+                "Sphere",
+                "Vector3",
+                "WebGLRenderer",
+                "three/Mesh_d31rv"
+            ],
+            "metadata": {
+                "description": "three.js based scene visualization"
+            }
+        }
+    ],
     "processes": {
         "Scene": {
             "component": "three/Scene",
             "metadata": {
                 "label": "Scene",
-                "x": 612,
-                "y": 324,
+                "x": 756,
+                "y": 144,
                 "width": 72,
                 "height": 72
             }
@@ -25,8 +124,8 @@
             "component": "three/WebGLRenderer",
             "metadata": {
                 "label": "WebGLRenderer",
-                "x": 756,
-                "y": 144,
+                "x": 900,
+                "y": 252,
                 "width": 72,
                 "height": 72
             }
@@ -35,8 +134,8 @@
             "component": "dom/GetElement",
             "metadata": {
                 "label": "GetElement",
-                "x": 612,
-                "y": 144,
+                "x": 756,
+                "y": 36,
                 "width": 72,
                 "height": 72
             }
@@ -45,28 +144,8 @@
             "component": "three/Camera",
             "metadata": {
                 "label": "Camera",
-                "x": 612,
-                "y": 468,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "RunInterval": {
-            "component": "core/RunInterval",
-            "metadata": {
-                "label": "RunInterval",
-                "x": 36,
-                "y": 36,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "BoxGeometry": {
-            "component": "three/BoxGeometry",
-            "metadata": {
-                "label": "BoxGeometry",
-                "x": 324,
-                "y": 432,
+                "x": 756,
+                "y": 252,
                 "width": 72,
                 "height": 72
             }
@@ -75,18 +154,18 @@
             "component": "three/Mesh",
             "metadata": {
                 "label": "Mesh",
-                "x": 468,
-                "y": 324,
+                "x": 648,
+                "y": 36,
                 "width": 72,
                 "height": 72
             }
         },
-        "MeshBasicMaterial": {
+        "Material": {
             "component": "three/MeshBasicMaterial",
             "metadata": {
-                "label": "MeshBasicMaterial",
-                "x": 324,
-                "y": 576,
+                "label": "Material",
+                "x": 504,
+                "y": 108,
                 "width": 72,
                 "height": 72
             }
@@ -95,18 +174,398 @@
             "component": "three/Vector3",
             "metadata": {
                 "label": "Vector3",
-                "x": 468,
+                "x": 648,
+                "y": 252,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Color": {
+            "component": "canvas/MakeColor",
+            "metadata": {
+                "label": "Color",
+                "x": 396,
+                "y": 108,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Orientation": {
+            "component": "accelerometer/DeviceOrientation",
+            "metadata": {
+                "label": "Orientation",
+                "x": 540,
+                "y": 576,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "2 places": {
+            "component": "core/MakeFunction",
+            "metadata": {
+                "label": "2 places",
+                "x": 684,
+                "y": 540,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "2 places_4n0xn": {
+            "component": "core/MakeFunction",
+            "metadata": {
+                "label": "2 places",
+                "x": 684,
+                "y": 648,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "2 places_uo8lz": {
+            "component": "core/MakeFunction",
+            "metadata": {
+                "label": "2 places",
+                "x": 684,
+                "y": 756,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "element_zc6el": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "element",
+                "x": 792,
+                "y": 504,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "alpha": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "alpha",
+                "x": 900,
+                "y": 540,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "element_m270p": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "element",
+                "x": 792,
+                "y": 612,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "beta": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "beta",
+                "x": 900,
+                "y": 648,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "element_xdr25": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "element",
+                "x": 792,
+                "y": 720,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "gamma_6z2yx": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "gamma",
+                "x": 900,
+                "y": 756,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Drop": {
+            "component": "core/Drop",
+            "metadata": {
+                "label": "Drop",
+                "x": 540,
+                "y": 756,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Start": {
+            "component": "core/Repeat",
+            "metadata": {
+                "label": "Start",
+                "x": -324,
+                "y": 324,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "ajax/Get_pin7l": {
+            "component": "ajax/Get",
+            "metadata": {
+                "label": "Get",
+                "x": 1116,
+                "y": 216,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Parse": {
+            "component": "strings/ParseJson",
+            "metadata": {
+                "label": "Parse",
+                "x": 1224,
+                "y": 216,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "'weather'": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "'weather'",
+                "x": 1332,
+                "y": 36,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "'main'_8x287": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "'main'",
+                "x": 1332,
+                "y": 144,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "'wind'": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "'wind'",
+                "x": 1332,
                 "y": 468,
                 "width": 72,
                 "height": 72
             }
         },
-        "MakeColor": {
-            "component": "canvas/MakeColor",
+        "'clouds'": {
+            "component": "objects/ExtractProperty",
             "metadata": {
-                "label": "MakeColor",
-                "x": 180,
+                "label": "'clouds'",
+                "x": 1332,
                 "y": 576,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "element_b50yn": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "element",
+                "x": 1548,
+                "y": 0,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "show": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "show",
+                "x": 1656,
+                "y": 36,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "'main'": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "'main'",
+                "x": 1440,
+                "y": 36,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "element_b3jtr": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "element",
+                "x": 1548,
+                "y": 108,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "dom/WriteHtml_jmsrd": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "show",
+                "x": 1656,
+                "y": 144,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "'temp'": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "'temp'",
+                "x": 1440,
+                "y": 144,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "'humidity'": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "'humidity'",
+                "x": 1440,
+                "y": 252,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "element_j0gpa": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "element",
+                "x": 1548,
+                "y": 216,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "dom/WriteHtml_mbrwr": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "show",
+                "x": 1656,
+                "y": 252,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "'speed'": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "'speed'",
+                "x": 1440,
+                "y": 468,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "element_hfh83": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "element",
+                "x": 1548,
+                "y": 432,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "show_ii6x": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "show",
+                "x": 1656,
+                "y": 468,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "'pressure'": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "'pressure'",
+                "x": 1440,
+                "y": 360,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "element_4g3yo": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "element",
+                "x": 1548,
+                "y": 324,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "dom/WriteHtml_kbn7g": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "show",
+                "x": 1656,
+                "y": 360,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "'all'": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "'all'",
+                "x": 1440,
+                "y": 576,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "element_gouhn": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "element",
+                "x": 1548,
+                "y": 540,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "show_zzzaz": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "show",
+                "x": 1656,
+                "y": 576,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "RunInterval": {
+            "component": "core/RunInterval",
+            "metadata": {
+                "label": "RunInterval",
+                "x": 72,
+                "y": 324,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Box": {
+            "component": "three/BoxGeometry",
+            "metadata": {
+                "label": "Box",
+                "x": 504,
+                "y": 216,
                 "width": 72,
                 "height": 72
             }
@@ -115,38 +574,178 @@
             "component": "math/Random",
             "metadata": {
                 "label": "Random",
-                "x": 180,
-                "y": 288,
+                "x": 396,
+                "y": 0,
                 "width": 72,
                 "height": 72
             }
         },
-        "SphereGeometry": {
+        "Sphere": {
             "component": "three/SphereGeometry",
             "metadata": {
-                "label": "SphereGeometry",
-                "x": 324,
-                "y": 288,
+                "label": "Sphere",
+                "x": 504,
+                "y": 0,
                 "width": 72,
                 "height": 72
             }
         },
-        "JSONLoader": {
-            "component": "three/JSONLoader",
+        "three/Mesh_d31rv": {
+            "component": "three/Mesh",
             "metadata": {
-                "label": "JSONLoader",
-                "x": 36,
-                "y": 432,
+                "label": "Mesh",
+                "x": 648,
+                "y": 144,
                 "width": 72,
                 "height": 72
             }
         },
-        "Output": {
-            "component": "core/Output",
+        "Get": {
+            "component": "ajax/Get",
             "metadata": {
-                "label": "Output",
-                "x": 180,
-                "y": 432,
+                "label": "Get",
+                "x": -324,
+                "y": 108,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Parse_5aui5": {
+            "component": "strings/ParseJson",
+            "metadata": {
+                "label": "Parse",
+                "x": -216,
+                "y": 108,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "'query'": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "'query'",
+                "x": -108,
+                "y": 36,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "'isp'": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "'isp'",
+                "x": -108,
+                "y": 144,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "div_dvbv3": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "div",
+                "x": 0,
+                "y": 0,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "dom/GetElement_zgtgh": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "div",
+                "x": 0,
+                "y": 108,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "show_6anll": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "show",
+                "x": 108,
+                "y": 36,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "dom/WriteHtml_4tdk5": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "show",
+                "x": 108,
+                "y": 144,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Camera_8lip5": {
+            "component": "gum/GetUserMedia",
+            "metadata": {
+                "label": "Camera",
+                "x": -144,
+                "y": 720,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "element": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "element",
+                "x": -144,
+                "y": 612,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "src": {
+            "component": "dom/SetAttribute",
+            "metadata": {
+                "label": "src",
+                "x": -36,
+                "y": 684,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Source": {
+            "component": "seriously/SetSource",
+            "metadata": {
+                "label": "Source",
+                "x": 144,
+                "y": 756,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "element_3g632": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "element",
+                "x": 252,
+                "y": 684,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Target": {
+            "component": "seriously/SetTarget",
+            "metadata": {
+                "label": "Target",
+                "x": 360,
+                "y": 756,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "NightVision": {
+            "component": "seriously/NightVision",
+            "metadata": {
+                "label": "NightVision",
+                "x": 252,
+                "y": 792,
                 "width": 72,
                 "height": 72
             }
@@ -162,7 +761,9 @@
                 "process": "WebGLRenderer",
                 "port": "element"
             },
-            "metadata": {}
+            "metadata": {
+                "route": 7
+            }
         },
         {
             "src": {
@@ -173,7 +774,9 @@
                 "process": "WebGLRenderer",
                 "port": "scene"
             },
-            "metadata": {}
+            "metadata": {
+                "route": 7
+            }
         },
         {
             "src": {
@@ -184,7 +787,499 @@
                 "process": "WebGLRenderer",
                 "port": "camera"
             },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "Material",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Mesh",
+                "port": "material"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "Color",
+                "port": "color"
+            },
+            "tgt": {
+                "process": "Material",
+                "port": "color"
+            },
             "metadata": {}
+        },
+        {
+            "src": {
+                "process": "Vector3",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Camera",
+                "port": "position"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "Orientation",
+                "port": "alpha"
+            },
+            "tgt": {
+                "process": "2 places",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "Orientation",
+                "port": "beta"
+            },
+            "tgt": {
+                "process": "2 places_4n0xn",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "Orientation",
+                "port": "gamma"
+            },
+            "tgt": {
+                "process": "2 places_uo8lz",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "element_zc6el",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "alpha",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "2 places",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "alpha",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "element_m270p",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "beta",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "2 places_4n0xn",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "beta",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "element_xdr25",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "gamma_6z2yx",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "2 places_uo8lz",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "gamma_6z2yx",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "Orientation",
+                "port": "absolute"
+            },
+            "tgt": {
+                "process": "Drop",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "Orientation",
+                "port": "removed"
+            },
+            "tgt": {
+                "process": "Drop",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "Start",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Orientation",
+                "port": "start"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "ajax/Get_pin7l",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Parse",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "Parse",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "'weather'",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "Parse",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "'main'_8x287",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "Parse",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "'wind'",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "Parse",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "'clouds'",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "element_b50yn",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "show",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "'main'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "show",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "element_b3jtr",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_jmsrd",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "'weather'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "'main'",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "'main'_8x287",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "'temp'",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "'main'_8x287",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "'humidity'",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "'wind'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "'speed'",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "'temp'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_jmsrd",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "element_j0gpa",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_mbrwr",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "'humidity'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_mbrwr",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "'speed'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "show_ii6x",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "element_hfh83",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "show_ii6x",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "element_4g3yo",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_kbn7g",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "'pressure'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_kbn7g",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "'main'_8x287",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "'pressure'",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "'clouds'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "'all'",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "'all'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "show_zzzaz",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "element_gouhn",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "show_zzzaz",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
         },
         {
             "src": {
@@ -201,36 +1296,16 @@
         },
         {
             "src": {
-                "process": "MeshBasicMaterial",
+                "process": "Random",
                 "port": "out"
             },
             "tgt": {
-                "process": "Mesh",
-                "port": "material"
+                "process": "Box",
+                "port": "width"
             },
-            "metadata": {}
-        },
-        {
-            "src": {
-                "process": "Mesh",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Scene",
-                "port": "children"
-            },
-            "metadata": {}
-        },
-        {
-            "src": {
-                "process": "MakeColor",
-                "port": "color"
-            },
-            "tgt": {
-                "process": "MeshBasicMaterial",
-                "port": "color"
-            },
-            "metadata": {}
+            "metadata": {
+                "route": 6
+            }
         },
         {
             "src": {
@@ -238,10 +1313,51 @@
                 "port": "out"
             },
             "tgt": {
-                "process": "BoxGeometry",
-                "port": "width"
+                "process": "Box",
+                "port": "height"
             },
-            "metadata": {}
+            "metadata": {
+                "route": 6
+            }
+        },
+        {
+            "src": {
+                "process": "Random",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Box",
+                "port": "depth"
+            },
+            "metadata": {
+                "route": 6
+            }
+        },
+        {
+            "src": {
+                "process": "Random",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Sphere",
+                "port": "radius"
+            },
+            "metadata": {
+                "route": 6
+            }
+        },
+        {
+            "src": {
+                "process": "Sphere",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Mesh",
+                "port": "geometry"
+            },
+            "metadata": {
+                "route": 3
+            }
         },
         {
             "src": {
@@ -258,75 +1374,227 @@
         },
         {
             "src": {
-                "process": "Random",
+                "process": "Box",
                 "port": "out"
             },
             "tgt": {
-                "process": "BoxGeometry",
-                "port": "height"
-            },
-            "metadata": {
-                "route": 0
-            }
-        },
-        {
-            "src": {
-                "process": "Random",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "BoxGeometry",
-                "port": "depth"
-            },
-            "metadata": {
-                "route": 0
-            }
-        },
-        {
-            "src": {
-                "process": "Vector3",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Camera",
-                "port": "position"
-            },
-            "metadata": {}
-        },
-        {
-            "src": {
-                "process": "SphereGeometry",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Mesh",
+                "process": "three/Mesh_d31rv",
                 "port": "geometry"
             },
-            "metadata": {}
-        },
-        {
-            "src": {
-                "process": "Random",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "SphereGeometry",
-                "port": "radius"
-            },
             "metadata": {
-                "route": 0
+                "route": 3
             }
         },
         {
             "src": {
-                "process": "JSONLoader",
+                "process": "Material",
                 "port": "out"
             },
             "tgt": {
-                "process": "Output",
+                "process": "three/Mesh_d31rv",
+                "port": "material"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "three/Mesh_d31rv",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Scene",
+                "port": "children"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "Mesh",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Scene",
+                "port": "children"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "Get",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Parse_5aui5",
                 "port": "in"
             },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "Parse_5aui5",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "'query'",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "Parse_5aui5",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "'isp'",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "div_dvbv3",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "show_6anll",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "'query'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "show_6anll",
+                "port": "html"
+            },
             "metadata": {}
+        },
+        {
+            "src": {
+                "process": "dom/GetElement_zgtgh",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_4tdk5",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "'isp'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_4tdk5",
+                "port": "html"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "element",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "src",
+                "port": "element"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "Camera_8lip5",
+                "port": "url"
+            },
+            "tgt": {
+                "process": "src",
+                "port": "value"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "Start",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Camera_8lip5",
+                "port": "start"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "src",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "Source",
+                "port": "source"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "element_3g632",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "Target",
+                "port": "target"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "NightVision",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Target",
+                "port": "source"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "Source",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "NightVision",
+                "port": "source"
+            },
+            "metadata": {
+                "route": null
+            }
         },
         {
             "data": "#scene",
@@ -352,78 +1620,29 @@
         {
             "data": 40,
             "tgt": {
-                "process": "MakeColor",
+                "process": "Color",
                 "port": "hue"
             }
         },
         {
             "data": 30,
             "tgt": {
-                "process": "MakeColor",
+                "process": "Color",
                 "port": "lightness"
             }
         },
         {
             "data": 1,
             "tgt": {
-                "process": "MakeColor",
+                "process": "Color",
                 "port": "alpha"
             }
         },
         {
             "data": 10,
             "tgt": {
-                "process": "MakeColor",
+                "process": "Color",
                 "port": "saturation"
-            }
-        },
-        {
-            "data": 1,
-            "tgt": {
-                "process": "BoxGeometry",
-                "port": "width"
-            }
-        },
-        {
-            "data": 1,
-            "tgt": {
-                "process": "BoxGeometry",
-                "port": "height"
-            }
-        },
-        {
-            "data": 1,
-            "tgt": {
-                "process": "BoxGeometry",
-                "port": "depth"
-            }
-        },
-        {
-            "data": 100,
-            "tgt": {
-                "process": "WebGLRenderer",
-                "port": "height"
-            }
-        },
-        {
-            "data": 32,
-            "tgt": {
-                "process": "SphereGeometry",
-                "port": "widthsegments"
-            }
-        },
-        {
-            "data": 32,
-            "tgt": {
-                "process": "SphereGeometry",
-                "port": "heightsegments"
-            }
-        },
-        {
-            "data": 1,
-            "tgt": {
-                "process": "SphereGeometry",
-                "port": "radius"
             }
         },
         {
@@ -434,6 +1653,188 @@
             }
         },
         {
+            "data": "return x.toFixed(2);",
+            "tgt": {
+                "process": "2 places",
+                "port": "function"
+            }
+        },
+        {
+            "data": "return x.toFixed(2);",
+            "tgt": {
+                "process": "2 places_uo8lz",
+                "port": "function"
+            }
+        },
+        {
+            "data": "return x.toFixed(2);",
+            "tgt": {
+                "process": "2 places_4n0xn",
+                "port": "function"
+            }
+        },
+        {
+            "data": "#accelerometer_alpha",
+            "tgt": {
+                "process": "element_zc6el",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#accelerometer_beta",
+            "tgt": {
+                "process": "element_m270p",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#accelerometer_gamma",
+            "tgt": {
+                "process": "element_xdr25",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "1",
+            "tgt": {
+                "process": "Start",
+                "port": "in"
+            }
+        },
+        {
+            "data": "http://api.openweathermap.org/data/2.5/weather?q=Malacky,sk&units=metric",
+            "tgt": {
+                "process": "ajax/Get_pin7l",
+                "port": "url"
+            }
+        },
+        {
+            "data": "weather",
+            "tgt": {
+                "process": "'weather'",
+                "port": "key"
+            }
+        },
+        {
+            "data": "main",
+            "tgt": {
+                "process": "'main'_8x287",
+                "port": "key"
+            }
+        },
+        {
+            "data": "wind",
+            "tgt": {
+                "process": "'wind'",
+                "port": "key"
+            }
+        },
+        {
+            "data": "#weather_main",
+            "tgt": {
+                "process": "element_b50yn",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#weather_temp",
+            "tgt": {
+                "process": "element_b3jtr",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "main",
+            "tgt": {
+                "process": "'main'",
+                "port": "key"
+            }
+        },
+        {
+            "data": "temp",
+            "tgt": {
+                "process": "'temp'",
+                "port": "key"
+            }
+        },
+        {
+            "data": "humidity",
+            "tgt": {
+                "process": "'humidity'",
+                "port": "key"
+            }
+        },
+        {
+            "data": "speed",
+            "tgt": {
+                "process": "'speed'",
+                "port": "key"
+            }
+        },
+        {
+            "data": "#weather_humidity",
+            "tgt": {
+                "process": "element_j0gpa",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#weather_wind_speed",
+            "tgt": {
+                "process": "element_hfh83",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "pressure",
+            "tgt": {
+                "process": "'pressure'",
+                "port": "key"
+            }
+        },
+        {
+            "data": "#weather_pressure",
+            "tgt": {
+                "process": "element_4g3yo",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#weather_clouds",
+            "tgt": {
+                "process": "element_gouhn",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "clouds",
+            "tgt": {
+                "process": "'clouds'",
+                "port": "key"
+            }
+        },
+        {
+            "data": "all",
+            "tgt": {
+                "process": "'all'",
+                "port": "key"
+            }
+        },
+        {
+            "data": 640,
+            "tgt": {
+                "process": "WebGLRenderer",
+                "port": "width"
+            }
+        },
+        {
+            "data": 480,
+            "tgt": {
+                "process": "WebGLRenderer",
+                "port": "height"
+            }
+        },
+        {
             "data": "100",
             "tgt": {
                 "process": "RunInterval",
@@ -441,17 +1842,122 @@
             }
         },
         {
-            "data": "200",
+            "data": 1,
             "tgt": {
-                "process": "WebGLRenderer",
+                "process": "Box",
+                "port": "depth"
+            }
+        },
+        {
+            "data": 1,
+            "tgt": {
+                "process": "Box",
+                "port": "height"
+            }
+        },
+        {
+            "data": 1,
+            "tgt": {
+                "process": "Box",
                 "port": "width"
             }
         },
         {
-            "data": "http://threejs.org/examples/obj/male02/Male02_dds.js",
+            "data": 1,
             "tgt": {
-                "process": "JSONLoader",
+                "process": "Sphere",
+                "port": "radius"
+            }
+        },
+        {
+            "data": 32,
+            "tgt": {
+                "process": "Sphere",
+                "port": "heightsegments"
+            }
+        },
+        {
+            "data": 32,
+            "tgt": {
+                "process": "Sphere",
+                "port": "widthsegments"
+            }
+        },
+        {
+            "data": "http://ip-api.com/json",
+            "tgt": {
+                "process": "Get",
                 "port": "url"
+            }
+        },
+        {
+            "data": "query",
+            "tgt": {
+                "process": "'query'",
+                "port": "key"
+            }
+        },
+        {
+            "data": "isp",
+            "tgt": {
+                "process": "'isp'",
+                "port": "key"
+            }
+        },
+        {
+            "data": "#network_ip",
+            "tgt": {
+                "process": "div_dvbv3",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#network_provider",
+            "tgt": {
+                "process": "dom/GetElement_zgtgh",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "src",
+            "tgt": {
+                "process": "src",
+                "port": "attribute"
+            }
+        },
+        {
+            "data": "true",
+            "tgt": {
+                "process": "Camera_8lip5",
+                "port": "video"
+            }
+        },
+        {
+            "data": "#camera",
+            "tgt": {
+                "process": "element",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "false",
+            "tgt": {
+                "process": "Camera_8lip5",
+                "port": "audio"
+            }
+        },
+        {
+            "data": "#out",
+            "tgt": {
+                "process": "element_3g632",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "1",
+            "tgt": {
+                "process": "NightVision",
+                "port": "amplification"
             }
         }
     ]
