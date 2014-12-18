@@ -1,13 +1,10 @@
 {
     "properties": {
-        "name": "RobotArm",
-        "id": "robot/RobotArm",
-        "project": "robot",
+        "name": "Robot",
         "environment": {
             "type": "noflo-browser",
             "content": "<style>\n.wrapper {\n    position: relative;\n    width: 640px;\n    height: 480px;\n}\n\n.wrapper canvas {\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n\n.header {\n    font-style: uppercase;\n    color: #4488aa;\n}\n.sensor .label {} .sensor .value {\n    font-weight: bold;\n    color: green;\n}\n.panel {\n    padding: 10px;\n    margin: 10px;\n    background-color: #112233;\n    width: 240px;\n}\n</style>\n<script src=\"http://threejs.org/build/three.min.js\"></script>\n\n<div id=\"scene\"></div>\n\n<div class=\"wrapper\">\n    <video id=\"camera\" autoplay loop width=\"640\" height=\"480\" style=\"display:none\"></video>\n    <canvas id=\"out\" width=\"640\" height=\"480\" style=\"max-width:100%;\"></canvas>\n    <canvas id=\"drawing\" width=\"640\" height=\"480\" style=\"border: 1px solid #5577aa\"></canvas>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Accelerometer</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Alpha:</span>\n        <span class=\"value\" id=\"accelerometer_alpha\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Beta:</span>\n        <span class=\"value\" id=\"accelerometer_beta\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Gamma:</span>\n        <span class=\"value\" id=\"accelerometer_gamma\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Geolocation</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Latitude: </span>\n        <span class=\"value\" id=\"geolocation_latitude\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Longitude: </span>\n        <span class=\"value\" id=\"geolocation_longitude\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Sun Position</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Sun altitude: </span>\n        <span class=\"value\" id=\"sun_position_altitude\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Sun azimuth: </span>\n        <span class=\"value\" id=\"sun_position_azimuth\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Speech</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Command: </span>\n        <span class=\"value\">\n      <input type=\"text\" id=\"command\"></input>\n      <button id=\"btnCommand\">Go</button>\n    </span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Log: </span>\n        <span class=\"value\" id=\"speech\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Keyboard input</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Key: </span>\n        <span class=\"value\" id=\"keyboard\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Gamepad</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Model: </span>\n        <span class=\"value\" id=\"gamepad_name\">Xbox One</span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">State: </span>\n        <span class=\"value\" id=\"gamepad_state\">???</span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Network information</div>\n    <div class=\"sensor\">\n        <span class=\"label\">IP address: </span>\n        <span class=\"value\" id=\"network_ip\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Provider: </span>\n        <span class=\"value\" id=\"network_provider\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Weather</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Weather: </span>\n        <span class=\"value\" id=\"weather_main\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Temperature: </span>\n        <span class=\"value\" id=\"weather_temp\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Wind speed: </span>\n        <span class=\"value\" id=\"weather_wind_speed\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Pressure: </span>\n        <span class=\"value\" id=\"weather_pressure\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Humidity: </span>\n        <span class=\"value\" id=\"weather_humidity\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Clouds: </span>\n        <span class=\"value\" id=\"weather_clouds\"></span>\n    </div>\n</div>\n\n\n<input id=\"button_voice\" type=\"button\" value=\"Voice Input\" onlick=\"initialize()\"></input>\n"
         },
-        "changed": true,
         "description": "Simulation of a robotic arm",
         "icon": "cube"
     },
@@ -51,7 +48,6 @@
         {
             "name": "Geolocation",
             "nodes": [
-                "Get location",
                 "Outputb",
                 "dom/WriteHtml_i24nt",
                 "dom/WriteHtml_vniuo",
@@ -75,9 +71,7 @@
         },
         {
             "name": "Text to speech",
-            "nodes": [
-                "Speak"
-            ],
+            "nodes": [],
             "metadata": {
                 "description": ""
             }
@@ -97,10 +91,7 @@
         },
         {
             "name": "Character AI",
-            "nodes": [
-                "Character",
-                "Output"
-            ],
+            "nodes": [],
             "metadata": {
                 "description": ""
             }
@@ -114,7 +105,6 @@
                 "Alpha div",
                 "Beta div",
                 "Gamma div",
-                "Orientation",
                 "Show Alpha",
                 "Show Beta",
                 "Show Gamma",
@@ -129,7 +119,6 @@
             "nodes": [
                 "get div",
                 "get div_ot7vf",
-                "SunCalc",
                 "core/MakeFunction_7l0n9",
                 "core/MakeFunction_kjmsa",
                 "show",
@@ -166,7 +155,6 @@
         {
             "name": "Compass",
             "nodes": [
-                "Compass",
                 "Output_dzmzd"
             ],
             "metadata": {
@@ -251,16 +239,6 @@
                 "label": "Alpha div",
                 "x": 108,
                 "y": 972,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Orientation": {
-            "component": "voice-timer/DeviceOrientation",
-            "metadata": {
-                "label": "Orientation",
-                "x": -144,
-                "y": 1116,
                 "width": 72,
                 "height": 72
             }
@@ -421,16 +399,6 @@
                 "label": "Drop",
                 "x": -468,
                 "y": -108,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Get location": {
-            "component": "voice-timer/Geolocation",
-            "metadata": {
-                "label": "Get location",
-                "x": 432,
-                "y": 432,
                 "width": 72,
                 "height": 72
             }
@@ -685,26 +653,6 @@
                 "height": 72
             }
         },
-        "Speak": {
-            "component": "voice-timer/SpeechSynthesis",
-            "metadata": {
-                "label": "Speak",
-                "x": 180,
-                "y": 324,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "SunCalc": {
-            "component": "voice-timer/SunCalc",
-            "metadata": {
-                "label": "SunCalc",
-                "x": 864,
-                "y": 288,
-                "width": 72,
-                "height": 72
-            }
-        },
         "get div_ot7vf": {
             "component": "dom/GetElement",
             "metadata": {
@@ -745,26 +693,6 @@
                 "height": 72
             }
         },
-        "Character": {
-            "component": "voice-timer/Character",
-            "metadata": {
-                "label": "Character",
-                "x": -252,
-                "y": 468,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Output": {
-            "component": "core/Output",
-            "metadata": {
-                "label": "Output",
-                "x": -144,
-                "y": 468,
-                "width": 72,
-                "height": 72
-            }
-        },
         "Get div_jw4ja": {
             "component": "dom/GetElement",
             "metadata": {
@@ -785,26 +713,6 @@
                 "height": 72
             }
         },
-        "core/RunInterval_yp9km": {
-            "component": "core/RunInterval",
-            "metadata": {
-                "label": "core/RunInterval",
-                "x": 756,
-                "y": 1152,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "webaudio/AudioFile_tudfa": {
-            "component": "webaudio/AudioFile",
-            "metadata": {
-                "label": "webaudio/AudioFile",
-                "x": 864,
-                "y": 1152,
-                "width": 72,
-                "height": 72
-            }
-        },
         "Parse Json": {
             "component": "strings/ParseJson",
             "metadata": {
@@ -821,56 +729,6 @@
                 "label": "Query",
                 "x": -828,
                 "y": 108,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "webaudio/Chorus_fqtnz": {
-            "component": "webaudio/Chorus",
-            "metadata": {
-                "label": "webaudio/Chorus",
-                "x": 648,
-                "y": 1152,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "WebGLRenderer": {
-            "component": "voice-timer/WebGLRenderer",
-            "metadata": {
-                "label": "WebGLRenderer",
-                "x": -432,
-                "y": 1008,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Scene": {
-            "component": "voice-timer/Scene",
-            "metadata": {
-                "label": "Scene",
-                "x": -540,
-                "y": 1044,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Scene div": {
-            "component": "dom/GetElement",
-            "metadata": {
-                "label": "Scene div",
-                "x": -648,
-                "y": 1008,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Camera": {
-            "component": "voice-timer/Camera",
-            "metadata": {
-                "label": "Camera",
-                "x": -540,
-                "y": 1152,
                 "width": 72,
                 "height": 72
             }
@@ -941,16 +799,6 @@
                 "label": "drop",
                 "x": 432,
                 "y": 0,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Compass": {
-            "component": "voice-timer/Compass",
-            "metadata": {
-                "label": "Compass",
-                "x": -180,
-                "y": 684,
                 "width": 72,
                 "height": 72
             }
@@ -1030,7 +878,7 @@
             "metadata": {
                 "label": "Stroke",
                 "x": 1584,
-                "y": 648,
+                "y": 576,
                 "width": 72,
                 "height": 72
             }
@@ -1361,27 +1209,13 @@
         },
         {
             "src": {
-                "process": "Orientation",
-                "port": "absolute"
-            },
-            "tgt": {
-                "process": "drop_j56f1",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 4
-            }
-        },
-        {
-            "src": {
                 "process": "On Click",
                 "port": "event"
             },
             "tgt": {
                 "process": "Listen",
                 "port": "start"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -1417,20 +1251,6 @@
             "tgt": {
                 "process": "Drop",
                 "port": "in"
-            },
-            "metadata": {}
-        },
-        {
-            "src": {
-                "process": "Get location",
-                "port": "accuracy"
-            },
-            "tgt": {
-                "process": "Outputb",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 4
             }
         },
         {
@@ -1467,8 +1287,7 @@
             "tgt": {
                 "process": "Write Text",
                 "port": "container"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -1528,33 +1347,7 @@
                 "port": "out"
             },
             "tgt": {
-                "process": "Orientation",
-                "port": "start"
-            },
-            "metadata": {
-                "route": 9
-            }
-        },
-        {
-            "src": {
-                "process": "Run",
-                "port": "out"
-            },
-            "tgt": {
                 "process": "Read camera",
-                "port": "start"
-            },
-            "metadata": {
-                "route": 9
-            }
-        },
-        {
-            "src": {
-                "process": "Run",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Get location",
                 "port": "start"
             },
             "metadata": {
@@ -1621,8 +1414,7 @@
             "tgt": {
                 "process": "Fill",
                 "port": "items"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -1632,8 +1424,7 @@
             "tgt": {
                 "process": "Draw",
                 "port": "commands"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -1656,8 +1447,7 @@
             "tgt": {
                 "process": "Write key",
                 "port": "container"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -1670,45 +1460,6 @@
             },
             "metadata": {
                 "route": null
-            }
-        },
-        {
-            "src": {
-                "process": "Listen key",
-                "port": "keypress"
-            },
-            "tgt": {
-                "process": "Speak",
-                "port": "text"
-            },
-            "metadata": {
-                "route": 0
-            }
-        },
-        {
-            "src": {
-                "process": "Get location",
-                "port": "latitude"
-            },
-            "tgt": {
-                "process": "SunCalc",
-                "port": "latitude"
-            },
-            "metadata": {
-                "route": 4
-            }
-        },
-        {
-            "src": {
-                "process": "Get location",
-                "port": "longitude"
-            },
-            "tgt": {
-                "process": "SunCalc",
-                "port": "longitude"
-            },
-            "metadata": {
-                "route": 4
             }
         },
         {
@@ -1739,45 +1490,6 @@
         },
         {
             "src": {
-                "process": "Character",
-                "port": "output"
-            },
-            "tgt": {
-                "process": "Output",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 3
-            }
-        },
-        {
-            "src": {
-                "process": "Listen",
-                "port": "result"
-            },
-            "tgt": {
-                "process": "Character",
-                "port": "input"
-            },
-            "metadata": {
-                "route": 3
-            }
-        },
-        {
-            "src": {
-                "process": "Output",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Speak",
-                "port": "text"
-            },
-            "metadata": {
-                "route": 3
-            }
-        },
-        {
-            "src": {
                 "process": "Get div_jw4ja",
                 "port": "element"
             },
@@ -1791,27 +1503,13 @@
         },
         {
             "src": {
-                "process": "Orientation",
-                "port": "absolute"
-            },
-            "tgt": {
-                "process": "Get location",
-                "port": "start"
-            },
-            "metadata": {
-                "route": 4
-            }
-        },
-        {
-            "src": {
                 "process": "Gain",
                 "port": "gain"
             },
             "tgt": {
                 "process": "Play",
                 "port": "audionodes"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -1841,67 +1539,6 @@
         },
         {
             "src": {
-                "process": "core/RunInterval_yp9km",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "webaudio/AudioFile_tudfa",
-                "port": "start"
-            },
-            "metadata": {
-                "route": null
-            }
-        },
-        {
-            "src": {
-                "process": "Scene",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "WebGLRenderer",
-                "port": "scene"
-            },
-            "metadata": {}
-        },
-        {
-            "src": {
-                "process": "Scene div",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "WebGLRenderer",
-                "port": "element"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
-                "process": "Camera",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "WebGLRenderer",
-                "port": "camera"
-            },
-            "metadata": {}
-        },
-        {
-            "src": {
-                "process": "Run",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "WebGLRenderer",
-                "port": "tick"
-            },
-            "metadata": {
-                "route": 9
-            }
-        },
-        {
-            "src": {
                 "process": "Listen key",
                 "port": "keypress"
             },
@@ -1915,51 +1552,12 @@
         },
         {
             "src": {
-                "process": "ASCII to Char",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Speak",
-                "port": "text"
-            },
-            "metadata": {
-                "route": 3
-            }
-        },
-        {
-            "src": {
-                "process": "Orientation",
-                "port": "alpha"
-            },
-            "tgt": {
-                "process": "2 places_2zjwm",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 4
-            }
-        },
-        {
-            "src": {
                 "process": "2 places_2zjwm",
                 "port": "out"
             },
             "tgt": {
                 "process": "Show Alpha",
                 "port": "html"
-            },
-            "metadata": {
-                "route": 4
-            }
-        },
-        {
-            "src": {
-                "process": "Orientation",
-                "port": "beta"
-            },
-            "tgt": {
-                "process": "2 places",
-                "port": "in"
             },
             "metadata": {
                 "route": 4
@@ -1980,51 +1578,12 @@
         },
         {
             "src": {
-                "process": "Orientation",
-                "port": "gamma"
-            },
-            "tgt": {
-                "process": "2 places_aoykp",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 4
-            }
-        },
-        {
-            "src": {
                 "process": "2 places_aoykp",
                 "port": "out"
             },
             "tgt": {
                 "process": "Show Gamma",
                 "port": "html"
-            },
-            "metadata": {
-                "route": 4
-            }
-        },
-        {
-            "src": {
-                "process": "Orientation",
-                "port": "alpha"
-            },
-            "tgt": {
-                "process": "Motion to frequency",
-                "port": "multiplicand"
-            },
-            "metadata": {
-                "route": 4
-            }
-        },
-        {
-            "src": {
-                "process": "SunCalc",
-                "port": "altitude"
-            },
-            "tgt": {
-                "process": "core/MakeFunction_kjmsa",
-                "port": "in"
             },
             "metadata": {
                 "route": 4
@@ -2051,19 +1610,6 @@
             "tgt": {
                 "process": "show_7lwuw",
                 "port": "html"
-            },
-            "metadata": {
-                "route": 4
-            }
-        },
-        {
-            "src": {
-                "process": "SunCalc",
-                "port": "azimuth"
-            },
-            "tgt": {
-                "process": "core/MakeFunction_7l0n9",
-                "port": "in"
             },
             "metadata": {
                 "route": 4
@@ -2117,62 +1663,12 @@
         },
         {
             "src": {
-                "process": "Compass",
-                "port": "heading"
-            },
-            "tgt": {
-                "process": "Output_dzmzd",
-                "port": "in"
-            },
-            "metadata": {}
-        },
-        {
-            "src": {
-                "process": "Run",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Compass",
-                "port": "start"
-            },
-            "metadata": {
-                "route": 9
-            }
-        },
-        {
-            "src": {
-                "process": "Get location",
-                "port": "latitude"
-            },
-            "tgt": {
-                "process": "7 places",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 4
-            }
-        },
-        {
-            "src": {
                 "process": "7 places",
                 "port": "out"
             },
             "tgt": {
                 "process": "dom/WriteHtml_vniuo",
                 "port": "html"
-            },
-            "metadata": {
-                "route": 4
-            }
-        },
-        {
-            "src": {
-                "process": "Get location",
-                "port": "longitude"
-            },
-            "tgt": {
-                "process": "core/MakeFunction_eoual",
-                "port": "in"
             },
             "metadata": {
                 "route": 4
@@ -2225,8 +1721,7 @@
             "tgt": {
                 "process": "Stroke",
                 "port": "items"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -2236,8 +1731,7 @@
             "tgt": {
                 "process": "Draw_hnw62",
                 "port": "commands"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -2342,8 +1836,7 @@
             "tgt": {
                 "process": "get \"temp\"",
                 "port": "in"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -2392,8 +1885,7 @@
             "tgt": {
                 "process": "Get \"main\"",
                 "port": "in"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -2507,8 +1999,7 @@
             "tgt": {
                 "process": "get \"main\"",
                 "port": "in"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -2557,8 +2048,7 @@
             "tgt": {
                 "process": "get \"speed\"",
                 "port": "in"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -2620,8 +2110,7 @@
             "tgt": {
                 "process": "get \"all\"",
                 "port": "in"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -2867,45 +2356,10 @@
             }
         },
         {
-            "data": "http://soundbible.com/grab.php?id=1682&type=mp3",
-            "tgt": {
-                "process": "webaudio/AudioFile_tudfa",
-                "port": "file"
-            }
-        },
-        {
             "data": "query",
             "tgt": {
                 "process": "Query",
                 "port": "key"
-            }
-        },
-        {
-            "data": 100,
-            "tgt": {
-                "process": "core/RunInterval_yp9km",
-                "port": "interval"
-            }
-        },
-        {
-            "data": 100,
-            "tgt": {
-                "process": "WebGLRenderer",
-                "port": "width"
-            }
-        },
-        {
-            "data": 100,
-            "tgt": {
-                "process": "WebGLRenderer",
-                "port": "height"
-            }
-        },
-        {
-            "data": "#scene",
-            "tgt": {
-                "process": "Scene div",
-                "port": "selector"
             }
         },
         {
