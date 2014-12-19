@@ -38,6 +38,7 @@
   "keywords": [],
   "noflo": {
     "components": {
+      "BatteryStatus": "components/BatteryStatus.coffee",
       "DeviceMotion": "components/DeviceMotion.coffee",
       "DeviceOrientation": "components/DeviceOrientation.coffee",
       "Geolocation": "components/Geolocation.coffee",

@@ -1,6 +1,6 @@
 {
   "name": "noflo-sensors",
-  "description": "Mobile device sensor components.",
+  "description": "Mobile device sensor components for noflo.",
   "author": "Oliver Hruby <oliverhruby@gmail.com>",
   "repo": "oliverhruby/noflo-sensors",
   "version": "0.1.0",
@@ -10,20 +10,33 @@
   },
   "scripts": [
     "index.js",
+    "components/BatteryStatus.coffee",
     "components/DeviceOrientation.coffee",
     "components/DeviceMotion.coffee",
     "components/Geolocation.coffee",
-    "components/SpeechSynthesis.coffee"
+    "components/SpeechSynthesis.coffee",
+    "graphs/Robot.json",
+    "graphs/three_test.json",
+    "graphs/Beeper.json"
   ],
   "json": [
-    "component.json"
+    "component.json",
+    "graphs/Robot.json",
+    "graphs/three_test.json",
+    "graphs/Beeper.json"
   ],
   "noflo": {
     "components": {
+      "BatteryStatus": "components/BatteryStatus.coffee",
       "DeviceMotion": "components/DeviceMotion.coffee",
       "DeviceOrientation": "components/DeviceOrientation.coffee",
       "Geolocation": "components/Geolocation.coffee",
       "SpeechSynthesis": "components/SpeechSynthesis.coffee"
+    },
+    "graphs": {
+      "Beeper": "graphs/Beeper.json",
+      "Robot": "graphs/Robot.json",
+      "three_test": "graphs/three_test.json"
     }
   }
 }
