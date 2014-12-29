@@ -1,24 +1,196 @@
 {
     "properties": {
         "name": "Gamepad",
-        "project": "test",
-        "id": "test/Gamepad",
+        "project": "noflo-sensors",
+        "id": "noflo-sensors_graphs_Gamepad",
         "environment": {
             "type": "noflo-browser",
-            "content": "<style>\nbody {\n  font-size:12px;\n}\nspan {\n  color:lightgreen;\n}\n</style>\nID: <span id=\"gamepad_id\"></span><br/>\nX1: <span id=\"gamepad_x1\"></span><br/>\nY1: <span id=\"gamepad_y1\"></span><br/>\nX2: <span id=\"gamepad_x2\"></span><br/>\nY2: <span id=\"gamepad_y2\"></span><br/>\nB0: <span id=\"gamepad_b0\"></span><br/>\nB1: <span id=\"gamepad_b1\"></span><br/>\nB2: <span id=\"gamepad_b2\"></span><br/>\nB3: <span id=\"gamepad_b3\"></span><br/>\n"
+            "content": "<style>\nbody {\n  font-size:12px;\n}\nspan {\n  color:lightgreen;\n}\n</style>\nID: <span id=\"gamepad_id\"></span><br/>\nX1: <span id=\"gamepad_x1\"></span><br/>\nY1: <span id=\"gamepad_y1\"></span><br/>\nX2: <span id=\"gamepad_x2\"></span><br/>\nY2: <span id=\"gamepad_y2\"></span><br/>\nB0: <span id=\"gamepad_b0\"></span><br/>\nB1: <span id=\"gamepad_b1\"></span><br/>\nB2: <span id=\"gamepad_b2\"></span><br/>\nB3: <span id=\"gamepad_b3\"></span><br/>\nB4: <span id=\"gamepad_b4\"></span><br/>\nB5: <span id=\"gamepad_b5\"></span><br/>\nB6: <span id=\"gamepad_b6\"></span><br/>\nB7: <span id=\"gamepad_b7\"></span><br/>\nB8: <span id=\"gamepad_b8\"></span><br/>\nB9: <span id=\"gamepad_b9\"></span><br/>\nB10: <span id=\"gamepad_b10\"></span><br/>\nB11: <span id=\"gamepad_b11\"></span><br/>\n"
         },
         "changed": true,
-        "icon": ""
+        "icon": "",
+        "sha": "363c14d8ef650f136543c35db65990951c1bd479"
     },
     "inports": {},
-    "outports": {},
+    "outports": {
+        "button_10": {
+            "process": "10",
+            "port": "out",
+            "metadata": {
+                "x": 648,
+                "y": 1908,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "button_11": {
+            "process": "11",
+            "port": "out",
+            "metadata": {
+                "x": 648,
+                "y": 2016,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "button_00": {
+            "process": "objects/SliceArray_gmc3d",
+            "port": "out",
+            "metadata": {
+                "x": 648,
+                "y": 720,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "button_01": {
+            "process": "1_ozyk7",
+            "port": "out",
+            "metadata": {
+                "x": 648,
+                "y": 828,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "button_02": {
+            "process": "2_j7fo",
+            "port": "out",
+            "metadata": {
+                "x": 648,
+                "y": 936,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "button_03": {
+            "process": "3_awftl",
+            "port": "out",
+            "metadata": {
+                "x": 648,
+                "y": 1044,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "button_04": {
+            "process": "4",
+            "port": "out",
+            "metadata": {
+                "x": 648,
+                "y": 1188,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "button_05": {
+            "process": "5",
+            "port": "out",
+            "metadata": {
+                "x": 648,
+                "y": 1296,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "button_06": {
+            "process": "6",
+            "port": "out",
+            "metadata": {
+                "x": 648,
+                "y": 1440,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "button_07": {
+            "process": "7",
+            "port": "out",
+            "metadata": {
+                "x": 648,
+                "y": 1548,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "button_08": {
+            "process": "8",
+            "port": "out",
+            "metadata": {
+                "x": 648,
+                "y": 1692,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "button_09": {
+            "process": "9",
+            "port": "out",
+            "metadata": {
+                "x": 648,
+                "y": 1800,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "id": {
+            "process": "'id'",
+            "port": "out",
+            "metadata": {
+                "x": 648,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "x1": {
+            "process": "0",
+            "port": "out",
+            "metadata": {
+                "x": 648,
+                "y": 216,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "y1": {
+            "process": "1",
+            "port": "out",
+            "metadata": {
+                "x": 648,
+                "y": 324,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "x2": {
+            "process": "2",
+            "port": "out",
+            "metadata": {
+                "x": 648,
+                "y": 432,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "y2": {
+            "process": "3",
+            "port": "out",
+            "metadata": {
+                "x": 648,
+                "y": 540,
+                "width": 72,
+                "height": 72
+            }
+        }
+    },
     "groups": [],
     "processes": {
         "0": {
             "component": "objects/SliceArray",
             "metadata": {
                 "label": "0",
-                "x": 288,
+                "x": 252,
                 "y": 216,
                 "width": 72,
                 "height": 72
@@ -28,7 +200,7 @@
             "component": "objects/SliceArray",
             "metadata": {
                 "label": "1",
-                "x": 288,
+                "x": 252,
                 "y": 324,
                 "width": 72,
                 "height": 72
@@ -38,7 +210,7 @@
             "component": "objects/SliceArray",
             "metadata": {
                 "label": "2",
-                "x": 288,
+                "x": 252,
                 "y": 432,
                 "width": 72,
                 "height": 72
@@ -48,8 +220,88 @@
             "component": "objects/SliceArray",
             "metadata": {
                 "label": "3",
-                "x": 288,
+                "x": 252,
                 "y": 540,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "4": {
+            "component": "objects/SliceArray",
+            "metadata": {
+                "label": "4",
+                "x": 252,
+                "y": 1188,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "5": {
+            "component": "objects/SliceArray",
+            "metadata": {
+                "label": "5",
+                "x": 252,
+                "y": 1296,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "6": {
+            "component": "objects/SliceArray",
+            "metadata": {
+                "label": "6",
+                "x": 252,
+                "y": 1440,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "7": {
+            "component": "objects/SliceArray",
+            "metadata": {
+                "label": "7",
+                "x": 252,
+                "y": 1548,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "8": {
+            "component": "objects/SliceArray",
+            "metadata": {
+                "label": "8",
+                "x": 252,
+                "y": 1692,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "9": {
+            "component": "objects/SliceArray",
+            "metadata": {
+                "label": "9",
+                "x": 252,
+                "y": 1800,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "10": {
+            "component": "objects/SliceArray",
+            "metadata": {
+                "label": "10",
+                "x": 252,
+                "y": 1908,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "11": {
+            "component": "objects/SliceArray",
+            "metadata": {
+                "label": "11",
+                "x": 252,
+                "y": 2016,
                 "width": 72,
                 "height": 72
             }
@@ -58,8 +310,8 @@
             "component": "interaction/ReadGamepad",
             "metadata": {
                 "label": "ReadGamepad",
-                "x": -216,
-                "y": 432,
+                "x": -648,
+                "y": 396,
                 "width": 72,
                 "height": 72
             }
@@ -69,7 +321,7 @@
             "metadata": {
                 "label": "'buttons'",
                 "x": 72,
-                "y": 720,
+                "y": 1368,
                 "width": 72,
                 "height": 72
             }
@@ -104,22 +356,12 @@
                 "height": 72
             }
         },
-        "core/Output_wm5d8": {
-            "component": "core/Output",
-            "metadata": {
-                "label": "core/Output",
-                "x": 936,
-                "y": 612,
-                "width": 72,
-                "height": 72
-            }
-        },
         "'axes'_h6b0z": {
             "component": "objects/ExtractProperty",
             "metadata": {
                 "label": "'axes'",
                 "x": 72,
-                "y": 288,
+                "y": 360,
                 "width": 72,
                 "height": 72
             }
@@ -208,7 +450,7 @@
             "component": "objects/SliceArray",
             "metadata": {
                 "label": "0",
-                "x": 288,
+                "x": 252,
                 "y": 720,
                 "width": 72,
                 "height": 72
@@ -238,7 +480,7 @@
             "component": "objects/SliceArray",
             "metadata": {
                 "label": "1",
-                "x": 288,
+                "x": 252,
                 "y": 828,
                 "width": 72,
                 "height": 72
@@ -268,7 +510,7 @@
             "component": "objects/SliceArray",
             "metadata": {
                 "label": "2",
-                "x": 288,
+                "x": 252,
                 "y": 936,
                 "width": 72,
                 "height": 72
@@ -298,7 +540,7 @@
             "component": "objects/SliceArray",
             "metadata": {
                 "label": "3",
-                "x": 288,
+                "x": 252,
                 "y": 1044,
                 "width": 72,
                 "height": 72
@@ -320,6 +562,166 @@
                 "label": "write",
                 "x": 504,
                 "y": 1044,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "#gamepad_b4": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "#gamepad_b4",
+                "x": 396,
+                "y": 1152,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "write_fv9kx": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "write",
+                "x": 504,
+                "y": 1188,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "#gamepad_b5": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "#gamepad_b5",
+                "x": 396,
+                "y": 1260,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "write_5qll8": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "write",
+                "x": 504,
+                "y": 1296,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "#gamepad_b6": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "#gamepad_b6",
+                "x": 396,
+                "y": 1404,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "#gamepad_b7": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "#gamepad_b7",
+                "x": 396,
+                "y": 1512,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "write_k4d9c": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "write",
+                "x": 504,
+                "y": 1440,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "write_dhe0": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "write",
+                "x": 504,
+                "y": 1548,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "#gamepad_b8": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "#gamepad_b8",
+                "x": 396,
+                "y": 1656,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "dom/WriteHtml_dfx6d": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "write",
+                "x": 504,
+                "y": 1692,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "#gamepad_b9": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "#gamepad_b9",
+                "x": 396,
+                "y": 1764,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "#gamepad_b10": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "#gamepad_b10",
+                "x": 396,
+                "y": 1872,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "dom/WriteHtml_jnk9": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "write",
+                "x": 504,
+                "y": 1800,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "dom/WriteHtml_dtgz8": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "write",
+                "x": 504,
+                "y": 1908,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "#gamepad_b11": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "#gamepad_b11",
+                "x": 396,
+                "y": 1980,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "write_r0rgl": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "write",
+                "x": 504,
+                "y": 2016,
                 "width": 72,
                 "height": 72
             }
@@ -406,17 +808,6 @@
         },
         {
             "src": {
-                "process": "1",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "core/Output_wm5d8",
-                "port": "in"
-            },
-            "metadata": {}
-        },
-        {
-            "src": {
                 "process": "'axes'_h6b0z",
                 "port": "out"
             },
@@ -427,17 +818,6 @@
             "metadata": {
                 "route": 3
             }
-        },
-        {
-            "src": {
-                "process": "0",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "core/Output_wm5d8",
-                "port": "in"
-            },
-            "metadata": {}
         },
         {
             "src": {
@@ -575,17 +955,6 @@
                 "port": "out"
             },
             "tgt": {
-                "process": "core/Output_wm5d8",
-                "port": "in"
-            },
-            "metadata": {}
-        },
-        {
-            "src": {
-                "process": "'buttons'",
-                "port": "out"
-            },
-            "tgt": {
                 "process": "objects/SliceArray_gmc3d",
                 "port": "in"
             },
@@ -679,8 +1048,7 @@
             "tgt": {
                 "process": "write_qd120",
                 "port": "container"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -728,6 +1096,318 @@
             },
             "tgt": {
                 "process": "dom/WriteHtml_5t53v",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "'buttons'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "4",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "4",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "write_fv9kx",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "#gamepad_b4",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "write_fv9kx",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "'buttons'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "5",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "#gamepad_b5",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "write_5qll8",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "5",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "write_5qll8",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "'buttons'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "6",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "'buttons'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "7",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "6",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "write_k4d9c",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "#gamepad_b6",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "write_k4d9c",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "#gamepad_b7",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "write_dhe0",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "7",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "write_dhe0",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "'buttons'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "8",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "#gamepad_b8",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_dfx6d",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "8",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_dfx6d",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "'buttons'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "9",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "'buttons'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "10",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "10",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_dtgz8",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "9",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_jnk9",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "#gamepad_b9",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_jnk9",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "#gamepad_b10",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_dtgz8",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "'buttons'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "11",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "11",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "write_r0rgl",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "#gamepad_b11",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "write_r0rgl",
                 "port": "container"
             },
             "metadata": {
@@ -934,6 +1614,174 @@
             "data": "#gamepad_b3",
             "tgt": {
                 "process": "#gamepad_b3",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "4",
+            "tgt": {
+                "process": "4",
+                "port": "begin"
+            }
+        },
+        {
+            "data": "5",
+            "tgt": {
+                "process": "4",
+                "port": "end"
+            }
+        },
+        {
+            "data": "#gamepad_b4",
+            "tgt": {
+                "process": "#gamepad_b4",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "5",
+            "tgt": {
+                "process": "5",
+                "port": "begin"
+            }
+        },
+        {
+            "data": "6",
+            "tgt": {
+                "process": "5",
+                "port": "end"
+            }
+        },
+        {
+            "data": "#gamepad_b5",
+            "tgt": {
+                "process": "#gamepad_b5",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "6",
+            "tgt": {
+                "process": "6",
+                "port": "begin"
+            }
+        },
+        {
+            "data": "7",
+            "tgt": {
+                "process": "6",
+                "port": "end"
+            }
+        },
+        {
+            "data": "7",
+            "tgt": {
+                "process": "7",
+                "port": "begin"
+            }
+        },
+        {
+            "data": "8",
+            "tgt": {
+                "process": "7",
+                "port": "end"
+            }
+        },
+        {
+            "data": "#gamepad_b6",
+            "tgt": {
+                "process": "#gamepad_b6",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#gamepad_b7",
+            "tgt": {
+                "process": "#gamepad_b7",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "8",
+            "tgt": {
+                "process": "8",
+                "port": "begin"
+            }
+        },
+        {
+            "data": "9",
+            "tgt": {
+                "process": "8",
+                "port": "end"
+            }
+        },
+        {
+            "data": "#gamepad_b8",
+            "tgt": {
+                "process": "#gamepad_b8",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "9",
+            "tgt": {
+                "process": "9",
+                "port": "begin"
+            }
+        },
+        {
+            "data": "10",
+            "tgt": {
+                "process": "9",
+                "port": "end"
+            }
+        },
+        {
+            "data": "#gamepad_b9",
+            "tgt": {
+                "process": "#gamepad_b9",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#gamepad_b10",
+            "tgt": {
+                "process": "#gamepad_b10",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "10",
+            "tgt": {
+                "process": "10",
+                "port": "begin"
+            }
+        },
+        {
+            "data": "11",
+            "tgt": {
+                "process": "10",
+                "port": "end"
+            }
+        },
+        {
+            "data": "11",
+            "tgt": {
+                "process": "11",
+                "port": "begin"
+            }
+        },
+        {
+            "data": "12",
+            "tgt": {
+                "process": "11",
+                "port": "end"
+            }
+        },
+        {
+            "data": "#gamepad_b11",
+            "tgt": {
+                "process": "#gamepad_b11",
                 "port": "selector"
             }
         }
