@@ -5,7 +5,7 @@
         "id": "noflo-sensors_graphs_Gamepad",
         "environment": {
             "type": "noflo-browser",
-            "content": "<style>\nbody {\n  font-size:12px;\n}\nspan {\n  color:lightgreen;\n}\n</style>\nID: <span id=\"gamepad_id\"></span><br/>\nX1: <span id=\"gamepad_x1\"></span><br/>\nY1: <span id=\"gamepad_y1\"></span><br/>\nX2: <span id=\"gamepad_x2\"></span><br/>\nY2: <span id=\"gamepad_y2\"></span><br/>\nB0: <span id=\"gamepad_b0\"></span><br/>\nB1: <span id=\"gamepad_b1\"></span><br/>\nB2: <span id=\"gamepad_b2\"></span><br/>\nB3: <span id=\"gamepad_b3\"></span><br/>\nB4: <span id=\"gamepad_b4\"></span><br/>\nB5: <span id=\"gamepad_b5\"></span><br/>\nB6: <span id=\"gamepad_b6\"></span><br/>\nB7: <span id=\"gamepad_b7\"></span><br/>\nB8: <span id=\"gamepad_b8\"></span><br/>\nB9: <span id=\"gamepad_b9\"></span><br/>\nB10: <span id=\"gamepad_b10\"></span><br/>\nB11: <span id=\"gamepad_b11\"></span><br/>\n"
+            "content": "<style>\nbody {\n  font-size:12px;\n}\nspan {\n  color:lightgreen;\n}\n</style>\nID: <span id=\"gamepad_id\"></span><br/>\nX1: <span id=\"gamepad_x1\"></span><br/>\nY1: <span id=\"gamepad_y1\"></span><br/>\nX2: <span id=\"gamepad_x2\"></span><br/>\nY2: <span id=\"gamepad_y2\"></span><br/>\nB0: <span id=\"gamepad_b0\"></span><br/>\nB1: <span id=\"gamepad_b1\"></span><br/>\nB2: <span id=\"gamepad_b2\"></span><br/>\nB3: <span id=\"gamepad_b3\"></span><br/>\nB4: <span id=\"gamepad_b4\"></span><br/>\nB5: <span id=\"gamepad_b5\"></span><br/>\nB6: <span id=\"gamepad_b6\"></span><br/>\nB7: <span id=\"gamepad_b7\"></span><br/>\nB8: <span id=\"gamepad_b8\"></span><br/>\nB9: <span id=\"gamepad_b9\"></span><br/>\nB10: <span id=\"gamepad_b10\"></span><br/>\nB11: <span id=\"gamepad_b11\"></span><br/>\nB12: <span id=\"gamepad_b12\"></span><br/>\nB13: <span id=\"gamepad_b13\"></span><br/>\nB14: <span id=\"gamepad_b14\"></span><br/>\nB15: <span id=\"gamepad_b15\"></span><br/>\n"
         },
         "changed": true,
         "icon": "",
@@ -182,6 +182,46 @@
                 "width": 72,
                 "height": 72
             }
+        },
+        "button_12": {
+            "process": "12",
+            "port": "out",
+            "metadata": {
+                "x": 648,
+                "y": 2160,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "button_13": {
+            "process": "13",
+            "port": "out",
+            "metadata": {
+                "x": 648,
+                "y": 2268,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "button_14": {
+            "process": "14",
+            "port": "out",
+            "metadata": {
+                "x": 648,
+                "y": 2376,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "button_15": {
+            "process": "15",
+            "port": "out",
+            "metadata": {
+                "x": 648,
+                "y": 2484,
+                "width": 72,
+                "height": 72
+            }
         }
     },
     "groups": [],
@@ -302,6 +342,46 @@
                 "label": "11",
                 "x": 252,
                 "y": 2016,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "12": {
+            "component": "objects/SliceArray",
+            "metadata": {
+                "label": "12",
+                "x": 252,
+                "y": 2160,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "13": {
+            "component": "objects/SliceArray",
+            "metadata": {
+                "label": "13",
+                "x": 252,
+                "y": 2268,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "14": {
+            "component": "objects/SliceArray",
+            "metadata": {
+                "label": "14",
+                "x": 252,
+                "y": 2376,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "15": {
+            "component": "objects/SliceArray",
+            "metadata": {
+                "label": "15",
+                "x": 252,
+                "y": 2484,
                 "width": 72,
                 "height": 72
             }
@@ -722,6 +802,116 @@
                 "label": "write",
                 "x": 504,
                 "y": 2016,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Frame": {
+            "component": "dom/RequestAnimationFrame",
+            "metadata": {
+                "label": "Frame",
+                "x": -900,
+                "y": 396,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "start": {
+            "component": "core/Repeat",
+            "metadata": {
+                "label": "start",
+                "x": -1008,
+                "y": 396,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "0_f4a2": {
+            "component": "strings/SendString",
+            "metadata": {
+                "label": "0",
+                "x": -792,
+                "y": 396,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "#gamepad_b12": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "#gamepad_b12",
+                "x": 396,
+                "y": 2124,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "dom/WriteHtml_zryvd": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "write",
+                "x": 504,
+                "y": 2160,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "#gamepad_b13": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "#gamepad_b13",
+                "x": 396,
+                "y": 2232,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "dom/WriteHtml_eysm5": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "write",
+                "x": 504,
+                "y": 2268,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "dom/WriteHtml_ow431": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "write",
+                "x": 504,
+                "y": 2376,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "#gamepad_b14": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "#gamepad_b14",
+                "x": 396,
+                "y": 2340,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "#gamepad_b15": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "#gamepad_b15",
+                "x": 396,
+                "y": 2448,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "dom/WriteHtml_5hste": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "write",
+                "x": 504,
+                "y": 2484,
                 "width": 72,
                 "height": 72
             }
@@ -1415,10 +1605,192 @@
             }
         },
         {
-            "data": 0,
+            "src": {
+                "process": "start",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Frame",
+                "port": "start"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "Frame",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "0_f4a2",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "0_f4a2",
+                "port": "out"
+            },
             "tgt": {
                 "process": "ReadGamepad",
                 "port": "gamepad"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "'buttons'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "12",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "12",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_zryvd",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "#gamepad_b12",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_zryvd",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "'buttons'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "13",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "13",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_eysm5",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "#gamepad_b13",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_eysm5",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "'buttons'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "14",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "#gamepad_b14",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_ow431",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "14",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_ow431",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "'buttons'",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "15",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "#gamepad_b15",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_5hste",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "15",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_5hste",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 3
             }
         },
         {
@@ -1782,6 +2154,104 @@
             "data": "#gamepad_b11",
             "tgt": {
                 "process": "#gamepad_b11",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "0",
+            "tgt": {
+                "process": "start",
+                "port": "in"
+            }
+        },
+        {
+            "data": "0",
+            "tgt": {
+                "process": "0_f4a2",
+                "port": "string"
+            }
+        },
+        {
+            "data": "13",
+            "tgt": {
+                "process": "12",
+                "port": "end"
+            }
+        },
+        {
+            "data": "12",
+            "tgt": {
+                "process": "12",
+                "port": "begin"
+            }
+        },
+        {
+            "data": "14",
+            "tgt": {
+                "process": "13",
+                "port": "end"
+            }
+        },
+        {
+            "data": "13",
+            "tgt": {
+                "process": "13",
+                "port": "begin"
+            }
+        },
+        {
+            "data": "14",
+            "tgt": {
+                "process": "14",
+                "port": "begin"
+            }
+        },
+        {
+            "data": "15",
+            "tgt": {
+                "process": "14",
+                "port": "end"
+            }
+        },
+        {
+            "data": "15",
+            "tgt": {
+                "process": "15",
+                "port": "begin"
+            }
+        },
+        {
+            "data": "16",
+            "tgt": {
+                "process": "15",
+                "port": "end"
+            }
+        },
+        {
+            "data": "#gamepad_b14",
+            "tgt": {
+                "process": "#gamepad_b14",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#gamepad_b13",
+            "tgt": {
+                "process": "#gamepad_b13",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#gamepad_b12",
+            "tgt": {
+                "process": "#gamepad_b12",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#gamepad_b15",
+            "tgt": {
+                "process": "#gamepad_b15",
                 "port": "selector"
             }
         }
