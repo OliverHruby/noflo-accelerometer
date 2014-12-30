@@ -15,6 +15,7 @@
     "components/DeviceMotion.coffee",
     "components/Geolocation.coffee",
     "components/SpeechSynthesis.coffee",
+    "components/WebSocket.coffee",
     "graphs/Robot.json",
     "graphs/three_test.json",
     "graphs/Beeper.json"
@@ -31,7 +32,8 @@
       "DeviceMotion": "components/DeviceMotion.coffee",
       "DeviceOrientation": "components/DeviceOrientation.coffee",
       "Geolocation": "components/Geolocation.coffee",
-      "SpeechSynthesis": "components/SpeechSynthesis.coffee"
+      "SpeechSynthesis": "components/SpeechSynthesis.coffee",
+      "WebSocket": "components/WebSocket.coffee"
     },
     "graphs": {
       "Beeper": "graphs/Beeper.json",
