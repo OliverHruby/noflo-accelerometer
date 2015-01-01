@@ -23,16 +23,6 @@
             }
         },
         {
-            "name": "Gamepad module",
-            "nodes": [
-                "Drop",
-                "Read Gamepad"
-            ],
-            "metadata": {
-                "description": ""
-            }
-        },
-        {
             "name": "Speech Recognition",
             "nodes": [
                 "Speech div",
@@ -47,13 +37,7 @@
         },
         {
             "name": "Geolocation",
-            "nodes": [
-                "Outputb",
-                "dom/WriteHtml_i24nt",
-                "dom/WriteHtml_vniuo",
-                "latitude div",
-                "longitude div"
-            ],
+            "nodes": [],
             "metadata": {
                 "description": ""
             }
@@ -92,38 +76,6 @@
         {
             "name": "Character AI",
             "nodes": [],
-            "metadata": {
-                "description": ""
-            }
-        },
-        {
-            "name": "Accelerometer",
-            "nodes": [
-                "2 places",
-                "2 places_2zjwm",
-                "2 places_aoykp",
-                "Alpha div",
-                "Beta div",
-                "Gamma div",
-                "Show Alpha",
-                "Show Beta",
-                "Show Gamma",
-                "drop_j56f1"
-            ],
-            "metadata": {
-                "description": ""
-            }
-        },
-        {
-            "name": "Sun information",
-            "nodes": [
-                "get div",
-                "get div_ot7vf",
-                "core/MakeFunction_7l0n9",
-                "core/MakeFunction_kjmsa",
-                "show",
-                "show_7lwuw"
-            ],
             "metadata": {
                 "description": ""
             }
@@ -175,74 +127,13 @@
         },
         {
             "name": "Network info",
-            "nodes": [
-                "Get div_aqnfu",
-                "Get div_jw4ja",
-                "ISP",
-                "Parse Json",
-                "Query",
-                "Retrieve info",
-                "Write",
-                "dom/WriteHtml_bfi4a"
-            ],
-            "metadata": {
-                "description": ""
-            }
-        },
-        {
-            "name": "Weather info",
-            "nodes": [
-                "Get",
-                "Get \"main\"",
-                "Get \"weather\"",
-                "Get \"wind\"",
-                "Parse Json_yre6l",
-                "Write \"humidity\"",
-                "Write \"main\"",
-                "Write \"pressure\"",
-                "Write \"speed\"",
-                "Write \"temp\"",
-                "dom/GetElement_40o6a",
-                "dom/GetElement_4enew",
-                "dom/GetElement_tzt8x",
-                "dom/WriteHtml_n560o",
-                "get \"humidity\"",
-                "get \"main\"",
-                "get \"pressure\"",
-                "get \"speed\"",
-                "get \"temp\"",
-                "get div_5a52d",
-                "get div_d0a1l",
-                "get div_ebbet",
-                "get \"all\"",
-                "Get \"clouds\""
-            ],
+            "nodes": [],
             "metadata": {
                 "description": ""
             }
         }
     ],
     "processes": {
-        "Show Alpha": {
-            "component": "dom/WriteHtml",
-            "metadata": {
-                "label": "Show Alpha",
-                "x": 216,
-                "y": 936,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Alpha div": {
-            "component": "dom/GetElement",
-            "metadata": {
-                "label": "Alpha div",
-                "x": 108,
-                "y": 972,
-                "width": 72,
-                "height": 72
-            }
-        },
         "Oscillator": {
             "component": "webaudio/Oscillator",
             "metadata": {
@@ -283,46 +174,6 @@
                 "height": 72
             }
         },
-        "Beta div": {
-            "component": "dom/GetElement",
-            "metadata": {
-                "label": "Beta div",
-                "x": 108,
-                "y": 1152,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Show Beta": {
-            "component": "dom/WriteHtml",
-            "metadata": {
-                "label": "Show Beta",
-                "x": 216,
-                "y": 1116,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Gamma div": {
-            "component": "dom/GetElement",
-            "metadata": {
-                "label": "Gamma div",
-                "x": 108,
-                "y": 1296,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Show Gamma": {
-            "component": "dom/WriteHtml",
-            "metadata": {
-                "label": "Show Gamma",
-                "x": 216,
-                "y": 1260,
-                "width": 72,
-                "height": 72
-            }
-        },
         "Read camera": {
             "component": "gum/GetUserMedia",
             "metadata": {
@@ -339,26 +190,6 @@
                 "label": "Get camera div",
                 "x": 432,
                 "y": 648,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Read Gamepad": {
-            "component": "interaction/ReadGamepad",
-            "metadata": {
-                "label": "Read Gamepad",
-                "x": -612,
-                "y": -108,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "drop_j56f1": {
-            "component": "core/Drop",
-            "metadata": {
-                "label": "drop",
-                "x": -108,
-                "y": 1008,
                 "width": 72,
                 "height": 72
             }
@@ -393,26 +224,6 @@
                 "height": 72
             }
         },
-        "Drop": {
-            "component": "core/Drop",
-            "metadata": {
-                "label": "Drop",
-                "x": -468,
-                "y": -108,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Outputb": {
-            "component": "core/Output",
-            "metadata": {
-                "label": "Outputb",
-                "x": 648,
-                "y": 432,
-                "width": 72,
-                "height": 72
-            }
-        },
         "Listen key": {
             "component": "interaction/ListenKeyboard",
             "metadata": {
@@ -437,8 +248,8 @@
             "component": "dom/GetElement",
             "metadata": {
                 "label": "area",
-                "x": 216,
-                "y": 0,
+                "x": 324,
+                "y": 252,
                 "width": 72,
                 "height": 72
             }
@@ -447,8 +258,8 @@
             "component": "interaction/ListenTouch",
             "metadata": {
                 "label": "listen",
-                "x": 324,
-                "y": 0,
+                "x": 432,
+                "y": 252,
                 "width": 72,
                 "height": 72
             }
@@ -489,56 +300,6 @@
                 "label": "Run",
                 "x": -756,
                 "y": 828,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "latitude div": {
-            "component": "dom/GetElement",
-            "metadata": {
-                "label": "latitude div",
-                "x": 432,
-                "y": 216,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "longitude div": {
-            "component": "dom/GetElement",
-            "metadata": {
-                "label": "longitude div",
-                "x": 432,
-                "y": 324,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "dom/WriteHtml_vniuo": {
-            "component": "dom/WriteHtml",
-            "metadata": {
-                "label": "dom/WriteHtml",
-                "x": 648,
-                "y": 216,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "dom/WriteHtml_i24nt": {
-            "component": "dom/WriteHtml",
-            "metadata": {
-                "label": "dom/WriteHtml",
-                "x": 648,
-                "y": 324,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Retrieve info": {
-            "component": "ajax/Get",
-            "metadata": {
-                "label": "Retrieve info",
-                "x": -936,
-                "y": 108,
                 "width": 72,
                 "height": 72
             }
@@ -587,8 +348,8 @@
             "component": "canvas/Draw",
             "metadata": {
                 "label": "Draw",
-                "x": 972,
-                "y": -72,
+                "x": 1044,
+                "y": 252,
                 "width": 72,
                 "height": 72
             }
@@ -597,8 +358,8 @@
             "component": "canvas/MakeCircle",
             "metadata": {
                 "label": "Make Circle",
-                "x": 756,
-                "y": -72,
+                "x": 828,
+                "y": 252,
                 "width": 72,
                 "height": 72
             }
@@ -607,8 +368,8 @@
             "component": "canvas/MakePoint",
             "metadata": {
                 "label": "Make Point",
-                "x": 648,
-                "y": -72,
+                "x": 720,
+                "y": 252,
                 "width": 72,
                 "height": 72
             }
@@ -617,8 +378,8 @@
             "component": "canvas/Fill",
             "metadata": {
                 "label": "Fill",
-                "x": 864,
-                "y": 0,
+                "x": 936,
+                "y": 324,
                 "width": 72,
                 "height": 72
             }
@@ -627,8 +388,8 @@
             "component": "dom/GetElement",
             "metadata": {
                 "label": "Drawing div",
-                "x": 864,
-                "y": -108,
+                "x": 936,
+                "y": 216,
                 "width": 72,
                 "height": 72
             }
@@ -653,86 +414,6 @@
                 "height": 72
             }
         },
-        "get div_ot7vf": {
-            "component": "dom/GetElement",
-            "metadata": {
-                "label": "get div",
-                "x": 1080,
-                "y": 396,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "get div": {
-            "component": "dom/GetElement",
-            "metadata": {
-                "label": "get div",
-                "x": 1080,
-                "y": 252,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "show_7lwuw": {
-            "component": "dom/WriteHtml",
-            "metadata": {
-                "label": "show",
-                "x": 1188,
-                "y": 360,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "show": {
-            "component": "dom/WriteHtml",
-            "metadata": {
-                "label": "show",
-                "x": 1188,
-                "y": 216,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Get div_jw4ja": {
-            "component": "dom/GetElement",
-            "metadata": {
-                "label": "Get div",
-                "x": -720,
-                "y": 144,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Write": {
-            "component": "dom/WriteHtml",
-            "metadata": {
-                "label": "Write",
-                "x": -612,
-                "y": 108,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Parse Json": {
-            "component": "strings/ParseJson",
-            "metadata": {
-                "label": "Parse Json",
-                "x": -936,
-                "y": 216,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Query": {
-            "component": "objects/ExtractProperty",
-            "metadata": {
-                "label": "Query",
-                "x": -828,
-                "y": 108,
-                "width": 72,
-                "height": 72
-            }
-        },
         "ASCII to Char": {
             "component": "core/MakeFunction",
             "metadata": {
@@ -743,62 +424,12 @@
                 "height": 72
             }
         },
-        "2 places_2zjwm": {
-            "component": "core/MakeFunction",
-            "metadata": {
-                "label": "2 places",
-                "x": 0,
-                "y": 936,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "2 places": {
-            "component": "core/MakeFunction",
-            "metadata": {
-                "label": "2 places",
-                "x": 0,
-                "y": 1116,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "2 places_aoykp": {
-            "component": "core/MakeFunction",
-            "metadata": {
-                "label": "2 places",
-                "x": 0,
-                "y": 1260,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "core/MakeFunction_kjmsa": {
-            "component": "core/MakeFunction",
-            "metadata": {
-                "label": "2 places",
-                "x": 972,
-                "y": 216,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "core/MakeFunction_7l0n9": {
-            "component": "core/MakeFunction",
-            "metadata": {
-                "label": "2 places",
-                "x": 972,
-                "y": 360,
-                "width": 72,
-                "height": 72
-            }
-        },
         "drop": {
             "component": "core/Drop",
             "metadata": {
                 "label": "drop",
-                "x": 432,
-                "y": 0,
+                "x": 540,
+                "y": 252,
                 "width": 72,
                 "height": 72
             }
@@ -813,26 +444,6 @@
                 "height": 72
             }
         },
-        "7 places": {
-            "component": "core/MakeFunction",
-            "metadata": {
-                "label": "7 places",
-                "x": 540,
-                "y": 252,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "core/MakeFunction_eoual": {
-            "component": "core/MakeFunction",
-            "metadata": {
-                "label": "7 places",
-                "x": 540,
-                "y": 360,
-                "width": 72,
-                "height": 72
-            }
-        },
         "Bleach Bypass": {
             "component": "seriously/BleachBypass",
             "metadata": {
@@ -842,332 +453,9 @@
                 "width": 72,
                 "height": 72
             }
-        },
-        "Track Face": {
-            "component": "clmtrackr/TrackFace",
-            "metadata": {
-                "label": "Track Face",
-                "x": 1368,
-                "y": 648,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Wireframe Face": {
-            "component": "clmtrackr/WireframeFace",
-            "metadata": {
-                "label": "Wireframe Face",
-                "x": 1476,
-                "y": 648,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Draw_hnw62": {
-            "component": "canvas/Draw",
-            "metadata": {
-                "label": "Draw",
-                "x": 1692,
-                "y": 648,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Stroke": {
-            "component": "canvas/Stroke",
-            "metadata": {
-                "label": "Stroke",
-                "x": 1584,
-                "y": 576,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Get div_aqnfu": {
-            "component": "dom/GetElement",
-            "metadata": {
-                "label": "Get div",
-                "x": -720,
-                "y": 252,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "ISP": {
-            "component": "objects/ExtractProperty",
-            "metadata": {
-                "label": "ISP",
-                "x": -828,
-                "y": 216,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "dom/WriteHtml_bfi4a": {
-            "component": "dom/WriteHtml",
-            "metadata": {
-                "label": "Write",
-                "x": -612,
-                "y": 216,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Get": {
-            "component": "ajax/Get",
-            "metadata": {
-                "label": "Get",
-                "x": 1404,
-                "y": 72,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Parse Json_yre6l": {
-            "component": "strings/ParseJson",
-            "metadata": {
-                "label": "Parse Json",
-                "x": 1512,
-                "y": 72,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Get \"weather\"": {
-            "component": "objects/ExtractProperty",
-            "metadata": {
-                "label": "Get \"weather\"",
-                "x": 1620,
-                "y": -180,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Get \"main\"": {
-            "component": "objects/ExtractProperty",
-            "metadata": {
-                "label": "Get \"main\"",
-                "x": 1620,
-                "y": 72,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "get \"temp\"": {
-            "component": "objects/ExtractProperty",
-            "metadata": {
-                "label": "get \"temp\"",
-                "x": 1728,
-                "y": -36,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "get div_ebbet": {
-            "component": "dom/GetElement",
-            "metadata": {
-                "label": "get div",
-                "x": 1836,
-                "y": 0,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Write \"temp\"": {
-            "component": "dom/WriteHtml",
-            "metadata": {
-                "label": "Write \"temp\"",
-                "x": 1944,
-                "y": -36,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "get \"humidity\"": {
-            "component": "objects/ExtractProperty",
-            "metadata": {
-                "label": "get \"humidity\"",
-                "x": 1728,
-                "y": 72,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "get div_d0a1l": {
-            "component": "dom/GetElement",
-            "metadata": {
-                "label": "get div",
-                "x": 1836,
-                "y": 108,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Write \"humidity\"": {
-            "component": "dom/WriteHtml",
-            "metadata": {
-                "label": "Write \"humidity\"",
-                "x": 1944,
-                "y": 72,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "get \"pressure\"": {
-            "component": "objects/ExtractProperty",
-            "metadata": {
-                "label": "get \"pressure\"",
-                "x": 1728,
-                "y": 180,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "dom/GetElement_40o6a": {
-            "component": "dom/GetElement",
-            "metadata": {
-                "label": "get div",
-                "x": 1836,
-                "y": 216,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Write \"pressure\"": {
-            "component": "dom/WriteHtml",
-            "metadata": {
-                "label": "Write \"pressure\"",
-                "x": 1944,
-                "y": 180,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "get \"main\"": {
-            "component": "objects/ExtractProperty",
-            "metadata": {
-                "label": "get \"main\"",
-                "x": 1728,
-                "y": -180,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "dom/GetElement_tzt8x": {
-            "component": "dom/GetElement",
-            "metadata": {
-                "label": "get div",
-                "x": 1836,
-                "y": -144,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Write \"speed\"": {
-            "component": "dom/WriteHtml",
-            "metadata": {
-                "label": "Write \"speed\"",
-                "x": 1944,
-                "y": 324,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Write \"main\"": {
-            "component": "dom/WriteHtml",
-            "metadata": {
-                "label": "Write \"main\"",
-                "x": 1944,
-                "y": -180,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Get \"wind\"": {
-            "component": "objects/ExtractProperty",
-            "metadata": {
-                "label": "Get \"wind\"",
-                "x": 1620,
-                "y": 324,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "get \"speed\"": {
-            "component": "objects/ExtractProperty",
-            "metadata": {
-                "label": "get \"speed\"",
-                "x": 1728,
-                "y": 324,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "get div_5a52d": {
-            "component": "dom/GetElement",
-            "metadata": {
-                "label": "get div",
-                "x": 1836,
-                "y": 360,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Get \"clouds\"": {
-            "component": "objects/ExtractProperty",
-            "metadata": {
-                "label": "Get \"clouds\"",
-                "x": 1620,
-                "y": 432,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "get \"all\"": {
-            "component": "objects/ExtractProperty",
-            "metadata": {
-                "label": "get \"all\"",
-                "x": 1728,
-                "y": 432,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "dom/GetElement_4enew": {
-            "component": "dom/GetElement",
-            "metadata": {
-                "label": "get div",
-                "x": 1836,
-                "y": 468,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "dom/WriteHtml_n560o": {
-            "component": "dom/WriteHtml",
-            "metadata": {
-                "label": "Write \"speed\"",
-                "x": 1944,
-                "y": 432,
-                "width": 72,
-                "height": 72
-            }
         }
     },
     "connections": [
-        {
-            "src": {
-                "process": "Alpha div",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "Show Alpha",
-                "port": "container"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
         {
             "src": {
                 "process": "Oscillator",
@@ -1196,19 +484,6 @@
         },
         {
             "src": {
-                "process": "Gamma div",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "Show Gamma",
-                "port": "container"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
                 "process": "On Click",
                 "port": "event"
             },
@@ -1228,29 +503,6 @@
             },
             "metadata": {
                 "route": 7
-            }
-        },
-        {
-            "src": {
-                "process": "Read Gamepad",
-                "port": "error"
-            },
-            "tgt": {
-                "process": "Drop",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 1
-            }
-        },
-        {
-            "src": {
-                "process": "Read Gamepad",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Drop",
-                "port": "in"
             }
         },
         {
@@ -1304,19 +556,6 @@
         },
         {
             "src": {
-                "process": "Beta div",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "Show Beta",
-                "port": "container"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
                 "process": "Get camera div",
                 "port": "element"
             },
@@ -1352,32 +591,6 @@
             },
             "metadata": {
                 "route": 9
-            }
-        },
-        {
-            "src": {
-                "process": "latitude div",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "dom/WriteHtml_vniuo",
-                "port": "container"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
-                "process": "longitude div",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "dom/WriteHtml_i24nt",
-                "port": "container"
-            },
-            "metadata": {
-                "route": 7
             }
         },
         {
@@ -1464,77 +677,12 @@
         },
         {
             "src": {
-                "process": "get div_ot7vf",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "show_7lwuw",
-                "port": "container"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
-                "process": "get div",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "show",
-                "port": "container"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
-                "process": "Get div_jw4ja",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "Write",
-                "port": "container"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
                 "process": "Gain",
                 "port": "gain"
             },
             "tgt": {
                 "process": "Play",
                 "port": "audionodes"
-            }
-        },
-        {
-            "src": {
-                "process": "Retrieve info",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Parse Json",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 2
-            }
-        },
-        {
-            "src": {
-                "process": "Parse Json",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Query",
-                "port": "in"
-            },
-            "metadata": {
-                "route": null
             }
         },
         {
@@ -1548,71 +696,6 @@
             },
             "metadata": {
                 "route": 0
-            }
-        },
-        {
-            "src": {
-                "process": "2 places_2zjwm",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Show Alpha",
-                "port": "html"
-            },
-            "metadata": {
-                "route": 4
-            }
-        },
-        {
-            "src": {
-                "process": "2 places",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Show Beta",
-                "port": "html"
-            },
-            "metadata": {
-                "route": 4
-            }
-        },
-        {
-            "src": {
-                "process": "2 places_aoykp",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Show Gamma",
-                "port": "html"
-            },
-            "metadata": {
-                "route": 4
-            }
-        },
-        {
-            "src": {
-                "process": "core/MakeFunction_kjmsa",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "show",
-                "port": "html"
-            },
-            "metadata": {
-                "route": 4
-            }
-        },
-        {
-            "src": {
-                "process": "core/MakeFunction_7l0n9",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "show_7lwuw",
-                "port": "html"
-            },
-            "metadata": {
-                "route": 4
             }
         },
         {
@@ -1663,78 +746,6 @@
         },
         {
             "src": {
-                "process": "7 places",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "dom/WriteHtml_vniuo",
-                "port": "html"
-            },
-            "metadata": {
-                "route": 4
-            }
-        },
-        {
-            "src": {
-                "process": "core/MakeFunction_eoual",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "dom/WriteHtml_i24nt",
-                "port": "html"
-            },
-            "metadata": {
-                "route": 4
-            }
-        },
-        {
-            "src": {
-                "process": "Get canvas",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "Track Face",
-                "port": "image"
-            },
-            "metadata": {
-                "route": 0
-            }
-        },
-        {
-            "src": {
-                "process": "Track Face",
-                "port": "points"
-            },
-            "tgt": {
-                "process": "Wireframe Face",
-                "port": "points"
-            },
-            "metadata": {
-                "route": 0
-            }
-        },
-        {
-            "src": {
-                "process": "Wireframe Face",
-                "port": "paths"
-            },
-            "tgt": {
-                "process": "Stroke",
-                "port": "items"
-            }
-        },
-        {
-            "src": {
-                "process": "Stroke",
-                "port": "stroke"
-            },
-            "tgt": {
-                "process": "Draw_hnw62",
-                "port": "commands"
-            }
-        },
-        {
-            "src": {
                 "process": "Source",
                 "port": "out"
             },
@@ -1754,16 +765,6 @@
             "tgt": {
                 "process": "Target",
                 "port": "source"
-            }
-        },
-        {
-            "src": {
-                "process": "Track Face",
-                "port": "points"
-            },
-            "tgt": {
-                "process": "Draw_hnw62",
-                "port": "tick"
             }
         },
         {
@@ -1790,380 +791,10 @@
             }
         },
         {
-            "src": {
-                "process": "Drawing div",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "Draw_hnw62",
-                "port": "canvas"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
-                "process": "Parse Json",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "ISP",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 0
-            }
-        },
-        {
-            "src": {
-                "process": "Get div_aqnfu",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "dom/WriteHtml_bfi4a",
-                "port": "container"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
-                "process": "Get \"main\"",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "get \"temp\"",
-                "port": "in"
-            }
-        },
-        {
-            "src": {
-                "process": "get div_ebbet",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "Write \"temp\"",
-                "port": "container"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
-                "process": "Get \"main\"",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "get \"humidity\"",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 0
-            }
-        },
-        {
-            "src": {
-                "process": "Get",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Parse Json_yre6l",
-                "port": "in"
-            },
-            "metadata": {
-                "route": null
-            }
-        },
-        {
-            "src": {
-                "process": "Parse Json_yre6l",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Get \"main\"",
-                "port": "in"
-            }
-        },
-        {
-            "src": {
-                "process": "get div_d0a1l",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "Write \"humidity\"",
-                "port": "container"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
-                "process": "get \"humidity\"",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Write \"humidity\"",
-                "port": "html"
-            },
-            "metadata": {
-                "route": 3
-            }
-        },
-        {
-            "src": {
-                "process": "get \"temp\"",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Write \"temp\"",
-                "port": "html"
-            },
-            "metadata": {
-                "route": 3
-            }
-        },
-        {
-            "src": {
-                "process": "Query",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Write",
-                "port": "html"
-            },
-            "metadata": {
-                "route": null
-            }
-        },
-        {
-            "src": {
-                "process": "ISP",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "dom/WriteHtml_bfi4a",
-                "port": "html"
-            },
-            "metadata": {
-                "route": null
-            }
-        },
-        {
-            "src": {
-                "process": "Get \"main\"",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "get \"pressure\"",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 0
-            }
-        },
-        {
-            "src": {
-                "process": "dom/GetElement_40o6a",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "Write \"pressure\"",
-                "port": "container"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
-                "process": "get \"pressure\"",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Write \"pressure\"",
-                "port": "html"
-            },
-            "metadata": {
-                "route": 3
-            }
-        },
-        {
-            "src": {
-                "process": "Get \"weather\"",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "get \"main\"",
-                "port": "in"
-            }
-        },
-        {
-            "src": {
-                "process": "Parse Json_yre6l",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Get \"weather\"",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 0
-            }
-        },
-        {
-            "src": {
-                "process": "dom/GetElement_tzt8x",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "Write \"main\"",
-                "port": "container"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
-                "process": "Parse Json_yre6l",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Get \"wind\"",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 0
-            }
-        },
-        {
-            "src": {
-                "process": "Get \"wind\"",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "get \"speed\"",
-                "port": "in"
-            }
-        },
-        {
-            "src": {
-                "process": "get div_5a52d",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "Write \"speed\"",
-                "port": "container"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
-                "process": "get \"speed\"",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Write \"speed\"",
-                "port": "html"
-            },
-            "metadata": {
-                "route": 3
-            }
-        },
-        {
-            "src": {
-                "process": "get \"main\"",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Write \"main\"",
-                "port": "html"
-            },
-            "metadata": {
-                "route": null
-            }
-        },
-        {
-            "src": {
-                "process": "Parse Json_yre6l",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Get \"clouds\"",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 0
-            }
-        },
-        {
-            "src": {
-                "process": "Get \"clouds\"",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "get \"all\"",
-                "port": "in"
-            }
-        },
-        {
-            "src": {
-                "process": "get \"all\"",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "dom/WriteHtml_n560o",
-                "port": "html"
-            },
-            "metadata": {
-                "route": 3
-            }
-        },
-        {
-            "src": {
-                "process": "dom/GetElement_4enew",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "dom/WriteHtml_n560o",
-                "port": "container"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
             "data": "1",
             "tgt": {
                 "process": "Gain",
                 "port": "gain"
-            }
-        },
-        {
-            "data": "#accelerometer_alpha",
-            "tgt": {
-                "process": "Alpha div",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "#accelerometer_beta",
-            "tgt": {
-                "process": "Beta div",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "#accelerometer_gamma",
-            "tgt": {
-                "process": "Gamma div",
-                "port": "selector"
             }
         },
         {
@@ -2178,13 +809,6 @@
             "tgt": {
                 "process": "Get camera div",
                 "port": "selector"
-            }
-        },
-        {
-            "data": 0,
-            "tgt": {
-                "process": "Read Gamepad",
-                "port": "gamepad"
             }
         },
         {
@@ -2258,27 +882,6 @@
             }
         },
         {
-            "data": "#geolocation_latitude",
-            "tgt": {
-                "process": "latitude div",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "#geolocation_longitude",
-            "tgt": {
-                "process": "longitude div",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "http://ip-api.com/json",
-            "tgt": {
-                "process": "Retrieve info",
-                "port": "url"
-            }
-        },
-        {
             "data": 10,
             "tgt": {
                 "process": "Motion to frequency",
@@ -2342,65 +945,9 @@
             }
         },
         {
-            "data": "#sun_position_altitude",
-            "tgt": {
-                "process": "get div",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "#sun_position_azimuth",
-            "tgt": {
-                "process": "get div_ot7vf",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "query",
-            "tgt": {
-                "process": "Query",
-                "port": "key"
-            }
-        },
-        {
             "data": "return String.fromCharCode(x);",
             "tgt": {
                 "process": "ASCII to Char",
-                "port": "function"
-            }
-        },
-        {
-            "data": "return x.toFixed(2);",
-            "tgt": {
-                "process": "2 places_2zjwm",
-                "port": "function"
-            }
-        },
-        {
-            "data": "return x.toFixed(2);",
-            "tgt": {
-                "process": "2 places_aoykp",
-                "port": "function"
-            }
-        },
-        {
-            "data": "return x.toFixed(2);",
-            "tgt": {
-                "process": "2 places",
-                "port": "function"
-            }
-        },
-        {
-            "data": "return x.toFixed(2);",
-            "tgt": {
-                "process": "core/MakeFunction_kjmsa",
-                "port": "function"
-            }
-        },
-        {
-            "data": "return x.toFixed(2);",
-            "tgt": {
-                "process": "core/MakeFunction_7l0n9",
                 "port": "function"
             }
         },
@@ -2412,20 +959,6 @@
             }
         },
         {
-            "data": "return x.toFixed(7);",
-            "tgt": {
-                "process": "7 places",
-                "port": "function"
-            }
-        },
-        {
-            "data": "return x.toFixed(7);",
-            "tgt": {
-                "process": "core/MakeFunction_eoual",
-                "port": "function"
-            }
-        },
-        {
             "data": 100,
             "tgt": {
                 "process": "Bleach Bypass",
@@ -2433,185 +966,10 @@
             }
         },
         {
-            "data": "#network_ip",
-            "tgt": {
-                "process": "Get div_jw4ja",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "#network_provider",
-            "tgt": {
-                "process": "Get div_aqnfu",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "isp",
-            "tgt": {
-                "process": "ISP",
-                "port": "key"
-            }
-        },
-        {
-            "data": false,
-            "tgt": {
-                "process": "Draw_hnw62",
-                "port": "drawevery"
-            }
-        },
-        {
-            "data": true,
-            "tgt": {
-                "process": "Draw_hnw62",
-                "port": "clearevery"
-            }
-        },
-        {
-            "data": "weather",
-            "tgt": {
-                "process": "Get \"weather\"",
-                "port": "key"
-            }
-        },
-        {
-            "data": "main",
-            "tgt": {
-                "process": "Get \"main\"",
-                "port": "key"
-            }
-        },
-        {
-            "data": "temp",
-            "tgt": {
-                "process": "get \"temp\"",
-                "port": "key"
-            }
-        },
-        {
-            "data": "humidity",
-            "tgt": {
-                "process": "get \"humidity\"",
-                "port": "key"
-            }
-        },
-        {
-            "data": "#weather_temp",
-            "tgt": {
-                "process": "get div_ebbet",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "#weather_humidity",
-            "tgt": {
-                "process": "get div_d0a1l",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "pressure",
-            "tgt": {
-                "process": "get \"pressure\"",
-                "port": "key"
-            }
-        },
-        {
-            "data": "#weather_pressure",
-            "tgt": {
-                "process": "dom/GetElement_40o6a",
-                "port": "selector"
-            }
-        },
-        {
             "data": 2,
             "tgt": {
                 "process": "Night Vision",
                 "port": "amplification"
-            }
-        },
-        {
-            "data": "main",
-            "tgt": {
-                "process": "get \"main\"",
-                "port": "key"
-            }
-        },
-        {
-            "data": "#weather_main",
-            "tgt": {
-                "process": "dom/GetElement_tzt8x",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "speed",
-            "tgt": {
-                "process": "get \"speed\"",
-                "port": "key"
-            }
-        },
-        {
-            "data": "#weather_wind_speed",
-            "tgt": {
-                "process": "get div_5a52d",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "wind",
-            "tgt": {
-                "process": "Get \"wind\"",
-                "port": "key"
-            }
-        },
-        {
-            "data": "clouds",
-            "tgt": {
-                "process": "Get \"clouds\"",
-                "port": "key"
-            }
-        },
-        {
-            "data": "all",
-            "tgt": {
-                "process": "get \"all\"",
-                "port": "key"
-            }
-        },
-        {
-            "data": "#weather_clouds",
-            "tgt": {
-                "process": "dom/GetElement_4enew",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "http://api.openweathermap.org/data/2.5/weather?q=Malacky,sk&units=metric",
-            "tgt": {
-                "process": "Get",
-                "port": "url"
-            }
-        },
-        {
-            "data": true,
-            "tgt": {
-                "process": "Stroke",
-                "port": "closepath"
-            }
-        },
-        {
-            "data": 0.6,
-            "tgt": {
-                "process": "Stroke",
-                "port": "linewidth"
-            }
-        },
-        {
-            "data": "green",
-            "tgt": {
-                "process": "Stroke",
-                "port": "strokestyle"
             }
         }
     ]

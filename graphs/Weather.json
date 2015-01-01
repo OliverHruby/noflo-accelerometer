@@ -151,10 +151,10 @@
                 "height": 72
             }
         },
-        "weather \\ main": {
+        "weather / main": {
             "component": "core/MakeFunction",
             "metadata": {
-                "label": "weather \\ main",
+                "label": "weather / main",
                 "x": 1404,
                 "y": 36,
                 "width": 72,
@@ -308,7 +308,7 @@
                 "port": "out"
             },
             "tgt": {
-                "process": "weather \\ main",
+                "process": "weather / main",
                 "port": "in"
             },
             "metadata": {
@@ -317,7 +317,7 @@
         },
         {
             "src": {
-                "process": "weather \\ main",
+                "process": "weather / main",
                 "port": "out"
             },
             "tgt": {
@@ -508,23 +508,16 @@
             }
         },
         {
-            "data": "return x.main.temp.toFixed(0) + ' °C';",
-            "tgt": {
-                "process": "main / temp",
-                "port": "function"
-            }
-        },
-        {
-            "data": "return x.wind.speed + 'm/s';",
-            "tgt": {
-                "process": "wind / speed",
-                "port": "function"
-            }
-        },
-        {
             "data": "return x.clouds.all + '%';",
             "tgt": {
                 "process": "cloud / all",
+                "port": "function"
+            }
+        },
+        {
+            "data": "return x.weather[0].description;",
+            "tgt": {
+                "process": "weather / main",
                 "port": "function"
             }
         },
@@ -536,16 +529,23 @@
             }
         },
         {
-            "data": "return x.weather[0].description;",
+            "data": "return x.main.temp.toFixed(0) + '°C';",
             "tgt": {
-                "process": "weather \\ main",
+                "process": "main / temp",
                 "port": "function"
             }
         },
         {
-            "data": "return x.main.pressure+ 'hPa';",
+            "data": "return x.main.pressure.toFixed(0) + 'hPa';",
             "tgt": {
                 "process": "main / pressure",
+                "port": "function"
+            }
+        },
+        {
+            "data": "return x.wind.speed.toFixed(0) + 'm/s';",
+            "tgt": {
+                "process": "wind / speed",
                 "port": "function"
             }
         }

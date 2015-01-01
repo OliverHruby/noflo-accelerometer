@@ -1,15 +1,11 @@
 {
     "properties": {
         "name": "Gamepad",
-        "project": "noflo-sensors",
-        "id": "noflo-sensors_graphs_Gamepad",
         "environment": {
             "type": "noflo-browser",
-            "content": "<style>\nbody {\n  font-size:12px;\n}\nspan {\n  color:lightgreen;\n}\n</style>\nID: <span id=\"gamepad_id\"></span><br/>\nX1: <span id=\"gamepad_x1\"></span><br/>\nY1: <span id=\"gamepad_y1\"></span><br/>\nX2: <span id=\"gamepad_x2\"></span><br/>\nY2: <span id=\"gamepad_y2\"></span><br/>\nB0: <span id=\"gamepad_b0\"></span><br/>\nB1: <span id=\"gamepad_b1\"></span><br/>\nB2: <span id=\"gamepad_b2\"></span><br/>\nB3: <span id=\"gamepad_b3\"></span><br/>\nB4: <span id=\"gamepad_b4\"></span><br/>\nB5: <span id=\"gamepad_b5\"></span><br/>\nB6: <span id=\"gamepad_b6\"></span><br/>\nB7: <span id=\"gamepad_b7\"></span><br/>\nB8: <span id=\"gamepad_b8\"></span><br/>\nB9: <span id=\"gamepad_b9\"></span><br/>\nB10: <span id=\"gamepad_b10\"></span><br/>\nB11: <span id=\"gamepad_b11\"></span><br/>\nB12: <span id=\"gamepad_b12\"></span><br/>\nB13: <span id=\"gamepad_b13\"></span><br/>\nB14: <span id=\"gamepad_b14\"></span><br/>\nB15: <span id=\"gamepad_b15\"></span><br/>\n"
+            "content": "<style>\nbody {\n  font-size:12px;\n}\nspan {\n  color:lightgreen;\n}\n</style>\n<span id=\"gamepad_error\"></span>\nID: <span id=\"gamepad_id\"></span><br/>\nX1: <span id=\"gamepad_x1\"></span><br/>\nY1: <span id=\"gamepad_y1\"></span><br/>\nX2: <span id=\"gamepad_x2\"></span><br/>\nY2: <span id=\"gamepad_y2\"></span><br/>\nB0: <span id=\"gamepad_b0\"></span><br/>\nB1: <span id=\"gamepad_b1\"></span><br/>\nB2: <span id=\"gamepad_b2\"></span><br/>\nB3: <span id=\"gamepad_b3\"></span><br/>\nB4: <span id=\"gamepad_b4\"></span><br/>\nB5: <span id=\"gamepad_b5\"></span><br/>\nB6: <span id=\"gamepad_b6\"></span><br/>\nB7: <span id=\"gamepad_b7\"></span><br/>\nB8: <span id=\"gamepad_b8\"></span><br/>\nB9: <span id=\"gamepad_b9\"></span><br/>\nB10: <span id=\"gamepad_b10\"></span><br/>\nB11: <span id=\"gamepad_b11\"></span><br/>\nB12: <span id=\"gamepad_b12\"></span><br/>\nB13: <span id=\"gamepad_b13\"></span><br/>\nB14: <span id=\"gamepad_b14\"></span><br/>\nB15: <span id=\"gamepad_b15\"></span><br/>\n"
         },
-        "changed": true,
-        "icon": "",
-        "sha": "363c14d8ef650f136543c35db65990951c1bd479"
+        "icon": ""
     },
     "inports": {},
     "outports": {
@@ -915,6 +911,26 @@
                 "width": 72,
                 "height": 72
             }
+        },
+        "dom/WriteHtml_iune8": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "label": "dom/WriteHtml",
+                "x": -504,
+                "y": 504,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "dom/GetElement_9fk3s": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "label": "dom/GetElement",
+                "x": -648,
+                "y": 540,
+                "width": 72,
+                "height": 72
+            }
         }
     },
     "connections": [
@@ -1612,8 +1628,7 @@
             "tgt": {
                 "process": "Frame",
                 "port": "start"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -1623,8 +1638,7 @@
             "tgt": {
                 "process": "0_f4a2",
                 "port": "in"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -1634,8 +1648,7 @@
             "tgt": {
                 "process": "ReadGamepad",
                 "port": "gamepad"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -1791,6 +1804,32 @@
             },
             "metadata": {
                 "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "ReadGamepad",
+                "port": "error"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_iune8",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "dom/GetElement_9fk3s",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_iune8",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
             }
         },
         {
@@ -2165,13 +2204,6 @@
             }
         },
         {
-            "data": "0",
-            "tgt": {
-                "process": "0_f4a2",
-                "port": "string"
-            }
-        },
-        {
             "data": "13",
             "tgt": {
                 "process": "12",
@@ -2253,6 +2285,20 @@
             "tgt": {
                 "process": "#gamepad_b15",
                 "port": "selector"
+            }
+        },
+        {
+            "data": "#gamepad_error",
+            "tgt": {
+                "process": "dom/GetElement_9fk3s",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "0",
+            "tgt": {
+                "process": "0_f4a2",
+                "port": "string"
             }
         }
     ]

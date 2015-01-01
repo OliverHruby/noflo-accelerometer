@@ -5,7 +5,18 @@
             "type": "noflo-browser"
         }
     },
-    "inports": {},
+    "inports": {
+        "radius": {
+            "process": "Sphere",
+            "port": "radius",
+            "metadata": {
+                "x": 360,
+                "y": 0,
+                "width": 72,
+                "height": 72
+            }
+        }
+    },
     "outports": {},
     "groups": [],
     "processes": {
@@ -14,7 +25,7 @@
             "metadata": {
                 "label": "Scene",
                 "x": 756,
-                "y": 108,
+                "y": 144,
                 "width": 72,
                 "height": 72
             }
@@ -29,12 +40,12 @@
                 "height": 72
             }
         },
-        "GetElement": {
+        "div": {
             "component": "dom/GetElement",
             "metadata": {
-                "label": "GetElement",
+                "label": "div",
                 "x": 756,
-                "y": 0,
+                "y": 36,
                 "width": 72,
                 "height": 72
             }
@@ -44,7 +55,7 @@
             "metadata": {
                 "label": "Camera",
                 "x": 756,
-                "y": 216,
+                "y": 252,
                 "width": 72,
                 "height": 72
             }
@@ -54,7 +65,7 @@
             "metadata": {
                 "label": "Mesh",
                 "x": 648,
-                "y": 0,
+                "y": 36,
                 "width": 72,
                 "height": 72
             }
@@ -74,7 +85,7 @@
             "metadata": {
                 "label": "Vector3",
                 "x": 648,
-                "y": 216,
+                "y": 252,
                 "width": 72,
                 "height": 72
             }
@@ -85,16 +96,6 @@
                 "label": "Color",
                 "x": 432,
                 "y": 216,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "RunInterval": {
-            "component": "core/RunInterval",
-            "metadata": {
-                "label": "RunInterval",
-                "x": 144,
-                "y": 324,
                 "width": 72,
                 "height": 72
             }
@@ -114,7 +115,7 @@
             "metadata": {
                 "label": "Random",
                 "x": 432,
-                "y": 0,
+                "y": 108,
                 "width": 72,
                 "height": 72
             }
@@ -134,7 +135,27 @@
             "metadata": {
                 "label": "Mesh",
                 "x": 648,
-                "y": 108,
+                "y": 144,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Start": {
+            "component": "core/Repeat",
+            "metadata": {
+                "label": "Start",
+                "x": 648,
+                "y": 396,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Frame": {
+            "component": "dom/RequestAnimationFrame",
+            "metadata": {
+                "label": "Frame",
+                "x": 756,
+                "y": 396,
                 "width": 72,
                 "height": 72
             }
@@ -143,7 +164,7 @@
     "connections": [
         {
             "src": {
-                "process": "GetElement",
+                "process": "div",
                 "port": "element"
             },
             "tgt": {
@@ -219,19 +240,6 @@
         },
         {
             "src": {
-                "process": "RunInterval",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "WebGLRenderer",
-                "port": "tick"
-            },
-            "metadata": {
-                "route": 4
-            }
-        },
-        {
-            "src": {
                 "process": "Random",
                 "port": "out"
             },
@@ -267,32 +275,6 @@
             },
             "metadata": {
                 "route": 6
-            }
-        },
-        {
-            "src": {
-                "process": "Random",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Sphere",
-                "port": "radius"
-            },
-            "metadata": {
-                "route": 6
-            }
-        },
-        {
-            "src": {
-                "process": "RunInterval",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Random",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 4
             }
         },
         {
@@ -361,9 +343,35 @@
             }
         },
         {
+            "src": {
+                "process": "Start",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Frame",
+                "port": "start"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "Frame",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "WebGLRenderer",
+                "port": "tick"
+            },
+            "metadata": {
+                "route": 4
+            }
+        },
+        {
             "data": "#scene",
             "tgt": {
-                "process": "GetElement",
+                "process": "div",
                 "port": "selector"
             }
         },
@@ -431,13 +439,6 @@
             }
         },
         {
-            "data": "100",
-            "tgt": {
-                "process": "RunInterval",
-                "port": "interval"
-            }
-        },
-        {
             "data": 1,
             "tgt": {
                 "process": "Box",
@@ -477,6 +478,13 @@
             "tgt": {
                 "process": "Sphere",
                 "port": "widthsegments"
+            }
+        },
+        {
+            "data": "0",
+            "tgt": {
+                "process": "Start",
+                "port": "in"
             }
         }
     ]

@@ -2,8 +2,11 @@
     "properties": {
         "name": "Beeper",
         "environment": {
-            "type": "noflo-browser"
-        }
+            "type": "noflo-browser",
+            "content": ""
+        },
+        "description": "Sound module",
+        "icon": "bullhorn"
     },
     "inports": {},
     "outports": {},
@@ -78,17 +81,17 @@
             }
         },
         {
-            "data": "1000",
-            "tgt": {
-                "process": "Oscillator",
-                "port": "frequency"
-            }
-        },
-        {
             "data": "sine",
             "tgt": {
                 "process": "Oscillator",
                 "port": "waveform"
+            }
+        },
+        {
+            "data": "1000",
+            "tgt": {
+                "process": "Oscillator",
+                "port": "frequency"
             }
         }
     ]

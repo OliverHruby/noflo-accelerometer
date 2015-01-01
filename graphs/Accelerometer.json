@@ -13,97 +13,97 @@
             "component": "core/MakeFunction",
             "metadata": {
                 "x": 468,
-                "y": 180,
+                "y": 216,
                 "width": 72,
                 "height": 72,
                 "label": "2 places"
             }
         },
-        "2 places_4n0xn": {
+        "2 places_siltr": {
             "component": "core/MakeFunction",
             "metadata": {
                 "x": 468,
                 "y": 324,
                 "width": 72,
                 "height": 72,
-                "label": "2 places_4n0xn"
+                "label": "2 places"
             }
         },
-        "2 places_uo8lz": {
+        "2 places_drtt3": {
             "component": "core/MakeFunction",
             "metadata": {
                 "x": 468,
-                "y": 612,
+                "y": 432,
                 "width": 72,
                 "height": 72,
-                "label": "2 places_uo8lz"
+                "label": "2 places"
             }
         },
-        "element_zc6el": {
+        "element_9faxr": {
             "component": "dom/GetElement",
             "metadata": {
-                "x": 468,
-                "y": 36,
+                "x": 612,
+                "y": 216,
                 "width": 72,
                 "height": 72,
-                "label": "element_zc6el"
+                "label": "element"
             }
         },
         "alpha": {
             "component": "dom/WriteHtml",
             "metadata": {
-                "x": 612,
-                "y": 144,
+                "x": 720,
+                "y": 216,
                 "width": 72,
                 "height": 72,
                 "label": "alpha"
             }
         },
-        "element_m270p": {
+        "element": {
             "component": "dom/GetElement",
             "metadata": {
-                "x": 468,
-                "y": 468,
+                "x": 612,
+                "y": 324,
                 "width": 72,
                 "height": 72,
-                "label": "element_m270p"
+                "label": "element"
             }
         },
         "beta": {
             "component": "dom/WriteHtml",
             "metadata": {
-                "x": 612,
-                "y": 288,
+                "x": 720,
+                "y": 324,
                 "width": 72,
                 "height": 72,
                 "label": "beta"
             }
         },
-        "element_xdr25": {
+        "element_s2ahq": {
             "component": "dom/GetElement",
             "metadata": {
-                "x": 468,
-                "y": 756,
+                "x": 612,
+                "y": 432,
                 "width": 72,
                 "height": 72,
-                "label": "element_xdr25"
+                "label": "element"
             }
         },
-        "gamma_6z2yx": {
+        "gamma": {
             "component": "dom/WriteHtml",
             "metadata": {
-                "x": 612,
-                "y": 576,
+                "x": 720,
+                "y": 432,
                 "width": 72,
                 "height": 72,
-                "label": "gamma_6z2yx"
+                "label": "gamma"
             }
         },
         "Drop": {
             "component": "core/Drop",
             "metadata": {
                 "x": 468,
-                "y": 900,
+                "y": 612,
                 "width": 72,
                 "height": 72,
                 "label": "Drop"
@@ -112,29 +112,29 @@
         "DeviceOrientation": {
             "component": "sensors/DeviceOrientation",
             "metadata": {
-                "x": 288,
-                "y": 864,
+                "x": 252,
+                "y": 360,
                 "width": 72,
                 "height": 72,
                 "label": "DeviceOrientation"
             }
         },
-        "core/RunInterval_qc3vo": {
-            "component": "core/RunInterval",
+        "start": {
+            "component": "core/Repeat",
             "metadata": {
-                "label": "core/RunInterval",
-                "x": 144,
-                "y": 864,
+                "label": "start",
+                "x": 0,
+                "y": 360,
                 "width": 72,
                 "height": 72
             }
         },
-        "core/Repeat_d1z4": {
-            "component": "core/Repeat",
+        "Frame": {
+            "component": "dom/RequestAnimationFrame",
             "metadata": {
-                "label": "core/Repeat",
-                "x": 36,
-                "y": 864,
+                "label": "Frame",
+                "x": 108,
+                "y": 360,
                 "width": 72,
                 "height": 72
             }
@@ -143,7 +143,7 @@
     "connections": [
         {
             "src": {
-                "process": "element_zc6el",
+                "process": "element_9faxr",
                 "port": "element"
             },
             "tgt": {
@@ -169,7 +169,7 @@
         },
         {
             "src": {
-                "process": "element_m270p",
+                "process": "element",
                 "port": "element"
             },
             "tgt": {
@@ -182,7 +182,7 @@
         },
         {
             "src": {
-                "process": "2 places_4n0xn",
+                "process": "2 places_siltr",
                 "port": "out"
             },
             "tgt": {
@@ -195,11 +195,11 @@
         },
         {
             "src": {
-                "process": "element_xdr25",
+                "process": "element_s2ahq",
                 "port": "element"
             },
             "tgt": {
-                "process": "gamma_6z2yx",
+                "process": "gamma",
                 "port": "container"
             },
             "metadata": {
@@ -208,11 +208,11 @@
         },
         {
             "src": {
-                "process": "2 places_uo8lz",
+                "process": "2 places_drtt3",
                 "port": "out"
             },
             "tgt": {
-                "process": "gamma_6z2yx",
+                "process": "gamma",
                 "port": "html"
             },
             "metadata": {
@@ -227,6 +227,9 @@
             "tgt": {
                 "process": "2 places",
                 "port": "in"
+            },
+            "metadata": {
+                "route": 2
             }
         },
         {
@@ -235,8 +238,11 @@
                 "port": "beta"
             },
             "tgt": {
-                "process": "2 places_4n0xn",
+                "process": "2 places_siltr",
                 "port": "in"
+            },
+            "metadata": {
+                "route": 2
             }
         },
         {
@@ -245,8 +251,11 @@
                 "port": "gamma"
             },
             "tgt": {
-                "process": "2 places_uo8lz",
+                "process": "2 places_drtt3",
                 "port": "in"
+            },
+            "metadata": {
+                "route": 2
             }
         },
         {
@@ -257,6 +266,9 @@
             "tgt": {
                 "process": "Drop",
                 "port": "in"
+            },
+            "metadata": {
+                "route": 2
             }
         },
         {
@@ -267,105 +279,35 @@
             "tgt": {
                 "process": "Drop",
                 "port": "in"
+            },
+            "metadata": {
+                "route": 2
             }
         },
         {
             "src": {
-                "process": "core/Repeat_d1z4",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "core/RunInterval_qc3vo",
-                "port": "start"
-            },
-            "metadata": {}
-        },
-        {
-            "src": {
-                "process": "core/RunInterval_qc3vo",
+                "process": "Frame",
                 "port": "out"
             },
             "tgt": {
                 "process": "DeviceOrientation",
                 "port": "start"
             },
-            "metadata": {}
-        },
-        {
-            "data": "return x.toFixed(2);",
-            "tgt": {
-                "process": "2 places",
-                "port": "function"
+            "metadata": {
+                "route": 4
             }
         },
         {
-            "data": "return x.toFixed(2);",
+            "src": {
+                "process": "start",
+                "port": "out"
+            },
             "tgt": {
-                "process": "2 places_uo8lz",
-                "port": "function"
-            }
-        },
-        {
-            "data": "return x.toFixed(2);",
-            "tgt": {
-                "process": "2 places_4n0xn",
-                "port": "function"
-            }
-        },
-        {
-            "data": "#accelerometer_alpha",
-            "tgt": {
-                "process": "element_zc6el",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "#accelerometer_beta",
-            "tgt": {
-                "process": "element_m270p",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "#accelerometer_gamma",
-            "tgt": {
-                "process": "element_xdr25",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "#accelerometer_gamma",
-            "tgt": {
-                "process": "element_xdr25",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "#accelerometer_beta",
-            "tgt": {
-                "process": "element_m270p",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "#accelerometer_alpha",
-            "tgt": {
-                "process": "element_zc6el",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "return x.toFixed(2);",
-            "tgt": {
-                "process": "2 places_uo8lz",
-                "port": "function"
-            }
-        },
-        {
-            "data": "return x.toFixed(2);",
-            "tgt": {
-                "process": "2 places_4n0xn",
-                "port": "function"
+                "process": "Frame",
+                "port": "start"
+            },
+            "metadata": {
+                "route": 4
             }
         },
         {
@@ -376,16 +318,86 @@
             }
         },
         {
-            "data": 100,
+            "data": "return x.toFixed(2);",
             "tgt": {
-                "process": "core/RunInterval_qc3vo",
-                "port": "interval"
+                "process": "2 places_drtt3",
+                "port": "function"
+            }
+        },
+        {
+            "data": "return x.toFixed(2);",
+            "tgt": {
+                "process": "2 places_siltr",
+                "port": "function"
+            }
+        },
+        {
+            "data": "#accelerometer_alpha",
+            "tgt": {
+                "process": "element_9faxr",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#accelerometer_beta",
+            "tgt": {
+                "process": "element",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#accelerometer_gamma",
+            "tgt": {
+                "process": "element_s2ahq",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#accelerometer_gamma",
+            "tgt": {
+                "process": "element_s2ahq",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#accelerometer_beta",
+            "tgt": {
+                "process": "element",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#accelerometer_alpha",
+            "tgt": {
+                "process": "element_9faxr",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "return x.toFixed(2);",
+            "tgt": {
+                "process": "2 places_drtt3",
+                "port": "function"
+            }
+        },
+        {
+            "data": "return x.toFixed(2);",
+            "tgt": {
+                "process": "2 places_siltr",
+                "port": "function"
+            }
+        },
+        {
+            "data": "return x.toFixed(2);",
+            "tgt": {
+                "process": "2 places",
+                "port": "function"
             }
         },
         {
             "data": "0",
             "tgt": {
-                "process": "core/Repeat_d1z4",
+                "process": "start",
                 "port": "in"
             }
         }
