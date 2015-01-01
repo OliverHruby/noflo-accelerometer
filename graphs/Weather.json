@@ -1,14 +1,11 @@
 {
     "properties": {
         "name": "Weather",
-        "project": "test",
-        "id": "test/Weather",
         "environment": {
             "type": "noflo-browser",
             "content": "\n<div class=\"panel\">\n    <div class=\"header\">Weather</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Weather: </span>\n        <span class=\"value\" id=\"weather_main\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Temperature: </span>\n        <span class=\"value\" id=\"weather_temp\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Wind speed: </span>\n        <span class=\"value\" id=\"weather_wind_speed\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Pressure: </span>\n        <span class=\"value\" id=\"weather_pressure\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Humidity: </span>\n        <span class=\"value\" id=\"weather_humidity\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Clouds: </span>\n        <span class=\"value\" id=\"weather_clouds\"></span>\n    </div>\n</div>\n"
         },
-        "icon": "",
-        "changed": true
+        "icon": ""
     },
     "inports": {},
     "outports": {},

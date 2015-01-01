@@ -1,0 +1,393 @@
+{
+    "properties": {
+        "name": "Accelerometer",
+        "environment": {
+            "type": "noflo-browser"
+        }
+    },
+    "inports": {},
+    "outports": {},
+    "groups": [],
+    "processes": {
+        "2 places": {
+            "component": "core/MakeFunction",
+            "metadata": {
+                "x": 468,
+                "y": 180,
+                "width": 72,
+                "height": 72,
+                "label": "2 places"
+            }
+        },
+        "2 places_4n0xn": {
+            "component": "core/MakeFunction",
+            "metadata": {
+                "x": 468,
+                "y": 324,
+                "width": 72,
+                "height": 72,
+                "label": "2 places_4n0xn"
+            }
+        },
+        "2 places_uo8lz": {
+            "component": "core/MakeFunction",
+            "metadata": {
+                "x": 468,
+                "y": 612,
+                "width": 72,
+                "height": 72,
+                "label": "2 places_uo8lz"
+            }
+        },
+        "element_zc6el": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "x": 468,
+                "y": 36,
+                "width": 72,
+                "height": 72,
+                "label": "element_zc6el"
+            }
+        },
+        "alpha": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "x": 612,
+                "y": 144,
+                "width": 72,
+                "height": 72,
+                "label": "alpha"
+            }
+        },
+        "element_m270p": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "x": 468,
+                "y": 468,
+                "width": 72,
+                "height": 72,
+                "label": "element_m270p"
+            }
+        },
+        "beta": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "x": 612,
+                "y": 288,
+                "width": 72,
+                "height": 72,
+                "label": "beta"
+            }
+        },
+        "element_xdr25": {
+            "component": "dom/GetElement",
+            "metadata": {
+                "x": 468,
+                "y": 756,
+                "width": 72,
+                "height": 72,
+                "label": "element_xdr25"
+            }
+        },
+        "gamma_6z2yx": {
+            "component": "dom/WriteHtml",
+            "metadata": {
+                "x": 612,
+                "y": 576,
+                "width": 72,
+                "height": 72,
+                "label": "gamma_6z2yx"
+            }
+        },
+        "Drop": {
+            "component": "core/Drop",
+            "metadata": {
+                "x": 468,
+                "y": 900,
+                "width": 72,
+                "height": 72,
+                "label": "Drop"
+            }
+        },
+        "DeviceOrientation": {
+            "component": "sensors/DeviceOrientation",
+            "metadata": {
+                "x": 288,
+                "y": 864,
+                "width": 72,
+                "height": 72,
+                "label": "DeviceOrientation"
+            }
+        },
+        "core/RunInterval_qc3vo": {
+            "component": "core/RunInterval",
+            "metadata": {
+                "label": "core/RunInterval",
+                "x": 144,
+                "y": 864,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "core/Repeat_d1z4": {
+            "component": "core/Repeat",
+            "metadata": {
+                "label": "core/Repeat",
+                "x": 36,
+                "y": 864,
+                "width": 72,
+                "height": 72
+            }
+        }
+    },
+    "connections": [
+        {
+            "src": {
+                "process": "element_zc6el",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "alpha",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "2 places",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "alpha",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "element_m270p",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "beta",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "2 places_4n0xn",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "beta",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "element_xdr25",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "gamma_6z2yx",
+                "port": "container"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "2 places_uo8lz",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "gamma_6z2yx",
+                "port": "html"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "DeviceOrientation",
+                "port": "alpha"
+            },
+            "tgt": {
+                "process": "2 places",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "DeviceOrientation",
+                "port": "beta"
+            },
+            "tgt": {
+                "process": "2 places_4n0xn",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "DeviceOrientation",
+                "port": "gamma"
+            },
+            "tgt": {
+                "process": "2 places_uo8lz",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "DeviceOrientation",
+                "port": "absolute"
+            },
+            "tgt": {
+                "process": "Drop",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "DeviceOrientation",
+                "port": "removed"
+            },
+            "tgt": {
+                "process": "Drop",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "core/Repeat_d1z4",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/RunInterval_qc3vo",
+                "port": "start"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "core/RunInterval_qc3vo",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "DeviceOrientation",
+                "port": "start"
+            },
+            "metadata": {}
+        },
+        {
+            "data": "return x.toFixed(2);",
+            "tgt": {
+                "process": "2 places",
+                "port": "function"
+            }
+        },
+        {
+            "data": "return x.toFixed(2);",
+            "tgt": {
+                "process": "2 places_uo8lz",
+                "port": "function"
+            }
+        },
+        {
+            "data": "return x.toFixed(2);",
+            "tgt": {
+                "process": "2 places_4n0xn",
+                "port": "function"
+            }
+        },
+        {
+            "data": "#accelerometer_alpha",
+            "tgt": {
+                "process": "element_zc6el",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#accelerometer_beta",
+            "tgt": {
+                "process": "element_m270p",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#accelerometer_gamma",
+            "tgt": {
+                "process": "element_xdr25",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#accelerometer_gamma",
+            "tgt": {
+                "process": "element_xdr25",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#accelerometer_beta",
+            "tgt": {
+                "process": "element_m270p",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "#accelerometer_alpha",
+            "tgt": {
+                "process": "element_zc6el",
+                "port": "selector"
+            }
+        },
+        {
+            "data": "return x.toFixed(2);",
+            "tgt": {
+                "process": "2 places_uo8lz",
+                "port": "function"
+            }
+        },
+        {
+            "data": "return x.toFixed(2);",
+            "tgt": {
+                "process": "2 places_4n0xn",
+                "port": "function"
+            }
+        },
+        {
+            "data": "return x.toFixed(2);",
+            "tgt": {
+                "process": "2 places",
+                "port": "function"
+            }
+        },
+        {
+            "data": 100,
+            "tgt": {
+                "process": "core/RunInterval_qc3vo",
+                "port": "interval"
+            }
+        },
+        {
+            "data": "0",
+            "tgt": {
+                "process": "core/Repeat_d1z4",
+                "port": "in"
+            }
+        }
+    ]
+}

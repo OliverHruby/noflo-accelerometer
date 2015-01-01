@@ -1,0 +1,71 @@
+{
+    "properties": {
+        "name": "SunCalc Test",
+        "environment": {
+            "type": "noflo-browser"
+        }
+    },
+    "inports": {},
+    "outports": {},
+    "groups": [],
+    "processes": {
+        "suncalc/SunPosition_ue1f4": {
+            "component": "suncalc/SunPosition",
+            "metadata": {
+                "label": "suncalc/SunPosition",
+                "x": 504,
+                "y": 144,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "core/Output_io60": {
+            "component": "core/Output",
+            "metadata": {
+                "label": "core/Output",
+                "x": 612,
+                "y": 144,
+                "width": 72,
+                "height": 72
+            }
+        }
+    },
+    "connections": [
+        {
+            "src": {
+                "process": "suncalc/SunPosition_ue1f4",
+                "port": "altitude"
+            },
+            "tgt": {
+                "process": "core/Output_io60",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "suncalc/SunPosition_ue1f4",
+                "port": "azimuth"
+            },
+            "tgt": {
+                "process": "core/Output_io60",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "data": 0,
+            "tgt": {
+                "process": "suncalc/SunPosition_ue1f4",
+                "port": "latitude"
+            }
+        },
+        {
+            "data": 0,
+            "tgt": {
+                "process": "suncalc/SunPosition_ue1f4",
+                "port": "longitude"
+            }
+        }
+    ]
+}
