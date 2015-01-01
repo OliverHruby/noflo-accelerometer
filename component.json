@@ -15,16 +15,19 @@
     "components/DeviceMotion.coffee",
     "components/Geolocation.coffee",
     "components/SpeechSynthesis.coffee",
-    "components/WebSocket.coffee",
-    "graphs/Robot.json",
-    "graphs/three_test.json",
-    "graphs/Beeper.json"
+    "components/WebSocket.coffee"
   ],
   "json": [
     "component.json",
+    "graphs/Accelerometer.json",
+    "graphs/Beeper.json",
+    "graphs/FaceRecognition.json",
+    "graphs/Gamepad.json",
+    "graphs/Network.json",
     "graphs/Robot.json",
-    "graphs/three_test.json",
-    "graphs/Beeper.json"
+    "graphs/main.json",
+    "graphs/Three.json",
+    "graphs/Weather.json"
   ],
   "noflo": {
     "components": {
@@ -36,9 +39,15 @@
       "WebSocket": "components/WebSocket.coffee"
     },
     "graphs": {
+      "Accelerometer": "graphs/Accelerometer.json",
       "Beeper": "graphs/Beeper.json",
+      "FaceRecognition": "graphs/FaceRecognition.json",
+      "Gamepad": "graphs/Gamepad.json",
+      "Network": "graphs/Network.json",
       "Robot": "graphs/Robot.json",
-      "three_test": "graphs/three_test.json"
+      "three_test": "graphs/three_test.json",
+      "Three": "graphs/Three.json",
+      "Weather": "graphs/Weather.json"
     }
   }
 }
