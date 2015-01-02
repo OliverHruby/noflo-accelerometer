@@ -3,7 +3,7 @@
         "name": "main",
         "environment": {
             "type": "noflo-browser",
-            "content": "<style>\n.wrapper {\n    position: relative;\n    width: 640px;\n    height: 480px;\n}\n\n.wrapper canvas {\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n\n.header {\n    font-style: uppercase;\n    color: #4488aa;\n}\n.sensor .value {\n    font-weight: bold;\n    color: green;\n}\n.panel {\n\tfont-size: 11px;\n    padding: 8px;\n    margin: 8px;\n    background-color: #112233;\n    width: 200px;\n    float:left;\n    display: inline-block;\n}\n</style>\n\n<div class=\"wrapper\">\n    <video id=\"camera\" autoplay loop width=\"640\" height=\"480\" style=\"display:none\"></video>\n    <canvas id=\"out\" width=\"640\" height=\"480\" style=\"max-width:100%;\"></canvas>\n    <canvas id=\"drawing\" width=\"640\" height=\"480\" style=\"border: 1px solid #5577aa\"></canvas>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Accelerometer</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Alpha:</span>\n        <span class=\"value\" id=\"accelerometer_alpha\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Beta:</span>\n        <span class=\"value\" id=\"accelerometer_beta\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Gamma:</span>\n        <span class=\"value\" id=\"accelerometer_gamma\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Geolocation</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Latitude: </span>\n        <span class=\"value\" id=\"geolocation_latitude\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Longitude: </span>\n        <span class=\"value\" id=\"geolocation_longitude\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Sun Position</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Sun altitude: </span>\n        <span class=\"value\" id=\"sun_position_altitude\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Sun azimuth: </span>\n        <span class=\"value\" id=\"sun_position_azimuth\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Speech</div>\n    <div class=\"sensor\">\n        <input id=\"button_voice\" type=\"button\" value=\"Voice Input\"></input><br/>\n        <span class=\"label\">Command: </span>\n        <span class=\"value\">\n      <input type=\"text\" id=\"command\"></input>\n      <button id=\"btnCommand\">Go</button>\n    </span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Log: </span>\n        <span class=\"value\" id=\"speech\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Keyboard input</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Key: </span>\n        <span class=\"value\" id=\"keyboard\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Gamepad</div>\n    <div class=\"sensor\">\n\t\t<span class=\"value\" id=\"gamepad_error\"></span>\n    </div>\n    <div class=\"sensor\">\n\t\t<span class=\"label\">ID: </span>\n        <span class=\"value\" id=\"gamepad_id\"></span>\n    </div>\n    <div class=\"sensor\">\n\t\t<span class=\"label\">X1: </span>\n        <span class=\"value\" id=\"gamepad_x1\"></span>\n    </div>\n    <div class=\"sensor\">\n\t\t<span class=\"label\">Y1: </span>\n        <span class=\"value\" id=\"gamepad_y1\"></span>\n  \t</div>\n    <div class=\"sensor\">\n        <span class=\"label\">X2: </span>\n        <span class=\"value\" id=\"gamepad_x2\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Y2: <span>\n        <span class=\"value\" id=\"gamepad_y2\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B0: </span>\n        <span class=\"value\" id=\"gamepad_b0\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B1: </span>\n        <span class=\"value\" id=\"gamepad_b1\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B2: </span>\n        <span class=\"value\" id=\"gamepad_b2\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B3: </span>\n        <span class=\"value\" id=\"gamepad_b3\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B4: <span>\n        <span class=\"value\" id=\"gamepad_b4\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B5: </span>\n        <span class=\"value\" id=\"gamepad_b5\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B6: </span>\n        <span class=\"value\" id=\"gamepad_b6\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B7: </span>\n        <span class=\"value\" id=\"gamepad_b7\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B8: </span>\n        <span class=\"value\" id=\"gamepad_b8\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B9: </span>\n        <span class=\"value\" id=\"gamepad_b9\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B10: </span>\n        <span class=\"value\" id=\"gamepad_b10\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B11: </span>\n        <span class=\"value\" id=\"gamepad_b11\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B12: </span>\n        <span class=\"value\" id=\"gamepad_b12\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B13: </span>\n        <span class=\"value\" id=\"gamepad_b13\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B14: </span>\n        <span class=\"value\" id=\"gamepad_b14\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B15: </span>\n        <span class=\"value\" id=\"gamepad_b15\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Network information</div>\n    <div class=\"sensor\">\n        <span class=\"label\">IP address: </span>\n        <span class=\"value\" id=\"network_ip\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Provider: </span>\n        <span class=\"value\" id=\"network_provider\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Weather</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Weather: </span>\n        <span class=\"value\" id=\"weather_main\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Temperature: </span>\n        <span class=\"value\" id=\"weather_temp\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Wind speed: </span>\n        <span class=\"value\" id=\"weather_wind_speed\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Pressure: </span>\n        <span class=\"value\" id=\"weather_pressure\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Humidity: </span>\n        <span class=\"value\" id=\"weather_humidity\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Clouds: </span>\n        <span class=\"value\" id=\"weather_clouds\"></span>\n    </div>\n</div>\n\n<div id=\"scene\" style=\"position:absolute;top:0px;left:660px;width:640px;height:480px;\"></div>"
+            "content": "<style>\n.wrapper {\n    position: relative;\n    width: 640px;\n    height: 480px;\n}\n\n.wrapper canvas {\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n\n.header {\n    font-style: uppercase;\n    color: #4488aa;\n}\n.sensor .value {\n    font-weight: bold;\n    color: lightgreen;\n}\n.panel {\n\tfont-size: 12px;\n    padding: 8px;\n    margin: 8px;\n    background-color: #112233;\n    width: 200px;\n    float:left;\n    display: inline-block;\n}\n</style>\n\n<div class=\"wrapper\">\n    <video id=\"camera\" autoplay loop width=\"640\" height=\"480\" style=\"display:none\"></video>\n    <canvas id=\"out\" width=\"640\" height=\"480\" style=\"max-width:100%;\"></canvas>\n    <canvas id=\"drawing\" width=\"640\" height=\"480\" style=\"border: 1px solid #5577aa\"></canvas>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Accelerometer</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Alpha:</span>\n        <span class=\"value\" id=\"accelerometer_alpha\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Beta:</span>\n        <span class=\"value\" id=\"accelerometer_beta\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Gamma:</span>\n        <span class=\"value\" id=\"accelerometer_gamma\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Geolocation</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Latitude: </span>\n        <span class=\"value\" id=\"geolocation_latitude\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Longitude: </span>\n        <span class=\"value\" id=\"geolocation_longitude\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Battery</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Level: </span>\n        <span class=\"value\" id=\"battery_level\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Charging: </span>\n        <span class=\"value\" id=\"battery_charging\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Sun Position</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Sun altitude: </span>\n        <span class=\"value\" id=\"sun_position_altitude\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Sun azimuth: </span>\n        <span class=\"value\" id=\"sun_position_azimuth\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Speech</div>\n    <div class=\"sensor\">\n        <input id=\"button_voice\" type=\"button\" value=\"Voice Input\"></input><br/>\n        <span class=\"label\">Command: </span>\n        <span class=\"value\">\n      <input type=\"text\" id=\"command\"></input>\n      <button id=\"btnCommand\">Go</button>\n    </span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Log: </span>\n        <span class=\"value\" id=\"speech\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Keyboard input</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Key: </span>\n        <span class=\"value\" id=\"keyboard\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Gamepad</div>\n    <div class=\"sensor\">\n\t\t<span class=\"value\" id=\"gamepad_error\"></span>\n    </div>\n    <div class=\"sensor\">\n\t\t<span class=\"label\">ID: </span>\n        <span class=\"value\" id=\"gamepad_id\"></span>\n    </div>\n    <div class=\"sensor\">\n\t\t<span class=\"label\">X1: </span>\n        <span class=\"value\" id=\"gamepad_x1\"></span>\n    </div>\n    <div class=\"sensor\">\n\t\t<span class=\"label\">Y1: </span>\n        <span class=\"value\" id=\"gamepad_y1\"></span>\n  \t</div>\n    <div class=\"sensor\">\n        <span class=\"label\">X2: </span>\n        <span class=\"value\" id=\"gamepad_x2\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Y2: <span>\n        <span class=\"value\" id=\"gamepad_y2\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B0: </span>\n        <span class=\"value\" id=\"gamepad_b0\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B1: </span>\n        <span class=\"value\" id=\"gamepad_b1\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B2: </span>\n        <span class=\"value\" id=\"gamepad_b2\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B3: </span>\n        <span class=\"value\" id=\"gamepad_b3\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B4: <span>\n        <span class=\"value\" id=\"gamepad_b4\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B5: </span>\n        <span class=\"value\" id=\"gamepad_b5\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B6: </span>\n        <span class=\"value\" id=\"gamepad_b6\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B7: </span>\n        <span class=\"value\" id=\"gamepad_b7\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B8: </span>\n        <span class=\"value\" id=\"gamepad_b8\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B9: </span>\n        <span class=\"value\" id=\"gamepad_b9\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B10: </span>\n        <span class=\"value\" id=\"gamepad_b10\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B11: </span>\n        <span class=\"value\" id=\"gamepad_b11\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B12: </span>\n        <span class=\"value\" id=\"gamepad_b12\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B13: </span>\n        <span class=\"value\" id=\"gamepad_b13\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B14: </span>\n        <span class=\"value\" id=\"gamepad_b14\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">B15: </span>\n        <span class=\"value\" id=\"gamepad_b15\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Network information</div>\n    <div class=\"sensor\">\n        <span class=\"label\">IP address: </span>\n        <span class=\"value\" id=\"network_ip\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Provider: </span>\n        <span class=\"value\" id=\"network_provider\"></span>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">WebSocket</div>\n    <div class=\"sensor\">\n        <span class=\"label\">URL: </span>\n        <input type=\"text\" value=\"wss://echo.websocket.org\" />\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Send: </span>\n        <input type=\"text\" id=\"websocket_message\" />\n        <input type=\"button\" id=\"websocket_send\" value=\"Send\" />\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Received: </span>\n        <div id=\"websocket_received\"></div>\n    </div>\n</div>\n\n<div class=\"panel\">\n    <div class=\"header\">Weather</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Weather: </span>\n        <span class=\"value\" id=\"weather_main\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Temperature: </span>\n        <span class=\"value\" id=\"weather_temp\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Wind speed: </span>\n        <span class=\"value\" id=\"weather_wind_speed\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Pressure: </span>\n        <span class=\"value\" id=\"weather_pressure\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Humidity: </span>\n        <span class=\"value\" id=\"weather_humidity\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Clouds: </span>\n        <span class=\"value\" id=\"weather_clouds\"></span>\n    </div>\n</div>\n\n<div id=\"scene\" style=\"position:absolute;top:0px;left:660px;width:640px;height:480px;\"></div>"
         },
         "icon": "bullhorn"
     },
@@ -26,11 +26,7 @@
         },
         {
             "name": "Camera",
-            "nodes": [
-                "Camera_8lip5",
-                "element",
-                "src"
-            ],
+            "nodes": [],
             "metadata": {
                 "description": "Built in device camera input"
             }
@@ -44,12 +40,7 @@
         },
         {
             "name": "Video Effects",
-            "nodes": [
-                "NightVision",
-                "Source",
-                "Target",
-                "element_3g632"
-            ],
+            "nodes": [],
             "metadata": {
                 "description": "Seriously.js processing engine"
             }
@@ -63,23 +54,14 @@
         },
         {
             "name": "Speech Recognition",
-            "nodes": [
-                "Listen",
-                "button",
-                "click",
-                "element_ta8eu",
-                "show_zuei8"
-            ],
+            "nodes": [],
             "metadata": {
                 "description": "Transforms spoken text to written"
             }
         },
         {
             "name": "Battery",
-            "nodes": [
-                "Battery",
-                "Output_l7qas"
-            ],
+            "nodes": [],
             "metadata": {
                 "description": "Battery status"
             }
@@ -111,148 +93,8 @@
             "component": "core/Repeat",
             "metadata": {
                 "label": "Start",
-                "x": -432,
+                "x": -180,
                 "y": 396,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Camera_8lip5": {
-            "component": "gum/GetUserMedia",
-            "metadata": {
-                "label": "Camera",
-                "x": -108,
-                "y": 900,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "element": {
-            "component": "dom/GetElement",
-            "metadata": {
-                "label": "element",
-                "x": -144,
-                "y": 612,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "src": {
-            "component": "dom/SetAttribute",
-            "metadata": {
-                "label": "src",
-                "x": -36,
-                "y": 684,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Source": {
-            "component": "seriously/SetSource",
-            "metadata": {
-                "label": "Source",
-                "x": 144,
-                "y": 792,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "element_3g632": {
-            "component": "dom/GetElement",
-            "metadata": {
-                "label": "element",
-                "x": 252,
-                "y": 720,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Target": {
-            "component": "seriously/SetTarget",
-            "metadata": {
-                "label": "Target",
-                "x": 360,
-                "y": 792,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "NightVision": {
-            "component": "seriously/NightVision",
-            "metadata": {
-                "label": "NightVision",
-                "x": 252,
-                "y": 828,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Listen": {
-            "component": "interaction/ListenSpeech",
-            "metadata": {
-                "label": "Listen",
-                "x": -432,
-                "y": 792,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "button": {
-            "component": "dom/GetElement",
-            "metadata": {
-                "label": "button",
-                "x": -648,
-                "y": 792,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "click": {
-            "component": "dom/Listen",
-            "metadata": {
-                "label": "click",
-                "x": -540,
-                "y": 792,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "element_ta8eu": {
-            "component": "dom/GetElement",
-            "metadata": {
-                "label": "element",
-                "x": -432,
-                "y": 684,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "show_zuei8": {
-            "component": "dom/WriteHtml",
-            "metadata": {
-                "label": "show",
-                "x": -324,
-                "y": 792,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Battery": {
-            "component": "sensors/BatteryStatus",
-            "metadata": {
-                "label": "Battery",
-                "x": 0,
-                "y": 1044,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Output_l7qas": {
-            "component": "core/Output",
-            "metadata": {
-                "label": "Output",
-                "x": 144,
-                "y": 1044,
                 "width": 72,
                 "height": 72
             }
@@ -261,8 +103,8 @@
             "component": "sensors/SpeechSynthesis",
             "metadata": {
                 "label": "Speech",
-                "x": -108,
-                "y": 432,
+                "x": 0,
+                "y": 216,
                 "width": 72,
                 "height": 72
             }
@@ -272,17 +114,7 @@
             "metadata": {
                 "label": "Weather",
                 "x": 540,
-                "y": 180,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "test/Three": {
-            "component": "test/Three",
-            "metadata": {
-                "label": "Three",
-                "x": 684,
-                "y": 468,
+                "y": 108,
                 "width": 72,
                 "height": 72
             }
@@ -291,8 +123,8 @@
             "component": "test/Accelerometer",
             "metadata": {
                 "label": "Accelerometer",
-                "x": 540,
-                "y": 288,
+                "x": 180,
+                "y": 108,
                 "width": 72,
                 "height": 72
             }
@@ -301,8 +133,8 @@
             "component": "test/Network",
             "metadata": {
                 "label": "Network",
-                "x": 540,
-                "y": 72,
+                "x": 180,
+                "y": 324,
                 "width": 72,
                 "height": 72
             }
@@ -311,193 +143,84 @@
             "component": "test/Gamepad",
             "metadata": {
                 "label": "Gamepad",
-                "x": 540,
-                "y": 432,
+                "x": 360,
+                "y": 108,
                 "width": 72,
-                "height": 216
+                "height": 72
             }
         },
         "test/FaceRecognition": {
             "component": "test/FaceRecognition",
             "metadata": {
                 "label": "FaceRecognition",
+                "x": 324,
+                "y": 504,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "WebSocket": {
+            "component": "test/WebSocket",
+            "metadata": {
+                "label": "WebSocket",
                 "x": 540,
-                "y": 756,
+                "y": 252,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "test/SpeechRecognition": {
+            "component": "test/SpeechRecognition",
+            "metadata": {
+                "label": "SpeechRecognition",
+                "x": 0,
+                "y": 324,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "test/BatteryStatus": {
+            "component": "test/BatteryStatus",
+            "metadata": {
+                "label": "BatteryStatus",
+                "x": 180,
+                "y": 216,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "test/VideoEffects": {
+            "component": "test/VideoEffects",
+            "metadata": {
+                "label": "VideoEffects",
+                "x": 180,
+                "y": 504,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "SunCalc": {
+            "component": "test/SunCalc",
+            "metadata": {
+                "label": "SunCalc",
+                "x": 540,
+                "y": 396,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "test/Camera": {
+            "component": "test/Camera",
+            "metadata": {
+                "label": "Camera",
+                "x": 72,
+                "y": 504,
                 "width": 72,
                 "height": 72
             }
         }
     },
     "connections": [
-        {
-            "src": {
-                "process": "element",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "src",
-                "port": "element"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
-                "process": "Camera_8lip5",
-                "port": "url"
-            },
-            "tgt": {
-                "process": "src",
-                "port": "value"
-            },
-            "metadata": {
-                "route": 2
-            }
-        },
-        {
-            "src": {
-                "process": "Start",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Camera_8lip5",
-                "port": "start"
-            },
-            "metadata": {
-                "route": 4
-            }
-        },
-        {
-            "src": {
-                "process": "src",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "Source",
-                "port": "source"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
-                "process": "element_3g632",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "Target",
-                "port": "target"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
-                "process": "NightVision",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Target",
-                "port": "source"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
-                "process": "Source",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "NightVision",
-                "port": "source"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
-                "process": "button",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "click",
-                "port": "element"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
-                "process": "click",
-                "port": "event"
-            },
-            "tgt": {
-                "process": "Listen",
-                "port": "start"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
-                "process": "Listen",
-                "port": "result"
-            },
-            "tgt": {
-                "process": "show_zuei8",
-                "port": "html"
-            },
-            "metadata": {
-                "route": 2
-            }
-        },
-        {
-            "src": {
-                "process": "element_ta8eu",
-                "port": "element"
-            },
-            "tgt": {
-                "process": "show_zuei8",
-                "port": "container"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
-                "process": "Battery",
-                "port": "level"
-            },
-            "tgt": {
-                "process": "Output_l7qas",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 2
-            }
-        },
-        {
-            "src": {
-                "process": "Start",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Battery",
-                "port": "start"
-            },
-            "metadata": {
-                "route": 4
-            }
-        },
         {
             "src": {
                 "process": "Start",
@@ -513,26 +236,35 @@
         },
         {
             "src": {
-                "process": "Gamepad",
-                "port": "x1"
-            },
-            "tgt": {
-                "process": "test/Three",
-                "port": "radius"
-            },
-            "metadata": {}
-        },
-        {
-            "src": {
-                "process": "element_3g632",
-                "port": "element"
+                "process": "test/VideoEffects",
+                "port": "element_3g632.element"
             },
             "tgt": {
                 "process": "test/FaceRecognition",
                 "port": "image"
+            }
+        },
+        {
+            "src": {
+                "process": "Start",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "test/Camera",
+                "port": "camera_8lip5.start"
             },
             "metadata": {
-                "route": 7
+                "route": 4
+            }
+        },
+        {
+            "src": {
+                "process": "test/Camera",
+                "port": "src.element"
+            },
+            "tgt": {
+                "process": "test/VideoEffects",
+                "port": "source.source"
             }
         },
         {
@@ -540,69 +272,6 @@
             "tgt": {
                 "process": "Start",
                 "port": "in"
-            }
-        },
-        {
-            "data": "src",
-            "tgt": {
-                "process": "src",
-                "port": "attribute"
-            }
-        },
-        {
-            "data": "true",
-            "tgt": {
-                "process": "Camera_8lip5",
-                "port": "video"
-            }
-        },
-        {
-            "data": "#camera",
-            "tgt": {
-                "process": "element",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "false",
-            "tgt": {
-                "process": "Camera_8lip5",
-                "port": "audio"
-            }
-        },
-        {
-            "data": "#out",
-            "tgt": {
-                "process": "element_3g632",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "#button_voice",
-            "tgt": {
-                "process": "button",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "click",
-            "tgt": {
-                "process": "click",
-                "port": "type"
-            }
-        },
-        {
-            "data": "#speech",
-            "tgt": {
-                "process": "element_ta8eu",
-                "port": "selector"
-            }
-        },
-        {
-            "data": "2",
-            "tgt": {
-                "process": "NightVision",
-                "port": "amplification"
             }
         }
     ]

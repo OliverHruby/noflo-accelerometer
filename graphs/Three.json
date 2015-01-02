@@ -2,16 +2,18 @@
     "properties": {
         "name": "Three",
         "environment": {
-            "type": "noflo-browser"
-        }
+            "type": "noflo-browser",
+            "content": "<div id=\"scene\" style=\"width:640px;height:480px;\"></div>"
+        },
+        "icon": ""
     },
     "inports": {
         "radius": {
             "process": "Sphere",
             "port": "radius",
             "metadata": {
-                "x": 360,
-                "y": 0,
+                "x": 324,
+                "y": 108,
                 "width": 72,
                 "height": 72
             }
@@ -65,7 +67,7 @@
             "metadata": {
                 "label": "Mesh",
                 "x": 648,
-                "y": 36,
+                "y": 144,
                 "width": 72,
                 "height": 72
             }
@@ -100,42 +102,12 @@
                 "height": 72
             }
         },
-        "Box": {
-            "component": "three/BoxGeometry",
-            "metadata": {
-                "label": "Box",
-                "x": 540,
-                "y": 108,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "Random": {
-            "component": "math/Random",
-            "metadata": {
-                "label": "Random",
-                "x": 432,
-                "y": 108,
-                "width": 72,
-                "height": 72
-            }
-        },
         "Sphere": {
             "component": "three/SphereGeometry",
             "metadata": {
                 "label": "Sphere",
                 "x": 540,
-                "y": 0,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "three/Mesh_d31rv": {
-            "component": "three/Mesh",
-            "metadata": {
-                "label": "Mesh",
-                "x": 648,
-                "y": 144,
+                "y": 108,
                 "width": 72,
                 "height": 72
             }
@@ -223,7 +195,9 @@
                 "process": "Material",
                 "port": "color"
             },
-            "metadata": {}
+            "metadata": {
+                "route": 3
+            }
         },
         {
             "src": {
@@ -233,84 +207,6 @@
             "tgt": {
                 "process": "Camera",
                 "port": "position"
-            },
-            "metadata": {
-                "route": 3
-            }
-        },
-        {
-            "src": {
-                "process": "Random",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Box",
-                "port": "width"
-            },
-            "metadata": {
-                "route": 6
-            }
-        },
-        {
-            "src": {
-                "process": "Random",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Box",
-                "port": "height"
-            },
-            "metadata": {
-                "route": 6
-            }
-        },
-        {
-            "src": {
-                "process": "Random",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Box",
-                "port": "depth"
-            },
-            "metadata": {
-                "route": 6
-            }
-        },
-        {
-            "src": {
-                "process": "Box",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "three/Mesh_d31rv",
-                "port": "geometry"
-            },
-            "metadata": {
-                "route": 3
-            }
-        },
-        {
-            "src": {
-                "process": "Material",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "three/Mesh_d31rv",
-                "port": "material"
-            },
-            "metadata": {
-                "route": 3
-            }
-        },
-        {
-            "src": {
-                "process": "three/Mesh_d31rv",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "Scene",
-                "port": "children"
             },
             "metadata": {
                 "route": 3
@@ -397,24 +293,10 @@
             }
         },
         {
-            "data": 30,
-            "tgt": {
-                "process": "Color",
-                "port": "lightness"
-            }
-        },
-        {
             "data": 1,
             "tgt": {
                 "process": "Color",
                 "port": "alpha"
-            }
-        },
-        {
-            "data": 10,
-            "tgt": {
-                "process": "Color",
-                "port": "saturation"
             }
         },
         {
@@ -439,34 +321,6 @@
             }
         },
         {
-            "data": 1,
-            "tgt": {
-                "process": "Box",
-                "port": "depth"
-            }
-        },
-        {
-            "data": 1,
-            "tgt": {
-                "process": "Box",
-                "port": "height"
-            }
-        },
-        {
-            "data": 1,
-            "tgt": {
-                "process": "Box",
-                "port": "width"
-            }
-        },
-        {
-            "data": 1,
-            "tgt": {
-                "process": "Sphere",
-                "port": "radius"
-            }
-        },
-        {
             "data": 32,
             "tgt": {
                 "process": "Sphere",
@@ -485,6 +339,27 @@
             "tgt": {
                 "process": "Start",
                 "port": "in"
+            }
+        },
+        {
+            "data": "1",
+            "tgt": {
+                "process": "Sphere",
+                "port": "radius"
+            }
+        },
+        {
+            "data": 30,
+            "tgt": {
+                "process": "Color",
+                "port": "lightness"
+            }
+        },
+        {
+            "data": "20",
+            "tgt": {
+                "process": "Color",
+                "port": "saturation"
             }
         }
     ]
