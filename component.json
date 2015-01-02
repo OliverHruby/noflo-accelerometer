@@ -45,7 +45,7 @@
       "Gamepad": "graphs/Gamepad.json",
       "Network": "graphs/Network.json",
       "Robot": "graphs/Robot.json",
-      "three_test": "graphs/three_test.json",
+      "main": "graphs/main.json",
       "Three": "graphs/Three.json",
       "Weather": "graphs/Weather.json"
     }
