@@ -3,7 +3,7 @@
         "name": "SunCalc",
         "environment": {
             "type": "noflo-browser",
-            "content": ""
+            "content": "<div class=\"panel\">\n    <div class=\"header\">Sun Position</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Sun altitude: </span>\n        <span class=\"value\" id=\"sun_position_altitude\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Sun azimuth: </span>\n        <span class=\"value\" id=\"sun_position_azimuth\"></span>\n    </div>\n</div>"
         },
         "description": "Sun and moon calculations",
         "icon": "sun-o"
@@ -16,8 +16,8 @@
             "component": "core/Output",
             "metadata": {
                 "label": "Output",
-                "x": -828,
-                "y": 252,
+                "x": -720,
+                "y": 288,
                 "width": 72,
                 "height": 72
             }
@@ -26,7 +26,7 @@
             "component": "suncalc/SunPosition",
             "metadata": {
                 "label": "Sun Position",
-                "x": -828,
+                "x": -864,
                 "y": 144,
                 "width": 72,
                 "height": 72

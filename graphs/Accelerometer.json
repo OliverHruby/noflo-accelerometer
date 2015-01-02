@@ -2,8 +2,10 @@
     "properties": {
         "name": "Accelerometer",
         "environment": {
-            "type": "noflo-browser"
-        }
+            "type": "noflo-browser",
+            "content": "<div class=\"panel\">\n    <div class=\"header\">Accelerometer</div>\n    <div class=\"sensor\">\n        <span class=\"label\">Alpha:</span>\n        <span class=\"value\" id=\"accelerometer_alpha\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Beta:</span>\n        <span class=\"value\" id=\"accelerometer_beta\"></span>\n    </div>\n    <div class=\"sensor\">\n        <span class=\"label\">Gamma:</span>\n        <span class=\"value\" id=\"accelerometer_gamma\"></span>\n    </div>\n</div>\n"
+        },
+        "icon": ""
     },
     "inports": {},
     "outports": {},
