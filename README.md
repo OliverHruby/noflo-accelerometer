@@ -1,6 +1,8 @@
 # noflo-sensors [![Build Status](https://api.travis-ci.org/oliverhruby/noflo-sensors.png?branch=master)](http://travis-ci.org/oliverhruby/noflo-sensors)
 
-Mobile device sensor components for noflo.
+This library includes noflo components for various device sensors (mostly available in mobile devices).
+These include orientation and motion sensors, gps, battery status, etc.
+The intent is to build components which are reusable in nodejs, browser and also phonegap. 
 
 ## DeviceOrientation
 Provides a listener to the deviceorientation event:
