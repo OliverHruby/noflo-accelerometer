@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>noflo-suncalc in browser</title>
+    <link rel="stylesheet" href="../node_modules/mocha/mocha.css">
+    <style type="text/css">
+      #fixtures {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mocha"></div>
+    <div id="fixtures"></div>
+    <script src="../browser/noflo-sensors.js"></script>
+    <script src="http://chaijs.com/chai.js"></script>
+    <script src="../node_modules/mocha/mocha.js"></script>
+    <script>mocha.setup('bdd');</script>
+    <script src="./BatteryStatus.js"></script>
+    <script src="./DeviceMotion.js"></script>
+    <script src="./DeviceOrientation.js"></script>
+    <script src="./Geolocation.js"></script>
+    <script src="./SpeechSynthasis.js"></script>
+    <script src="./WebSocket.js"></script>
+    <script>
+      if (window.mochaPhantomJS) {
+        mochaPhantomJS.run();
+      } else {
+        var runner = mocha.run();
+        runner.on('end', function(){
+          window.mochaResults = runner.stats;
+        });
+      }
+    </script>
+  </body>
+</html>

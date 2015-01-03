@@ -15,7 +15,22 @@
     "components/DeviceMotion.coffee",
     "components/Geolocation.coffee",
     "components/SpeechSynthesis.coffee",
-    "components/WebSocket.coffee"
+    "components/WebSocket.coffee",
+    "graphs/Accelerometer.json",
+    "graphs/BatteryStatus.json",
+    "graphs/Beeper.json",
+    "graphs/Camera.json",
+    "graphs/FaceRecognition.json",
+    "graphs/Gamepad.json",
+    "graphs/Network.json",
+    "graphs/Robot.json",
+    "graphs/SpeechRecognition.json",
+    "graphs/SunCalc.json",
+    "graphs/Three.json",
+    "graphs/VideoEffects.json",
+    "graphs/Weather.json",
+    "graphs/WebSocket.json",
+    "graphs/main.json"
   ],
   "json": [
     "component.json",
@@ -27,7 +42,13 @@
     "graphs/Robot.json",
     "graphs/main.json",
     "graphs/Three.json",
-    "graphs/Weather.json"
+    "graphs/Weather.json",
+    "graphs/BatteryStatus.json",
+    "graphs/Camera.json",
+    "graphs/SpeechRecognition.json",
+    "graphs/SunCalc.json",
+    "graphs/VideoEffects.json",
+    "graphs/WebSocket.json"
   ],
   "noflo": {
     "components": {
@@ -40,14 +61,20 @@
     },
     "graphs": {
       "Accelerometer": "graphs/Accelerometer.json",
+      "BatteryStatus": "graphs/BatteryStatus.json",
       "Beeper": "graphs/Beeper.json",
+      "Camera": "graphs/Camera.json",
       "FaceRecognition": "graphs/FaceRecognition.json",
       "Gamepad": "graphs/Gamepad.json",
       "Network": "graphs/Network.json",
       "Robot": "graphs/Robot.json",
-      "main": "graphs/main.json",
+      "SpeechRecognition": "graphs/SpeechRecognition.json",
+      "SunCalc": "graphs/SunCalc.json",
       "Three": "graphs/Three.json",
-      "Weather": "graphs/Weather.json"
+      "VideoEffects": "graphs/VideoEffects.json",
+      "Weather": "graphs/Weather.json",
+      "WebSocket": "graphs/WebSocket.json",
+      "main": "graphs/main.json"
     }
   }
 }

@@ -19,7 +19,11 @@ class DeviceMotion extends noflo.Component
       removed: new noflo.Port 'string'
 
     listener = (event) =>
-      if event.acceleration is null and event.accelerationIncludingGravity is null and event.interval is null and event.rotationRate is null and @outPorts.removed.isAttached()
+      if event.acceleration is null and
+      event.accelerationIncludingGravity is null and
+      event.interval is null and
+      event.rotationRate is null and
+      @outPorts.removed.isAttached()
         @outPorts.removed.beginGroup event.key
         @outPorts.removed.send null
         @outPorts.removed.endGroup()
@@ -27,7 +31,6 @@ class DeviceMotion extends noflo.Component
       @outPorts.x.send event.accelerationIncludingGravity.x
       @outPorts.y.send event.accelerationIncludingGravity.y
       @outPorts.z.send event.accelerationIncludingGravity.z
-      #@outPorts.accelerationIncludingGravity.send event.accelerationIncludingGravity
       @outPorts.alpha.send event.rotationRate.alpha
       @outPorts.beta.send event.rotationRate.beta
       @outPorts.gamma.send event.rotationRate.gamma

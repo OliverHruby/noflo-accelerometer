@@ -16,7 +16,11 @@ class DeviceOrientation extends noflo.Component
       removed: new noflo.Port 'string'
 
     listener = (event) =>
-      if event.absolute is null and event.alpha is null and event.beta is null and event.gama is null and @outPorts.removed.isAttached()
+      if event.absolute is null and
+      event.alpha is null and
+      event.beta is null and
+      event.gama is null and
+      @outPorts.removed.isAttached()
         @outPorts.removed.beginGroup event.key
         @outPorts.removed.send null
         @outPorts.removed.endGroup()

@@ -16,6 +16,6 @@ class Geolocation extends noflo.Component
       @outPorts.latitude.send position.coords.latitude
       @outPorts.longitude.send position.coords.longitude
       
-    @inPorts.start.on 'data', =>
+    @inPorts.start.on 'data', ->
       navigator.geolocation.getCurrentPosition foundLocation
 exports.getComponent = -> new Geolocation

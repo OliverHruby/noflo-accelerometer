@@ -7,7 +7,7 @@ class SpeechSynthesis extends noflo.Component
     @inPorts =
       text: new noflo.Port 'string'
       
-    @inPorts.text.on 'data', =>
+    @inPorts.text.on 'data', (data) ->
       msg = new SpeechSynthesisUtterance "test"
       window.speechSynthesis.speak msg
       
