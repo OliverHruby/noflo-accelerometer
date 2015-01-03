@@ -11,9 +11,6 @@ Provides a listener to the deviceorientation event:
     DeviceOrientationEvent.gamma
 
 ## DeviceMotion
-Provides a listener to the devicemotion event:
+Provides access to the motion sensor on the device
 
-    DeviceMotionEvent.acceleration
-    DeviceMotionEvent.accelerationIncludingGravity
-    DeviceMotionEvent.rotationRate
-    DeviceMotionEvent.interval
+![devicemotion](https://cloud.githubusercontent.com/assets/6117436/5603914/c5aa8982-939b-11e4-9ed2-3316d7691d6f.gif)
